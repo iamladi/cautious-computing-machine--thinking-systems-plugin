@@ -143,12 +143,43 @@ function validateSkill(dir: string, knownSkills: Set<string>): Issue[] {
   }
 
   const exampleMatch = body.match(/## Example\n([\s\S]*?)(?=\n## )/);
-  if (exampleMatch && !exampleMatch[1].includes(FOOTER)) {
-    issues.push({
-      skill: dir,
-      level: "warn",
-      message: `Example missing canonical footer "${FOOTER}"`,
-    });
+  if (exampleMatch) {
+    const exampleBody = exampleMatch[1];
+    if (!exampleBody.includes(FOOTER)) {
+      issues.push({
+        skill: dir,
+        level: "warn",
+        message: `Example missing canonical footer "${FOOTER}"`,
+      });
+    }
+    if (!/<example>[\s\S]*<\/example>/.test(exampleBody)) {
+      issues.push({
+        skill: dir,
+        level: "warn",
+        message: "Example missing <example>...</example> wrapper tags",
+      });
+    }
+    if (!/<thinking>[\s\S]*?<\/thinking>/.test(exampleBody)) {
+      issues.push({
+        skill: dir,
+        level: "warn",
+        message: "Example missing <thinking>...</thinking> reasoning block",
+      });
+    }
+    if (!exampleBody.includes("(Recommended)")) {
+      issues.push({
+        skill: dir,
+        level: "warn",
+        message: "Example missing canonical '(Recommended)' option marker",
+      });
+    }
+    if (!exampleBody.includes("Not sure - you decide")) {
+      issues.push({
+        skill: dir,
+        level: "warn",
+        message: "Example missing canonical 'Not sure - you decide' fallback option",
+      });
+    }
   }
 
   if (parsed.success) {
