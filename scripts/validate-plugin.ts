@@ -30,7 +30,17 @@ function parseFrontmatter(source: string): Record<string, string> | null {
   return out;
 }
 
-function validateSkill(dir: string): Issue[] {
+function extractSkillReferences(roleText: string): string[] {
+  const refs = new Set<string>();
+  const pattern = /(?:use|route(?:\s+up|\s+down)?\s+to|via|→)\s+([a-z][a-z-]+[a-z])(?:\s+or\s+([a-z][a-z-]+[a-z]))?/gi;
+  for (const match of roleText.matchAll(pattern)) {
+    if (match[1]?.includes("-")) refs.add(match[1]);
+    if (match[2]?.includes("-")) refs.add(match[2]);
+  }
+  return [...refs];
+}
+
+function validateSkill(dir: string, knownSkills: Set<string>): Issue[] {
   const issues: Issue[] = [];
   const skillPath = join(SKILLS_DIR, dir, "SKILL.md");
   let body: string;
@@ -71,8 +81,20 @@ function validateSkill(dir: string): Issue[] {
   const roleMatch = body.match(/## Role\n([\s\S]*?)(?=\n## )/);
   if (!roleMatch) {
     issues.push({ skill: dir, level: "error", message: "missing ## Role section" });
-  } else if (!/Skip when/.test(roleMatch[1])) {
-    issues.push({ skill: dir, level: "warn", message: "Role section lacks 'Skip when' anti-trigger" });
+  } else {
+    const roleBody = roleMatch[1];
+    if (!/Skip when/.test(roleBody)) {
+      issues.push({ skill: dir, level: "warn", message: "Role section lacks 'Skip when' anti-trigger" });
+    }
+    for (const ref of extractSkillReferences(roleBody)) {
+      if (!knownSkills.has(ref) && ref !== dir) {
+        issues.push({
+          skill: dir,
+          level: "warn",
+          message: `Role references unknown skill "${ref}" (not a directory in skills/)`,
+        });
+      }
+    }
   }
 
   if (/\$ARGUMENTS/.test(body)) {
@@ -110,10 +132,11 @@ function main(): number {
   const skills = readdirSync(SKILLS_DIR).filter((d) =>
     statSync(join(SKILLS_DIR, d)).isDirectory(),
   );
+  const knownSkills = new Set(skills);
 
   const allIssues = [
     ...validatePluginManifest(),
-    ...skills.flatMap(validateSkill),
+    ...skills.flatMap((d) => validateSkill(d, knownSkills)),
   ];
 
   const errors = allIssues.filter((i) => i.level === "error");
