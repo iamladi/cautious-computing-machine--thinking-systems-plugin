@@ -60,8 +60,8 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- Full OODA cycle recorded: Observation → Orientation → Decision → Action.
-- Orientation anchor named: the mental model driving the Decision, and what evidence would invalidate it.
+- Orient load-bearing audit: the Orientation rung must carry an explicit mental-model statement plus the evidence that would invalidate it, stress-tested before the Decide gate rather than inherited from the first frame that arrived. An Orientation bullet that only restates the Observation, or skips the invalidation condition, fails the load-bearing audit and the cycle re-runs Orient before Decide commits — because racing from Observe to Act collapses the cycle-speed advantage into repeated wrong-frame execution.
+- Full OODA cycle recorded: Observation → Orientation → Decision → Action, with the Decision traceable to the Orient frame (not to the raw Observation).
 - Measurement plan for the Act phase — what signal proves or kills the hypothesis.
 - Pace recommendation for the next cycle, faster than the adversary's or environment's clock.
 - Residual risks the cycle did not resolve.

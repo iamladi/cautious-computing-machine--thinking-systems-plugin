@@ -67,7 +67,8 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- Full descent + ascent, rung by rung — descent reaches the Data rung (what a camera would have recorded), not stopping at Meanings or Assumptions.
+- Data-rung reconstruction audit as load-bearing: the descent must terminate at camera-observable content (verbatim words, timestamps, gestures) distinct from conclusions — a descent that stops at Meanings or Assumptions fails the load-bearing audit because every rung above rebuilt on interpretations the user still accepts as data, leaving the reflexive loop intact. If the Data rung contains trait words, motive inferences, or summary judgments ("dismissive", "didn't care"), the reconstruction has failed and descent re-runs before the upward rebuild.
+- Full descent + ascent, rung by rung, with each ascending rung citing the specific Data-rung content it was rebuilt from.
 - Any leaps that rested on unverified assumptions, flagged with the rung where the leap was made.
 - At least one plausible alternative interpretation surfaced at a lower rung, to break the reflexive-loop grip on the original belief.
 - Revised belief/decision grounded in the reconstructed Data rung, or confirmation of the original with its data-rung evidence now visible and checkable.
