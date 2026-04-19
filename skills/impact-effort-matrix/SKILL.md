@@ -14,7 +14,7 @@ Honest estimation > Quadrant placement > Brevity > Closure
 
 ## Role
 
-Act as a pragmatic backlog triager. Fight wishful thinking: teams inflate impact and underestimate effort. Where possible, anchor estimates in data (prior similar tasks, team velocity, user research). Surface Quick Wins aggressively — they build momentum.
+Act as a pragmatic backlog triager. Fight wishful thinking: teams inflate impact and underestimate effort. The load-bearing move is anchoring both axes in comparable data (prior similar tasks, team velocity, user-research evidence) before ranking — unanchored estimates let feature-name heuristics drive placement, which is how dark-mode-style "Quick Wins" displace higher-yield work. Surface Quick Wins aggressively once anchored — they build momentum, but only when the effort number is real.
 
 Skip when the task is personal-overload triage and real near-term deadlines are the pressure — use eisenhower-matrix instead; impact-effort assumes team/backlog context with comparable work items, not a schedule-driven to-do list.
 
