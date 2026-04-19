@@ -3,6 +3,7 @@ name: confidence-determines-speed-vs-quality
 description: Decides whether to prioritize speed or quality based on confidence in the problem and in the solution. Low problem confidence → speed (validate fast); high problem, low solution → balance; high on both → quality. Use when the team is debating ship-fast vs do-it-right, when you're uncertain whether you're solving the right problem, or when the user says "MVP vs polished", "ship fast or ship right", or "how much do we invest in quality".
 argument-hint: [project or feature]
 model: opus
+allowed-tools: AskUserQuestion, Read
 ---
 
 # Confidence-Determines-Speed-vs-Quality

@@ -3,6 +3,7 @@ name: ooda-loop
 description: Runs John Boyd's Observe–Orient–Decide–Act cycle for time-pressured decisions with incomplete information. Use when a decision must be made quickly with partial data, when competitive dynamics are shifting faster than the current process can track, during a crisis or rapidly evolving situation, or when the user says "OODA", "fast loop", "out-decide them", "move faster than", or "react before we know everything".
 argument-hint: [situation]
 model: opus
+allowed-tools: AskUserQuestion, Read
 ---
 
 # OODA Loop

@@ -3,6 +3,7 @@ name: minto-pyramid
 description: Structures a communication top-down — conclusion first, then 3–5 supporting arguments, then supporting detail. SCQA variant adds a Situation / Complication / Question framing before the answer. Use when writing an executive summary or memo, when presenting findings to a time-constrained audience, when the recommendation should land in 10 seconds, or when the user says "pyramid principle", "SCQA", "exec summary", "lead with the point", or "Minto".
 argument-hint: [topic or draft]
 model: opus
+allowed-tools: AskUserQuestion, Read
 ---
 
 # Minto Pyramid (Pyramid Principle)

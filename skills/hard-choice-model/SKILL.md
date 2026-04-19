@@ -3,6 +3,7 @@ name: hard-choice-model
 description: Classifies a decision by impact (low/high) and comparability (easy/hard) into No-Brainer / Apples-and-Oranges / Big Choice / Hard Choice, then matches a deliberation strategy. Use when the user is spending too much time on a decision and can't tell if the effort is justified, when a decision feels hard but they can't say why, or when they say "should I even be thinking about this", "is this worth deliberating", "stuck between options", or "hard choice".
 argument-hint: [decision]
 model: opus
+allowed-tools: AskUserQuestion, Read
 ---
 
 # Hard Choice Model

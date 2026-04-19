@@ -3,6 +3,7 @@ name: zwicky-box
 description: Generates novel solution combinations by building a morphological matrix of independent attributes × values, then combining in unexpected ways. Fritz Zwicky's morphological analysis. Use when brainstorming has stalled on the familiar, when a problem has multiple independent dimensions that could be reconfigured, when designing a new product/service and wanting to escape defaults, or when the user says "Zwicky box", "morphological analysis", "novel combinations", or "unexpected solutions".
 argument-hint: [problem]
 model: opus
+allowed-tools: AskUserQuestion, Read
 ---
 
 # Zwicky Box (Morphological Analysis)

@@ -3,6 +3,7 @@ name: abstraction-laddering
 description: Moves a problem statement up (why? — reframing at higher abstraction) and down (how? — concrete solutions) the ladder to test whether you're solving the right problem. Use when solutions feel limited, when the initial framing might be too narrow or too broad, or when the user says "am I solving the right problem", "reframe this", "why are we doing this", or "abstraction laddering".
 argument-hint: [problem statement]
 model: opus
+allowed-tools: AskUserQuestion, Read
 ---
 
 # Abstraction Laddering

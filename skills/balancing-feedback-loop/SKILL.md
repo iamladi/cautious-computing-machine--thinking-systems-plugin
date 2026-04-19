@@ -3,6 +3,7 @@ name: balancing-feedback-loop
 description: Identifies the mechanism in a system that resists change and pushes it back toward equilibrium — Goal → Gap → Corrective Action → Actual State. Surfaces delays that cause oscillation. Use when a system keeps returning to a baseline despite interventions, when designing a self-correcting process, when a desired change won't stick, or when the user says "balancing loop", "why doesn't this change stick", or "homeostasis".
 argument-hint: [system or change effort]
 model: opus
+allowed-tools: AskUserQuestion, Read
 ---
 
 # Balancing Feedback Loop

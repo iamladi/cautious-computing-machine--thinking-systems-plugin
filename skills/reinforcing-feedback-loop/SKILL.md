@@ -3,6 +3,7 @@ name: reinforcing-feedback-loop
 description: Maps a self-amplifying loop where two+ variables cause each other to grow (or decline), producing exponential change. Flywheel / vicious cycle / network effect / compounding. Use when growth or decline is accelerating and you want to understand the mechanism, when designing a system with an intentional flywheel, when distinguishing growth drivers from stability constraints, or when the user says "flywheel", "reinforcing loop", "why is this accelerating", or "compounding effect".
 argument-hint: [system or trend]
 model: opus
+allowed-tools: AskUserQuestion, Read
 ---
 
 # Reinforcing Feedback Loop

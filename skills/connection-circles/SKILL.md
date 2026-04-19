@@ -3,6 +3,7 @@ name: connection-circles
 description: Maps a system's 5–10 key elements around a circle and draws labeled causal arrows (+/–) between them to surface feedback loops. Use when a problem keeps cycling back and simple fixes don't hold, when you need to map causal relationships across a complex system, when you want to surface hidden feedback loops before intervening, or when the user says "connection circles", "feedback loops", "causal map", or "how does X cause Y".
 argument-hint: [system or recurring problem]
 model: opus
+allowed-tools: AskUserQuestion, Read
 ---
 
 # Connection Circles

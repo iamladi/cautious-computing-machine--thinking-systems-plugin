@@ -3,6 +3,7 @@ name: inversion
 description: Pressure-tests a plan by asking "how would I guarantee failure here?" and deriving preventive actions from each failure mode. Includes pre-mortem variant (imagine the project failed — narrate why). Use when you want to stress-test a plan before executing, when a team is over-optimistic, when "good" is hard to imagine but "terrible" is easy, or when the user says "pre-mortem", "inversion", "how would this fail", or "what could go wrong".
 argument-hint: [plan or decision]
 model: opus
+allowed-tools: AskUserQuestion, Read
 ---
 
 # Inversion

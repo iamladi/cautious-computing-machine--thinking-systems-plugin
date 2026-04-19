@@ -3,6 +3,7 @@ name: six-thinking-hats
 description: Walks a decision through six explicit perspectives (White/facts, Yellow/benefits, Black/risks, Red/gut, Green/creative, Blue/process) so one viewpoint doesn't dominate. Use when a group discussion is monopolized by one lens, when you need to stress-test a significant commitment from multiple angles, when a risk-averse team is suppressing creative or emotional input, or when the user says "six hats", "all angles", "perspectives on this decision", "de Bono", or "look at it from every side".
 argument-hint: [decision or topic]
 model: opus
+allowed-tools: AskUserQuestion, Read
 ---
 
 # Six Thinking Hats

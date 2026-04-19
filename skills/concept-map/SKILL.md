@@ -3,6 +3,7 @@ name: concept-map
 description: Builds a hierarchical visual map of a domain's 15–25 entities connected by labeled linking phrases (so each connection reads as a sentence) to surface knowledge gaps and align mental models. Use when the user wants to develop or communicate deep understanding of a complex domain, when a team has different mental models of the same system, when designing or auditing a system's relationships, or when they say "concept map", "relationship map", or "how does this domain fit together".
 argument-hint: [domain or focus question]
 model: opus
+allowed-tools: AskUserQuestion, Read
 ---
 
 # Concept Map

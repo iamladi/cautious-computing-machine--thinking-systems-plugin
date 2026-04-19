@@ -3,6 +3,7 @@ name: eisenhower-matrix
 description: Sorts tasks across the Urgent × Important 2×2 matrix into Do / Schedule / Delegate / Eliminate. Use when the user feels perpetually busy without progress, when competing work and personal demands all feel equally urgent, when auditing a task list against long-term goals, or when they say "urgent vs important", "prioritize my list", "what do I work on today", or "Eisenhower".
 argument-hint: [task list or context]
 model: opus
+allowed-tools: AskUserQuestion, Read
 ---
 
 # Eisenhower Matrix

@@ -3,6 +3,7 @@ name: second-order-thinking
 description: Maps downstream consequences of a decision across three time horizons (10 min / 10 months / 10 years) so ripple effects aren't missed. Use when a decision looks obviously good at first glance, when making a major life or business change, when a choice has cross-domain ripple effects, or when the user says "what happens next", "then what", "long-term consequences", "downstream effects", or "second order".
 argument-hint: [decision or topic]
 model: opus
+allowed-tools: AskUserQuestion, Read
 ---
 
 # Second-Order Thinking

@@ -3,6 +3,7 @@ name: conflict-resolution-diagram
 description: Resolves a conflict between two positions by surfacing each side's underlying needs, identifying the shared goal, and challenging the hidden assumption that makes the demands seem mutually exclusive. Eli Goldratt's Evaporating Cloud. Use when two parties are locked on opposing demands, when a compromise feels unsatisfying, or when the user says "evaporating cloud", "break the deadlock", "win-win", or "we're stuck on this conflict".
 argument-hint: [conflict]
 model: opus
+allowed-tools: AskUserQuestion, Read
 ---
 
 # Conflict Resolution Diagram (Evaporating Cloud)
