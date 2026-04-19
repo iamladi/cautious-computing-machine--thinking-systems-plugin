@@ -36,8 +36,9 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 ## Input Handling
 
-- Problem as topic — run all six steps.
-- Path — Read the problem brief first.
+- Path — Read the problem brief first; extract the stated problem and check whether success criteria (DRIVE) are already specified, because Step 2 is the load-bearing gate before any solution generation.
+- Listen for premature solution language ("we should just…", "the fix is…") and mark those as Step 4 candidates to defer; the classic Hurson failure is jumping Step 1 → Step 4 past DRIVE and the catalytic question, which yields generic answers.
+- If only one stage is actually in question (success clarity alone, or resourcing alone), run that stage inline instead of all six; if the problem is narrow debugging or execution-only, route to first-principles, ishikawa-diagram, or decision-matrix rather than the full framework.
 
 ## Example
 

@@ -36,9 +36,9 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 ## Input Handling
 
-- Task list provided inline — classify each task in turn.
-- Single topic — first elicit the task list, then classify.
-- Path to a todo file — Read it, classify each line item.
+- Path — Read the todo file first; extract the task list (or elicit 5–10 candidates if only a topic is given) and classify one task at a time so the goal anchor carries across each placement.
+- Confirm the user's load-bearing goal once up-front before any quadrant call; importance is defined as "advances long-term goals", so without a stated goal the 2×2 degenerates into a flat urgency list and Q3 eats Q2 silently.
+- If the list is team-backlog triage with comparable items and no personal deadline pressure, stop and route to impact-effort-matrix; Eisenhower's axis only pays off when the felt constraint is personal overload from competing deadlines.
 
 ## Goals Check
 

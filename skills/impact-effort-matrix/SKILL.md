@@ -35,9 +35,9 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 ## Input Handling
 
-- Backlog provided in the prompt — iterate.
-- Path to a backlog file — Read first.
-- Vague topic — elicit 5–10 candidate tasks in round 1.
+- Path — Read the backlog file first; extract 5–10 candidate tasks (or elicit them if only a topic is given) and pick first the task with the most hidden asymmetry between feature name and real cost, so the estimation discipline is set by the hardest case.
+- Anchor impact and effort estimates in data (prior similar tasks, team velocity, user-research evidence) and name the comparable explicitly; unanchored guesses inflate impact and underprice effort, which is how dark-mode-style "Quick Wins" displace higher-yield work.
+- If the list is personal triage with real near-term deadlines rather than team-backlog comparison, stop and route to eisenhower-matrix; impact-effort assumes comparable work items under capacity pressure, not a schedule-driven to-do.
 
 ## Example
 

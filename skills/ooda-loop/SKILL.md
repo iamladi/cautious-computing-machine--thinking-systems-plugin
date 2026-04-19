@@ -30,8 +30,9 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 ## Input Handling
 
-- Situation as topic — run one full cycle, then invite another.
-- Path — Read the situation report first.
+- Path — Read the situation report first; extract the freshest signal and name the clock (competitor, market, outage) because OODA's edge is cycle time against that specific tempo, not abstract speed.
+- Identify the mental model currently shaping interpretation and flag it as an Orient anchor to stress-test; skipping Orient and racing from Observe to Act commits resources to whichever frame arrived first, not the best-calibrated one.
+- If no opponent or deadline pressure exists and data is ample, stop and route to decision-matrix or first-principles; OODA's cycle-speed advantage disappears in deliberative settings.
 
 ## When to stop looping
 

@@ -44,8 +44,9 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 ## Input Handling
 
-- Path detected (contains `/`, `.md`, `.ts`, etc.) — Read the file first, then walk the hats on the decision it describes.
-- Topic string — walk the hats directly.
+- Path — Read the brief first, then lock scope on the opening Blue hat before White/Black run; vague scope lets the Black hat dominate by inventing risks against an undefined target.
+- Surface which perspective has been dominating the conversation (risk-heavy, feelings-suppressed, facts-only) and plan to weight the under-represented hats — the value is rebalancing, not covering all six mechanically.
+- If the group already agrees and one lens is genuinely sufficient, skip; forcing six hats onto aligned teams manufactures false disagreement and wastes the calibrated rebalance move.
 
 ## Example
 

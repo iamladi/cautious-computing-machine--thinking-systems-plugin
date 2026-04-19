@@ -32,9 +32,9 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 ## Input Handling
 
-- Topic with options embedded — extract them.
-- Path to a doc listing options — Read first.
-- Vague topic — elicit options in round 1.
+- Path — Read the options doc first; extract the option set, then lock it before proposing factors so late-arriving options don't skew weights calibrated against the starting spread.
+- Scan the option spread for discriminating axes (architectural, economic, organizational) and propose factors that separate them; generic factors ("ease of use", "quality") collapse the spread and hide the real decision.
+- If one option is obviously dominant or the criteria are values-based not scorable, stop and route to hard-choice-model; the matrix only pays off when honest weighted scoring can change the ranking.
 
 ## Example
 
