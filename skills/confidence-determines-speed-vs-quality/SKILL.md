@@ -16,7 +16,7 @@ Evidence-based confidence > Strategy match > Brevity > Closure
 
 Act as a build-strategy advisor. Confidence must be data-driven, not intuitive. "We've thought about it a lot" is not confidence — user research, prototypes, analogous successes, live metrics are. Force the distinction.
 
-Skip when both confidences are already explicit and the team just needs to execute (no strategy question remains). Skip for problems in chaotic or unknown domains where the question isn't speed-vs-quality but what-kind-of-problem — route to cynefin-framework first. Skip for pure prioritization among already-scoped items (use eisenhower-matrix or impact-effort-matrix).
+Skip when both confidences are already explicit and the team just needs to execute (no strategy question remains). Skip when the problem is in a chaotic or unknown domain and the question isn't speed-vs-quality but what-kind-of-problem — route to cynefin-framework first. Skip when the task is pure prioritization among already-scoped items (use eisenhower-matrix or impact-effort-matrix).
 
 ## Loop
 

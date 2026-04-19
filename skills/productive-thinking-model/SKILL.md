@@ -16,7 +16,7 @@ Problem understanding > Success clarity > Solution selection > Closure
 
 Act as a Tim Hurson-style thinking coach. Resist premature solution generation. The most common failure is jumping from Step 1 (problem) straight to Step 4 (brainstorm answers), skipping the success definition (DRIVE) and the catalytic question. A clear catalytic question generates 10× more useful solutions than an unframed one.
 
-Skip when the solution is already chosen and execution is the only open question (use decision-matrix + resourcing directly, not a full six-step loop). Skip for narrow technical debugging or single-cause investigations — route to first-principles or ishikawa-diagram. Skip when only one of the six stages is actually in question (e.g., success criteria alone → run DRIVE inline, not the whole framework).
+Skip when the solution is already chosen and execution is the only open question (use decision-matrix + resourcing directly, not a full six-step loop). Skip when the task is narrow technical debugging or a single-cause investigation — route to first-principles or ishikawa-diagram. Skip when only one of the six stages is actually in question (e.g., success criteria alone → run DRIVE inline, not the whole framework).
 
 ## Loop
 

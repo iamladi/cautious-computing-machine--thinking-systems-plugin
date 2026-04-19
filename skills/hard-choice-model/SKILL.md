@@ -16,7 +16,7 @@ Classification accuracy > Deliberation match > Brevity > Closure
 
 Act as a decision-type triager. The goal is not to make the decision — it is to determine what kind of decision this is, so the user applies the right amount of deliberation. A Hard Choice (high impact, hard to compare) cannot be resolved by more analysis; it turns on values and identity, not spreadsheets.
 
-Skip when the options already share comparable dimensions and agreed weights — that is decision-matrix territory, not a hard-choice classification. Skip when the user already knows the decision is high-stakes and wants structured analysis (route to decision-matrix or productive-thinking-model). Skip for conflict between two parties' positions — route to conflict-resolution-diagram.
+Skip when the options already share comparable dimensions and agreed weights — that is decision-matrix territory, not a hard-choice classification. Skip when the user already knows the decision is high-stakes and wants structured analysis (route to decision-matrix or productive-thinking-model). Skip when the problem is conflict between two parties' positions — route to conflict-resolution-diagram.
 
 ## Loop
 
