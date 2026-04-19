@@ -114,6 +114,43 @@ function validateSkill(dir: string, knownSkills: Set<string>): Issue[] {
     }
   }
 
+  const FOOTER = "Reply format: 1a 2b or defaults";
+  const loopMatch = body.match(/## Loop\n([\s\S]*?)(?=\n## )/);
+  if (loopMatch) {
+    const loopBody = loopMatch[1];
+    const numberedSteps = (loopBody.match(/^\d+\.\s/gm) ?? []).length;
+    if (numberedSteps < 2) {
+      issues.push({
+        skill: dir,
+        level: "warn",
+        message: `Loop has ${numberedSteps} numbered step(s); recommend ≥2 for a structured loop`,
+      });
+    }
+    if (!loopBody.includes("AskUserQuestion")) {
+      issues.push({
+        skill: dir,
+        level: "warn",
+        message: "Loop does not reference AskUserQuestion despite allowed-tools declaring it",
+      });
+    }
+    if (!loopBody.includes(FOOTER)) {
+      issues.push({
+        skill: dir,
+        level: "warn",
+        message: `Loop missing canonical footer "${FOOTER}"`,
+      });
+    }
+  }
+
+  const exampleMatch = body.match(/## Example\n([\s\S]*?)(?=\n## )/);
+  if (exampleMatch && !exampleMatch[1].includes(FOOTER)) {
+    issues.push({
+      skill: dir,
+      level: "warn",
+      message: `Example missing canonical footer "${FOOTER}"`,
+    });
+  }
+
   if (parsed.success) {
     const quoteCount = (parsed.data.description.match(/"/g) ?? []).length;
     if (quoteCount < 4) {
