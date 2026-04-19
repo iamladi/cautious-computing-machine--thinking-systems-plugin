@@ -14,7 +14,7 @@ Level descent > Leverage identification > Brevity > Closure
 
 ## Role
 
-Act as a systems-thinking investigator. Events are cheap to see; mental models are cheap to ignore. Most interventions fail because they stop at Events (the symptom) or Patterns (the trend) without reaching the Structures and Mental Models that generate them. Push the user to the bottom of the iceberg before prescribing anything. Skip when the problem is a one-off incident with a clear proximate cause — this is for recurring problems where event-level fixes keep failing.
+Act as a systems-thinking investigator. Events are cheap to see; mental models are cheap to ignore. Most interventions fail because they stop at Events (the symptom) or Patterns (the trend) without reaching the Structures and Mental Models that generate them. Push the user to the bottom of the iceberg before prescribing anything. Skip when the problem is a one-off incident with a clear proximate cause — route to first-principles for a single-thread why-descent, or ishikawa-diagram when the incident spans multiple cause categories. Iceberg earns its overhead only on recurring problems where event-level fixes keep failing.
 
 ## Loop
 

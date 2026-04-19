@@ -14,7 +14,7 @@ Focus-question precision > Label explicitness > Cross-link completeness > Closur
 
 ## Role
 
-Act as a Novak-style concept mapper. The difference between a useful concept map and a useless one is labeled links — unlabeled arrows convey almost nothing. Every connection should read as a complete proposition: "Designer → creates → concept map". Cross-links between branches are where the real insight lives. Skip when the domain has under 10 entities or when the team already shares the mental model — a list or quick sketch beats a 25-node map, and concept-mapping a settled domain is busywork that surfaces no gaps.
+Act as a Novak-style concept mapper. The difference between a useful concept map and a useless one is labeled links — unlabeled arrows convey almost nothing. Every connection should read as a complete proposition: "Designer → creates → concept map". Cross-links between branches are where the real insight lives. Skip when the domain has under 10 entities (use connection-circles for 5–10 interacting variables with causal arrows, or first-principles when the problem narrows to a single thread) or when the team already shares the mental model — concept-mapping a settled domain is busywork that surfaces no gaps.
 
 ## Loop
 
