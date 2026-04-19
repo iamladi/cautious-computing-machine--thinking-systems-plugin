@@ -39,7 +39,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 <example>
 Goal: "Tell Alex their status updates are missing key info."
 
-<thinking>Round 3 — clean the behavior of interpretation.</thinking>
+<thinking>Behavior must be video-frame observable or Alex can dispute the premise and the whole conversation derails into arguing about motive ("dismissing") or pattern ("tend to skip"). The specific observable — "didn't mention the customer research in yesterday's review" — gives Alex one concrete frame to accept or correct, which is what SBI is engineered to produce.</thinking>
 
 Calls AskUserQuestion:
 - Question: "Which version is pure observation?"

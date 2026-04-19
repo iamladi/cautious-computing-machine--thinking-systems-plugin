@@ -44,7 +44,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 <example>
 Topic: "Competitor just launched a new pricing tier."
 
-<thinking>Observe done (competitor launch). Jump to Orient.</thinking>
+<thinking>The launch itself is already-observed data — further observation buys little. The actual bottleneck is Orient: three mutually-exclusive frames (defensive / land-grab / signal) imply radically different Decisions, so acting before Orient collapses into one frame would commit resources to the wrong response. OODA tempo says re-orient fast on visible moves before the Act phase.</thinking>
 
 Calls AskUserQuestion:
 - Question: "Which frame best explains the competitor's move?"

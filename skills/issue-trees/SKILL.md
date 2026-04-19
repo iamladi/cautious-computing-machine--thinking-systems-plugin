@@ -38,7 +38,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 <example>
 Problem: "Low adoption of Feature X."
 
-<thinking>Round 3 — first-level branches must be MECE.</thinking>
+<thinking>Adoption problems decompose cleanly along a funnel (unaware → aware-but-don't-try → try-but-don't-stick) because each stage has distinct root causes and interventions. Category splits like UX/marketing/competitive fail MECE — a retention bug is both a UX issue and a marketing issue, so work gets double-counted or missed.</thinking>
 
 Calls AskUserQuestion:
 - Question: "Which first-level decomposition is MECE?"

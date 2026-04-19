@@ -44,7 +44,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 <example>
 Problem: "Enterprise prospect is skeptical of ROI; stuck in late-stage sales."
 
-<thinking>Step 1 is done. Move to DRIVE — start with Do.</thinking>
+<thinking>Problem is defined but success isn't. Skipping DRIVE straight to solution brainstorming is the classic Hurson failure — you get generic sales plays (demo harder, discount, exec sponsor) rather than prospect-specific ones. Start with Do: what must the prospect actually experience for ROI skepticism to collapse? That shapes every downstream answer in step 4.</thinking>
 
 Calls AskUserQuestion:
 - Question: "What must happen for this to be a success?"

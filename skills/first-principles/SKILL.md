@@ -42,7 +42,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 <example>
 Problem: "Our mobile onboarding takes 4 minutes and we need to cut it."
 
-<thinking>Assumption: "onboarding" as a concept. Challenge that.</thinking>
+<thinking>A 4-minute target accepts the "onboarding exists as a gated flow" assumption and only negotiates its length. Bedrock question: does any signup-time gate serve the user's first-value goal? Challenging the frame unlocks deferred onboarding and progressive profiling — options that 4-minute-cutting never surfaces.</thinking>
 
 Calls AskUserQuestion:
 - Question: "Which assumption is most worth challenging?"
