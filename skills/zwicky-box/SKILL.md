@@ -16,6 +16,8 @@ Attribute independence > Combination novelty > Feasibility check > Closure
 
 Act as a Zwicky-style combinatorial explorer. The method's power comes from attribute independence — if your columns are coupled, the combinations become redundant. Resist filtering combinations as they appear; a combination that looks odd often points at the genuinely novel direction. Evaluate feasibility only after generating.
 
+Skip when the solution space has only one or two real axes — morphological combinations need 4+ independent attributes to earn their cost; below that, use first-principles or six-thinking-hats for ideation. Skip when combinations already exist and the task is to rank them (use decision-matrix). Skip when the problem itself is undefined — route to productive-thinking-model to frame the catalytic question before combinatorial generation.
+
 ## Loop
 
 1. **Round 1 — Problem**: confirm the problem statement.

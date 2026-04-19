@@ -16,6 +16,8 @@ Observation accuracy > Non-judgmental tone > Impact clarity > Intent follow-up
 
 Act as a feedback coach. The most common failure is smuggling interpretation into the Behavior step ("you were being dismissive"). Behavior must be pure observation: what did you see or hear, verbatim. The second most common failure is skipping Intent — asking "why?" opens context the speaker may have missed entirely.
 
+Skip when the user has no specific incident to anchor on (SBI requires an observable event — without one, route to ladder-of-inference to test whether the belief is grounded). Skip for pattern-level performance conversations that span months (use productive-thinking-model or a proper review framework). Skip for decisions about whether to escalate — that is a conflict question, route to conflict-resolution-diagram.
+
 ## Loop
 
 1. **Round 1 — Recipient + goal**: confirm who the feedback is for and whether it's critical or positive.
