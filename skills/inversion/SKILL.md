@@ -39,7 +39,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 <example>
 Plan: "Ship the onboarding redesign in 6 weeks."
 
-<thinking>Redesign projects fail most often from scope creep or untested user-facing changes hitting power users. Pre-mortem should surface which mode is live for this plan — 6 weeks is tight enough that untested flows are the most probable trigger.</thinking>
+<thinking>Round 2's job is surfacing candidate modes, but the selection rule is already anchored by the mechanism question that Round N+1 will enforce: pick the mode whose "why would that actually kill it?" answer names a traceable attack surface, not the mode that sounds scariest. "Untested flows confuse power users" has a concrete mechanism (cognitive-load spike → abandonment on the one flow power users can't skip) and therefore a specific preventive handle (week-4 power-user test gate). "Competitor campaign" is exogenous with no prevention handle — enumerating it is pessimism with extra steps. Front-loading the mechanism test at mode-selection keeps the pre-mortem from generating a failure list that can't convert to actions in Round N+2.</thinking>
 
 Calls AskUserQuestion:
 - Question: "It's week 8, we missed the deadline, engagement dropped. What's the most likely story?"

@@ -45,7 +45,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 <example>
 Problem: "Enterprise prospect is skeptical of ROI; stuck in late-stage sales."
 
-<thinking>Problem is defined but success isn't. Skipping DRIVE straight to solution brainstorming is the classic Hurson failure — you get generic sales plays (demo harder, discount, exec sponsor) rather than prospect-specific ones. Start with Do: what must the prospect actually experience for ROI skepticism to collapse? That shapes every downstream answer in step 4.</thinking>
+<thinking>Problem is defined but success isn't, and the Step 1 → Step 4 shortcut is already pulling toward generic sales plays (demo harder, discount, exec sponsor). DRIVE is Step 2's deliverable, but the reason to invest in it now is that Step 3's catalytic question — the load-bearing move of the whole framework — can only be sharp if DRIVE is concrete. A vague Do ("prospect converts") yields "How might we close more deals?", which regenerates the generic plays; a specific Do ("prospect experiences product value firsthand within 2 weeks, minimal IT involvement") yields "How might we deliver hands-on ROI evidence without IT gating?", which forces prospect-specific ideation in Step 4. Start with Do because it's the DRIVE letter that most constrains the Step 3 question's specificity.</thinking>
 
 Calls AskUserQuestion:
 - Question: "What must happen for this to be a success?"

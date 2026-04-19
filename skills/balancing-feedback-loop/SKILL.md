@@ -40,7 +40,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 <example>
 System: "Our on-call rotation bugs keep re-emerging."
 
-<thinking>"Bugs keep re-emerging" sounds like a quality problem but balancing loops re-emerge because an implicit goal is being protected — attacking the bugs directly fails because the corrective action (more paging, more fixes) just triggers a stronger restorative pushback from whatever the loop is defending. Surfacing the goal first is load-bearing: if the rotation is quietly optimizing for "minimize disruption per engineer", then bug-reduction work that adds pager load will be silently undone. Name the goal, then decide whether to weaken it or satisfy it differently.</thinking>
+<thinking>"Bugs keep re-emerging" sounds like a quality problem but balancing loops re-emerge because an implicit goal is being protected — attacking the bugs directly fails because the corrective action (more paging, more fixes) just triggers a stronger restorative pushback from whatever the loop is defending. Goal-naming is Round 1's precondition (without it there is no loop to diagram), but the load-bearing move that decides whether the intervention will stick is naming the delay: if corrective action lags gap-detection by 2 sprints, a one-off fix disappears before the loop's pushback arrives, making the pattern look like quality drift when it's actually delay-driven oscillation. Goal first to scope the loop, then delay-naming to predict whether weakening or satisfying the goal will land or oscillate.</thinking>
 
 Calls AskUserQuestion (Round 1):
 - Question: "What's the implicit goal of the current on-call setup?"
