@@ -54,8 +54,9 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
+- Axis-selection audit: the chosen decomposition axis (funnel / value-chain / segment / cost-structure / lifecycle stage) is named with why it cleanly partitions this specific domain, and at least one rejected axis is cited with the concrete leaf-overlap it would have produced (e.g., UX/marketing/competitive rejected for retention because a churn bug lives in both UX and marketing branches). An unnamed axis or a rejected-axis list without overlap mechanics fails the load-bearing audit and the tree re-runs before MECE checks, because MECE discipline applied to the wrong axis still produces silently-overlapping leaves.
 - Full tree rendered as nested bullets: root → first-level branches → sub-branches → actionable leaves.
-- MECE check at each level with a one-line justification for the split choice.
+- MECE check at each level with a one-line justification for the split choice, grounded in the axis chosen above.
 - Prioritized branch (the 20% driving 80%) with data (or a plan to gather data).
 - Focused solution effort on that branch.
 - Rejected alternative splits with why they would overlap or miss cases.
