@@ -54,7 +54,7 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- 5–10 failure modes with mechanisms.
-- Preventive action for each.
-- Prioritized action list: which preventions to start immediately vs monitor.
-- Revised plan incorporating the top preventions.
+- 5–10 failure modes, each with its specific mechanism ("why would that kill it?" answered with the attack surface it exploits) and a preventive action.
+- Mechanism test on every listed failure — a failure without a traceable mechanism is noise and gets dropped; "things might go wrong" is not a failure mode, "cache key collision between tenants" is.
+- Top-3 preventions trace to high-severity or high-probability mechanisms (not easiest-to-prevent), and each prevention is cross-checked to confirm it doesn't introduce a new failure mode upstream.
+- Revised plan incorporating top preventions, plus monitored-but-not-prevented failures with their trigger signals and any residual risk the plan explicitly accepts (with stakeholder buy-in required).

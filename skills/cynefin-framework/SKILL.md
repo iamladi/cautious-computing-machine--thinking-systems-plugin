@@ -59,7 +59,7 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- Domain classification with rationale.
-- Prescribed action sequence.
-- Experiments or analyses to start immediately.
-- Drift risks (which domain might this slip into?).
+- Domain classification with the action sequence prescribed for that domain (sense-categorize-respond / sense-analyze-respond / probe-sense-respond / act-sense-respond).
+- Knowability rationale: classification cites what IS or ISN'T knowable about cause-and-effect — best-practice known (Simple), expert analysis would reveal cause (Complicated), only retrospective coherence available (Complex), no cause-effect at all (Chaotic). A classification arrived at by "gut feel" without this probe is a misclassification signal and must be re-run.
+- Experiments or analyses to start immediately use the domain's action verb — probes for Complex, analyses for Complicated, stabilizing acts for Chaotic; running best-practice plays in Complex or probes in Simple wastes the cycle and is a validation failure.
+- Drift risks (which domain might this slip into?) with observable triggers that would reclassify, plus boundary cases where a short probe would disambiguate before committing to a strategy.

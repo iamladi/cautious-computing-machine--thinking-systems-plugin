@@ -69,7 +69,7 @@ Footer: `Reply format: 1a 2b or defaults`
 ## Completion
 
 After the closing Blue hat, produce:
-- Summary of each hat's top finding (one line each).
-- Consolidated recommendation.
-- Rejected alternatives with reasons.
-- Open questions that warrant more data.
+- Per-hat top finding (one line each) tied back to the Blue-hat scope locked in Round 1 — each finding must address the scoped question, not a generic talking point.
+- Scope-lock validation: any hat that wandered off-scope gets marked "no signal" rather than padded into the consolidated view, since forcing filler preserves the ceremony and loses the method.
+- Consolidated recommendation naming which hats converged and which dissented; a unanimous green-light with no Black-hat risk surfaced is itself a failure signal (re-run Black with a harder scope, or the session produced confirmation-shaped groupthink).
+- Rejected alternatives with per-hat reason (which hat killed them), plus open questions that warrant more data before a re-run.

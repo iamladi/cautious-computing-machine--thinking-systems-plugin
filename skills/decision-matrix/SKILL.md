@@ -56,7 +56,7 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- Full matrix: rows (options), columns (weighted factors), cells (score × weight), row totals.
-- Ranked recommendation.
-- Gut-check outcome. If mis-calibrated weights, re-ranked with explanation.
-- Audit trail: every weight and score has a one-line rationale.
+- Full matrix (rows × weighted columns, score × weight cells, row totals) with ranked recommendation.
+- Factor-discrimination check: for each factor show the score spread across options — factors where all options score within one point get dropped or reweighted, because a non-discriminating factor cannot move the ranking and its weight is decorative.
+- Gut-check against the ranked outcome; if matrix-top and intuition disagree, diagnose which weight is mis-calibrated or which factor is missing before re-ranking (never override without naming the cause).
+- Audit trail: one-line rationale per weight and score, plus factors considered and dropped (with reason), margin-under-10% options flagged as near-ties, and factors that cannot be scored without more data (flagged for follow-up).

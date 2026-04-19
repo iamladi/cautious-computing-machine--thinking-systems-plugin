@@ -58,8 +58,7 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- Challenged assumptions listed.
-- Irreducible truths confirmed.
-- Rebuilt solution from those truths.
-- Validation that the rebuild solves the original problem.
-- Acknowledgment of constraints that were actually fundamental vs habitual.
+- Assumption stack (2–4 load-bearing ones) with each descent chain explicit down to a claimed irreducible truth.
+- Bedrock test on each claimed irreducible: restating it in different words must add no new claim — if it does, the descent stopped early and the round is not complete.
+- Rebuilt solution traces each element to one of the confirmed irreducibles, not to the pre-descent framing; if any element silently reinherits a stripped assumption, the rebuild is invalid.
+- Validation that the rebuild solves the original problem, plus constraints split into fundamental (keep) vs habitual (drop) and any descent chain that stopped short of bedrock due to missing evidence (flagged for follow-up).

@@ -55,7 +55,7 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- Full cloud diagram: Demand A / Need A ← Shared Goal → Need B / Demand B + labeled assumption.
-- Invalidated assumption.
-- New solution that meets both needs.
-- Specific proposed next action both sides can agree to.
+- Full cloud diagram with verbatim positions at the Demand level, Needs named one rung up in each side's own language, and the specific shared higher goal both sides commit to (not a platitude like "team success").
+- Labeled assumption stated as a concrete, falsifiable claim that, if untrue, dissolves the conflict — "both sides want good outcomes" is a platitude and fails this test; real assumptions are typically resource-scarcity, mutually-exclusive timing, or a false binary.
+- Validation that the new solution meets BOTH needs simultaneously (not a compromise that partially satisfies each) and doesn't require either side to surrender its Need; if any party reads the solution as a loss, the assumption that was invalidated was the wrong one and the diagram re-opens.
+- Specific proposed next action both sides can agree to this week, plus a documented fall-back route if the assumption holds true after all (escalate to shared-goal re-framing, or hand off to hard-choice-model when the needs are genuinely incompatible on values).
