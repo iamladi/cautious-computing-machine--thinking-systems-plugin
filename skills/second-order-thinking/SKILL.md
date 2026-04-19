@@ -9,7 +9,7 @@ allowed-tools: AskUserQuestion, Read
 ## Priorities
 
 ```
-Horizon coverage > Cross-domain ripple > Brevity > Closure
+Cross-domain ripple > Horizon coverage > Same-domain redundancy guard > Closure
 ```
 
 ## Role

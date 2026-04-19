@@ -9,7 +9,7 @@ allowed-tools: AskUserQuestion, Read
 ## Priorities
 
 ```
-Perspective coverage > Method fidelity > Brevity > Closure
+Blue-hat scope-lock > Perspective rebalance > Black-hat dominance guard > Closure
 ```
 
 ## Role
