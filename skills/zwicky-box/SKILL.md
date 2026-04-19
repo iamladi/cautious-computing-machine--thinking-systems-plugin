@@ -1,6 +1,6 @@
 ---
 name: zwicky-box
-description: Generates novel solution combinations by building a morphological matrix of independent attributes × values, then combining in unexpected ways. Fritz Zwicky's morphological analysis. Use when brainstorming has stalled on the familiar, when a problem has multiple independent dimensions that could be reconfigured, when designing a new product/service and wanting to escape defaults, or when the user says "Zwicky box", "morphological analysis", "novel combinations", or "unexpected solutions".
+description: Generates novel solution combinations from a morphological matrix of attributes × values — load-bearing is verifying each axis varies independently before sweeping; coupled axes collapse the grid into the handful of defaults the team already considered. Fritz Zwicky's analysis. Use when brainstorming stalls on the familiar, when designing a new product/service and wanting to escape defaults, or when they say "Zwicky box", "morphological analysis", "novel combinations".
 allowed-tools: AskUserQuestion, Read
 ---
 

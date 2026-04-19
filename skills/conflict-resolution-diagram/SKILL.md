@@ -1,6 +1,6 @@
 ---
 name: conflict-resolution-diagram
-description: Resolves a conflict between two positions by surfacing each side's underlying needs, identifying the shared goal, and challenging the hidden assumption that makes the demands seem mutually exclusive. Eli Goldratt's Evaporating Cloud. Use when two parties are locked on opposing demands, when a compromise feels unsatisfying, or when the user says "evaporating cloud", "break the deadlock", "win-win", or "we're stuck on this conflict".
+description: Resolves a conflict between two positions by surfacing needs, identifying the shared goal, and invalidating the hidden assumption that makes demands seem mutually exclusive — load-bearing is the assumption test with a concrete counter-example, not naming needs or appealing to shared values. Eli Goldratt's Evaporating Cloud. Use when two parties are locked on opposing demands, compromise feels unsatisfying, or when they say "evaporating cloud", "break the deadlock", "win-win".
 allowed-tools: AskUserQuestion, Read
 ---
 

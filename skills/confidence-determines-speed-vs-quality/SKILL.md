@@ -1,6 +1,6 @@
 ---
 name: confidence-determines-speed-vs-quality
-description: Decides whether to prioritize speed or quality based on confidence in the problem and in the solution. Low problem confidence → speed (validate fast); high problem, low solution → balance; high on both → quality. Use when the team is debating ship-fast vs do-it-right, when you're uncertain whether you're solving the right problem, or when the user says "MVP vs polished", "ship fast or ship right", "good enough vs done right", or "how much do we invest in quality".
+description: Decides speed vs quality by splitting confidence into two independent axes (problem-confidence, solution-confidence) — load-bearing is the split; collapsing axes polishes solutions to unvalidated problems. Low problem → speed; high problem, low solution → balance; high on both → quality. Use when debating ship-fast vs do-it-right, uncertain whether solving the right problem, or when they say "MVP vs polished", "ship fast or ship right", "good enough vs done right".
 allowed-tools: AskUserQuestion, Read
 ---
 

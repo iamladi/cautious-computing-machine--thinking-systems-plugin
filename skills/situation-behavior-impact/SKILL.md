@@ -1,6 +1,6 @@
 ---
 name: situation-behavior-impact
-description: Delivers feedback using the SBI model — Situation (specific context) + Behavior (observable actions only) + Impact (consequences on you/team/work), then optionally asks Intent. Use when the user needs to give critical or positive feedback, when they're making assumptions about someone's motives, when they want feedback to be specific enough to be actionable, or when they say "SBI", "give feedback", "deliver hard feedback", or "how do I say this to them".
+description: Delivers feedback using SBI — Situation + Behavior + Impact, then optionally asks Intent — load-bearing is the video-frame test: Behavior must be what a camera would capture (words, gestures, timestamp) with zero trait or motive language, or Impact lands as attack. Use when giving critical or positive feedback, when making assumptions about someone's motives, when wanting feedback specific enough to act on, or when they say "SBI", "give feedback", "deliver hard feedback".
 allowed-tools: AskUserQuestion, Read
 ---
 

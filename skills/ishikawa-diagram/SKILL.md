@@ -1,6 +1,6 @@
 ---
 name: ishikawa-diagram
-description: Builds a fishbone diagram mapping candidate root causes across categories (People, Equipment, Methods, Measurement, Material, Environment — or custom). Use when the cause of a problem isn't clear and could span several domains, when multiple teams or factors are involved and finger-pointing has started, when a post-incident review needs structured causation, or when the user says "fishbone", "cause and effect diagram", "root cause analysis", "what could be causing this", or "Ishikawa".
+description: Builds a fishbone diagram mapping root causes across categories (6M default: People/Equipment/Methods/Measurement/Material/Environment, or custom) — load-bearing is picking categories that partition this domain's failure surface; 6M is a manufacturing legacy that misfits digital/service problems and hides causes. Use when cause spans several domains, when a post-incident review needs structured causation, or when they say "fishbone", "cause and effect", "root cause analysis", "Ishikawa".
 allowed-tools: AskUserQuestion, Read
 ---
 

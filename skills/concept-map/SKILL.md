@@ -1,6 +1,6 @@
 ---
 name: concept-map
-description: Builds a hierarchical visual map of a domain's 15–25 entities connected by labeled linking phrases (each connection reads as a sentence) to surface knowledge gaps and align mental models. Use when the user wants to develop or communicate deep understanding of a complex domain, when a team has different mental models of the same system, when designing or auditing a system's relationships, or when they say "concept map", "relationship map", "domain model", or "how does this domain fit together".
+description: Builds a hierarchical map of 15–25 entities connected by labeled linking phrases (each link reads as a sentence) — load-bearing is picking a sharp focus question before drawing nodes, or the map drifts to a taxonomy that encodes no testable claims. Surfaces knowledge gaps and aligns mental models. Use when developing or communicating deep domain understanding, when a team has different mental models, or when they say "concept map", "relationship map", "domain model".
 allowed-tools: AskUserQuestion, Read
 ---
 
