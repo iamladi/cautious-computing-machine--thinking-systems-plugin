@@ -43,7 +43,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 <example>
 Topic: "Recommend entering Market X, for the exec team."
 
-<thinking>Apex + 3 arguments.</thinking>
+<thinking>Exec audience — answer first. Apex = "enter Market X". Arguments must be external market evidence (size, fit, competition), not internal capability, since the question exec-readers are weighing is whether the market justifies investment.</thinking>
 
 Calls AskUserQuestion (Round 4):
 - Question: "Which three-argument set best supports 'enter Market X'?"

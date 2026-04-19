@@ -38,7 +38,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 <example>
 Plan: "Ship the onboarding redesign in 6 weeks."
 
-<thinking>Round 2 pre-mortem.</thinking>
+<thinking>Redesign projects fail most often from scope creep or untested user-facing changes hitting power users. Pre-mortem should surface which mode is live for this plan — 6 weeks is tight enough that untested flows are the most probable trigger.</thinking>
 
 Calls AskUserQuestion:
 - Question: "It's week 8, we missed the deadline, engagement dropped. What's the most likely story?"

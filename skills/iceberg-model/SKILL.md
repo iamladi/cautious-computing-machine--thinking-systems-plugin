@@ -38,7 +38,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 <example>
 Problem: "Bugs keep shipping in production despite multiple fixes."
 
-<thinking>Walk down the iceberg.</thinking>
+<thinking>Event layer (latest bug) already fixed multiple times. Pattern (fix-and-reappear) is the signal that leverage sits below — descend to Structure to find what keeps producing the pattern, not another event-level fix.</thinking>
 
 Calls AskUserQuestion (Level 3):
 - Question: "Which structure is producing the pattern of 'bugs ship, fire-drills happen, nothing changes'?"

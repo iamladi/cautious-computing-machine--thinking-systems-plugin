@@ -52,7 +52,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 <example>
 Topic: "Should we migrate the payment pipeline to Stripe Connect?"
 
-<thinking>Round 1 — Blue hat opener. Confirm scope.</thinking>
+<thinking>Blue hat opens — scope is load-bearing because full migration, dual-run, and spike each produce different White/Black hat findings later. Lock scope before the factual and risk passes.</thinking>
 
 Calls AskUserQuestion:
 - Question (Blue): "What's the real decision here?"

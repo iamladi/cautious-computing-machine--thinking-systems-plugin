@@ -41,7 +41,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 <example>
 Topic: "Which deployment platform — Vercel, Fly.io, or Railway?"
 
-<thinking>Options locked. Move to factors.</thinking>
+<thinking>Three platforms span different architectures — serverless (Vercel), container (Fly), PaaS (Railway). Factor set must discriminate across that spread (cold-start, region, data layer), not collapse it to generic "ease of use".</thinking>
 
 Calls AskUserQuestion (Round 2 — Factors):
 - Question: "Which factors matter most for this decision?"

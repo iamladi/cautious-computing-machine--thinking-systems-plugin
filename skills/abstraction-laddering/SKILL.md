@@ -38,7 +38,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 <example>
 Problem: "Design a better can opener."
 
-<thinking>Classic narrow framing. Climb up.</thinking>
+<thinking>"Can opener" is the solution rung, not the problem. Framing locks us at the artifact; climb up to why cans get opened and the solution space opens to packaging, preservation, food delivery.</thinking>
 
 Calls AskUserQuestion:
 - Question: "Why do we care about opening cans?"
