@@ -32,10 +32,18 @@ function parseFrontmatter(source: string): Record<string, string> | null {
 
 function extractSkillReferences(roleText: string): string[] {
   const refs = new Set<string>();
-  const pattern = /(?:use|route(?:\s+up|\s+down)?\s+to|via|→)\s+([a-z][a-z-]+[a-z])(?:\s+or\s+([a-z][a-z-]+[a-z]))?/gi;
-  for (const match of roleText.matchAll(pattern)) {
+  const primary = /(?:\buse\b|\bprefer\b|\broute(?:\s+up|\s+down)?\s+to\b|\bvia\b|→|\bgo\s+(?:straight\s+|directly\s+)?to\b)\s+([a-z][a-z-]+[a-z])(?:\s*,?\s*(?:or|and|\+)\s+([a-z][a-z-]+[a-z]))?/gi;
+  for (const match of roleText.matchAll(primary)) {
     if (match[1]?.includes("-")) refs.add(match[1]);
     if (match[2]?.includes("-")) refs.add(match[2]);
+  }
+  const continuation = /[,.;—]\s+(?:or|and)\s+([a-z][a-z-]+[a-z])(?=\s+(?:when|for|because|—|if|to)\b|\s*[,.])/gi;
+  for (const match of roleText.matchAll(continuation)) {
+    if (match[1]?.includes("-")) refs.add(match[1]);
+  }
+  const reasonChain = /\b(?:or|and)\s+([a-z][a-z-]+[a-z])\s+when\b/gi;
+  for (const match of roleText.matchAll(reasonChain)) {
+    if (match[1]?.includes("-")) refs.add(match[1]);
   }
   return [...refs];
 }
