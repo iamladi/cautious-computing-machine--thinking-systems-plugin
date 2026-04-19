@@ -96,6 +96,13 @@ function validateSkill(dir: string, knownSkills: Set<string>): Issue[] {
         message: "Role should have persona paragraph followed by separate 'Skip when' anti-trigger paragraph",
       });
     }
+    if (personaPara && !/^Act as\b/.test(personaPara.trim())) {
+      issues.push({
+        skill: dir,
+        level: "warn",
+        message: "Role persona paragraph should open with canonical 'Act as ...' phrasing",
+      });
+    }
     for (const ref of extractSkillReferences(roleBody)) {
       if (!knownSkills.has(ref) && ref !== dir) {
         issues.push({
@@ -111,6 +118,36 @@ function validateSkill(dir: string, knownSkills: Set<string>): Issue[] {
     const re = new RegExp(`^## ${section}\\b`, "m");
     if (!re.test(body)) {
       issues.push({ skill: dir, level: "error", message: `missing ## ${section} section` });
+    }
+  }
+
+  const prioritiesMatch = body.match(/## Priorities\n([\s\S]*?)(?=\n## )/);
+  if (prioritiesMatch) {
+    const fence = prioritiesMatch[1].match(/```\n([\s\S]*?)\n```/);
+    if (!fence) {
+      issues.push({
+        skill: dir,
+        level: "warn",
+        message: "Priorities should be a fenced code block containing the '>'-separated pipeline",
+      });
+    } else if (!/>/.test(fence[1])) {
+      issues.push({
+        skill: dir,
+        level: "warn",
+        message: "Priorities pipeline should separate stages with '>' (e.g. 'Depth > Rigor > Closure')",
+      });
+    }
+  }
+
+  const completionMatch = body.match(/## Completion\n([\s\S]*?)(?=\n## |\n*$)/);
+  if (completionMatch) {
+    const bulletCount = (completionMatch[1].match(/^- /gm) ?? []).length;
+    if (bulletCount < 3) {
+      issues.push({
+        skill: dir,
+        level: "warn",
+        message: `Completion has ${bulletCount} bullet(s); recommend ≥3 for a complete deliverable checklist`,
+      });
     }
   }
 
