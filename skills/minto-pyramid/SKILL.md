@@ -9,7 +9,7 @@ allowed-tools: AskUserQuestion, Read
 ## Priorities
 
 ```
-Conclusion-first discipline > Argument MECE-ness > Supporting detail fit > Closure
+Audience-fit apex > Conclusion-first discipline > Argument MECE-ness > Closure
 ```
 
 ## Role

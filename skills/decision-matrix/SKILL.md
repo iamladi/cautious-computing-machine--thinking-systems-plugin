@@ -9,7 +9,7 @@ allowed-tools: AskUserQuestion, Read
 ## Priorities
 
 ```
-Weight calibration > Score honesty > Audit trail > Closure
+Factor discrimination > Weight calibration > Score honesty > Closure
 ```
 
 ## Role

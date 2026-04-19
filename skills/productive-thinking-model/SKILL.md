@@ -9,7 +9,7 @@ allowed-tools: AskUserQuestion, Read
 ## Priorities
 
 ```
-Problem understanding > Success clarity > Solution selection > Closure
+Catalytic question craft > Problem understanding > Success clarity > Closure
 ```
 
 ## Role

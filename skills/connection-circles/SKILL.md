@@ -9,7 +9,7 @@ allowed-tools: AskUserQuestion, Read
 ## Priorities
 
 ```
-Element selection > Causal labeling > Loop detection > Closure
+Closed-loop trace > Causal labeling > Element selection > Closure
 ```
 
 ## Role

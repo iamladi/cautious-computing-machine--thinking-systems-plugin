@@ -9,7 +9,7 @@ allowed-tools: AskUserQuestion, Read
 ## Priorities
 
 ```
-Goal articulation > Gap measurement > Delay detection > Closure
+Delay naming > Goal articulation > Gap measurement > Closure
 ```
 
 ## Role

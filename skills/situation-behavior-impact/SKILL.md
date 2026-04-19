@@ -9,7 +9,7 @@ allowed-tools: AskUserQuestion, Read
 ## Priorities
 
 ```
-Observation accuracy > Non-judgmental tone > Impact clarity > Intent follow-up
+Video-frame Behavior > Observation accuracy > Impact clarity > Intent follow-up
 ```
 
 ## Role

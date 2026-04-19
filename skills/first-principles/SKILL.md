@@ -9,7 +9,7 @@ allowed-tools: AskUserQuestion, Read
 ## Priorities
 
 ```
-Assumption-stripping depth > Irreducibility > Rebuild soundness > Closure
+Bedrock test > Assumption-stripping depth > Rebuild soundness > Closure
 ```
 
 ## Role

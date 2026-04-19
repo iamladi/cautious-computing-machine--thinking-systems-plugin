@@ -9,7 +9,7 @@ allowed-tools: AskUserQuestion, Read
 ## Priorities
 
 ```
-Variable causality > Sign correctness > Limit awareness > Closure
+Ceiling naming > Sign correctness > Variable causality > Closure
 ```
 
 ## Role

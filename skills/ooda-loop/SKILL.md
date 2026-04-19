@@ -9,7 +9,7 @@ allowed-tools: AskUserQuestion, Read
 ## Priorities
 
 ```
-Cycle speed > Decision quality > Orient rigor > Closure
+Orient rigor > Cycle speed > Decision quality > Closure
 ```
 
 ## Role
