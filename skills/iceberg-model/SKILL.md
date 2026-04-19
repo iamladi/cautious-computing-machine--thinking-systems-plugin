@@ -54,7 +54,7 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- All four levels filled out: Events, Patterns, Structures, Mental Models.
-- Leverage map: which interventions at which level.
-- At least one Mental Model challenged explicitly.
-- Proposed intervention with its level (Event/Pattern/Structure/Mental Model) labeled.
+- All four levels filled out: Events, Patterns, Structures, Mental Models — each rung cites evidence from the rung above that forced the descent (pattern explains events, structure explains pattern, mental model explains structure).
+- Leverage map: which interventions at which level, noting why Event/Pattern-only interventions are expected to fail on this specific problem.
+- At least one Mental Model challenged explicitly, with the pattern the challenged belief generates — if the mental model doesn't generate the observed pattern, it's a relocated symptom, not leverage.
+- Proposed intervention with its level labeled and the predicted signal that would prove it's working within a stated time window.

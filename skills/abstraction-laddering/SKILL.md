@@ -54,7 +54,7 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- Full ladder with 3–5 rungs labeled from abstract (top) to concrete (bottom).
-- Selected rung + rationale.
-- Concrete solutions generated from the selected rung.
-- If a higher rung was selected, the original problem statement is reframed.
+- Full ladder with 3–5 rungs labeled from abstract (top) to concrete (bottom); starting rung flagged and, if artifact-named, the climb-first move cited.
+- Selected rung + rationale for why its altitude matches the problem's degree of freedom (too abstract → ungrounded; too concrete → re-generates the starting artifact).
+- Concrete solutions from the selected rung, plus one solution each from the rung above and below as a sanity check that the altitude choice earned its framing.
+- Rejected rungs named with the reason; if a higher rung was selected, the original problem statement is reframed to match.

@@ -53,6 +53,7 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- Full fishbone: problem at head, categorized branches, sub-cause chains.
-- Prioritized 2–3 root causes for investigation + what data would confirm each.
-- Explicit callout of which candidate causes were considered and ruled out.
+- Full fishbone: problem at head, 4–6 category branches chosen for this domain, sub-cause "why" chains terminating in actionable causes.
+- Category-set rationale: why this split fits the problem's failure surface, and — if classic 6M was rejected — the specific domain mismatch that forced a domain-fit taxonomy.
+- Prioritized 2–3 root causes for investigation, each tagged with the data or test that would confirm or disprove it.
+- Candidate causes considered and ruled out, plus any branches that stayed sparse (category chosen but evidence thin) flagged as a signal to re-inspect the taxonomy.

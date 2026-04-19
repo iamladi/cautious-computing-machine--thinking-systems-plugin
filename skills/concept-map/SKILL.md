@@ -55,7 +55,7 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- Hierarchical map: 15–25 entities, general-to-specific.
-- All links labeled with explicit verbs or prepositions.
-- Cross-links between branches identified.
-- At least 2 knowledge gaps flagged for further investigation.
+- Focus question restated at the map apex; any entity that doesn't help answer it is dropped from the map.
+- Hierarchical map: 15–25 entities arranged general-to-specific, with every link labeled by an explicit verb or preposition (generic "relates to" / "affects" rejected).
+- Cross-links between branches identified — these are the discoveries a single-branch layout would miss.
+- At least 2 knowledge gaps flagged, scoped to what would make the focus question answerable.

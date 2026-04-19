@@ -55,7 +55,7 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- Full loop: Goal → Gap → Corrective Action → Actual State → back to Gap.
-- Delays identified with estimated magnitude.
-- Whether the loop should be strengthened, weakened, or left alone.
-- Intervention proposal with expected side effects.
+- Full loop: Goal → Gap → Corrective Action → Actual State → back to Gap, with the implicit goal being protected made explicit.
+- Delays named and estimated at each segment (sense-gap, decide-action, action-to-effect), with the delay that drives observed oscillation called out.
+- Whether the loop should be strengthened, weakened, or left alone, grounded in the named delay rather than intervention instinct.
+- Intervention proposal with expected side effects and a monitoring signal that would reveal if the delay estimates were wrong.

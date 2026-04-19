@@ -66,7 +66,7 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- The full descent + ascent, rung by rung.
-- Any leaps that rested on unverified assumptions.
-- At least one plausible alternative interpretation surfaced at a lower rung.
-- Revised belief/decision, or confirmation of the original with clearer grounds.
+- Full descent + ascent, rung by rung — descent reaches the Data rung (what a camera would have recorded), not stopping at Meanings or Assumptions.
+- Any leaps that rested on unverified assumptions, flagged with the rung where the leap was made.
+- At least one plausible alternative interpretation surfaced at a lower rung, to break the reflexive-loop grip on the original belief.
+- Revised belief/decision grounded in the reconstructed Data rung, or confirmation of the original with its data-rung evidence now visible and checkable.
