@@ -34,7 +34,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 ## Input Handling
 
-- Problem as topic — list the 2–4 load-bearing assumptions before challenging; the challenge is only useful if the assumption stack is explicit.
+- Problem as topic — list the 2–4 load-bearing assumptions before challenging, then apply the bedrock test to each: restating the assumption must add no new claim. Assumptions that still carry inherited framing ("faster onboarding" presumes the onboarding flow itself) are half-stripped, so the descent must continue until every item restates cleanly.
 - Path — Read the source doc first; extract the stated problem plus any inherited constraints (deadlines, stack choices, prior solutions) that count as assumptions.
 - Solution-shaped framing ('how do we make X faster') — restate as problem-shaped ('what outcome does X serve') in Round 1 before descending.
 

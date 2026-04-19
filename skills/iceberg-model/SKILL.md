@@ -31,7 +31,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 ## Input Handling
 
 - Recurring problem as topic — confirm recurrence signal (2+ occurrences, not a one-off) before descending.
-- Path — Read the incident log or retro doc first; extract the event timeline and any repeat-pattern signal before Round 1.
+- Path — Read the incident log or retro doc first; extract the event timeline and any repeat-pattern signal before Round 1. Each rung proposed in the descent must cite concrete evidence from the rung above (Pattern cites 2+ Events, Structure cites the Pattern, Mental Model explains the Structure) — an unevidenced rung is a guess that relocates the symptom rather than explaining it.
 - No recurrence evidence yet — elicit it in Round 1; if none exists, route to first-principles instead.
 
 ## Example

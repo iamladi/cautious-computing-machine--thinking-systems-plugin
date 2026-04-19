@@ -31,8 +31,8 @@ Footer every round: `Reply format: 1a 2b or defaults`
 ## Input Handling
 
 - Problem or goal as topic — extract the apex question first (answer-shaped, single focus) before splitting.
-- Path — Read the source doc first; identify the apex question and any pre-existing branches to reuse or reject.
-- Multiple candidate apex questions — surface them in Round 1 and pick one; misaligned apex breaks MECE downstream.
+- Path — Read the source doc first; identify the apex question, then pick the decomposition axis that cleanly partitions this domain (funnel for retention, value-chain for margin, segment for market, cost structure for margin) before drawing branches. Axis selection is the load-bearing move: the wrong axis (e.g., UX/marketing/competitive for a retention problem) makes branches overlap silently at the leaves and hides the real driver.
+- Multiple candidate apex questions or candidate axes — surface both sets in Round 1 and pick one of each; misaligned apex or overlapping axis breaks MECE downstream.
 
 ## Example
 

@@ -36,7 +36,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 ## Input Handling
 
-- Path — Read the problem brief first; extract the stated problem and check whether success criteria (DRIVE) are already specified, because Step 2 is the load-bearing gate before any solution generation.
+- Path — Read the problem brief first; extract the stated problem and check whether DRIVE success criteria are concrete enough for Step 3 — a vague Do ("prospect converts") forces a generic catalytic question ("how might we close more deals?"), while a specific Do forces prospect-specific ideation. DRIVE's function at extraction is feeding Step 3's catalytic question, the load-bearing move.
 - Listen for premature solution language ("we should just…", "the fix is…") and mark those as Step 4 candidates to defer; the classic Hurson failure is jumping Step 1 → Step 4 past DRIVE and the catalytic question, which yields generic answers.
 - If only one stage is actually in question (success clarity alone, or resourcing alone), run that stage inline instead of all six; if the problem is narrow debugging or execution-only, route to first-principles, ishikawa-diagram, or decision-matrix rather than the full framework.
 

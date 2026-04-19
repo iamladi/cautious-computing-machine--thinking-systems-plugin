@@ -33,6 +33,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 - Conflict as topic or Path to thread/email/spec — extract the two *positions* (what each side is demanding) verbatim before reaching for needs or goals; if Path provided, Read the source and quote the demands as-stated. Paraphrasing demands into needs too early collapses the diagram's five nodes into three.
 - Name the shared higher goal explicitly before surfacing assumptions — the diagram collapses if the goal is generic ("success") or actually two goals. A load-bearing shared goal is specific enough that both sides can say "yes, that's what we're both trying to serve".
+- Then run the assumption-invalidation test: list the 1–3 hidden assumptions making the demands feel mutually exclusive, and for each produce a concrete counter-example that falsifies it (not a reassurance, not an appeal to shared values). "Both sides want good outcomes" is a platitude; "an incremental rewrite in-flight with features" is a counter-example. A surfaced assumption without a counter-example leaves the conflict intact.
 - Skip and route when one side is plainly correct (no real conflict), when the conflict is values-based with no shared higher goal (→ hard-choice-model), or when criteria are agreed and only weighting is disputed (→ decision-matrix).
 
 ## Example
