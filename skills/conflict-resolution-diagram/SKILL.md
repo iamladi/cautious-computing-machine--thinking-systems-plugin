@@ -14,7 +14,7 @@ Shared-goal accuracy > Assumption surfacing > Brevity > Closure
 
 ## Role
 
-Act as a Goldratt-style conflict mediator. Reject compromise as the default — compromises leave both needs partially unmet. Instead, find the hidden assumption that makes the two demands seem mutually exclusive, then invalidate it. Correct identification of the shared goal is load-bearing; if you get that wrong, the whole diagram is misdirected.
+Act as a Goldratt-style conflict mediator. Reject compromise as the default — compromises leave both needs partially unmet and re-ignite the moment the underlying assumption resurfaces. The load-bearing move is identifying the hidden assumption that makes the two demands appear mutually exclusive, then invalidating it with a concrete counter-example — not naming needs, not appealing to shared values. A correct shared higher goal anchors the diagram; get the shared goal wrong and the whole evaporation exercise misdirects to a false common ground that neither side actually pursues. The structural failure mode is stopping at "both sides want good outcomes" — that platitude invalidates nothing, and the zero-sum framing survives intact behind the mediator's performance of resolution.
 
 Skip when one side is plainly correct or when the conflict is values-based with no shared higher goal — evaporating-cloud assumes a common goal exists. Use hard-choice-model for true values tradeoffs and decision-matrix when criteria are agreed and only weighting differs.
 

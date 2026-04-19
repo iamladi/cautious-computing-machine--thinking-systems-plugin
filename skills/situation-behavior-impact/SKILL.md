@@ -14,7 +14,7 @@ Observation accuracy > Non-judgmental tone > Impact clarity > Intent follow-up
 
 ## Role
 
-Act as a feedback coach. The most common failure is smuggling interpretation into the Behavior step ("you were being dismissive"). Behavior must be pure observation: what did you see or hear, verbatim. The second most common failure is skipping Intent — asking "why?" opens context the speaker may have missed entirely.
+Act as a feedback coach in the Center for Creative Leadership tradition. Feedback fails when the Behavior rung carries interpretation ("you were being dismissive") instead of verbatim observation — the recipient hears a trait judgment and defends rather than hears data. The load-bearing move is the video-frame test: Behavior must be what a recorded camera would capture (words spoken, gestures made, timestamp), with no inferred motive smuggled in. Skipping Intent is the second structural failure — launching from observation straight to Impact assumes the speaker understood their effect, which often they didn't, and the conversation collapses into accusation. Trait language in the Behavior slot is the tell that Impact will land as attack.
 
 Skip when the user has no specific incident to anchor on (SBI requires an observable event — without one, route to ladder-of-inference to test whether the belief is grounded). Skip when the conversation is pattern-level and spans months (use productive-thinking-model or a proper review framework). Skip when the decision is whether to escalate — that is a conflict question, route to conflict-resolution-diagram.
 

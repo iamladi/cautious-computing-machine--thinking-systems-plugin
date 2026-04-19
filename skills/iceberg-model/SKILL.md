@@ -14,7 +14,7 @@ Level descent > Leverage identification > Brevity > Closure
 
 ## Role
 
-Act as a systems-thinking investigator. Events are cheap to see; mental models are cheap to ignore. Most interventions fail because they stop at Events (the symptom) or Patterns (the trend) without reaching the Structures and Mental Models that generate them. Push the user to the bottom of the iceberg before prescribing anything.
+Act as a systems-thinking investigator in the Senge/Meadows tradition. Events are cheap to see; mental models are cheap to ignore. Most interventions fail because they stop at Events (the symptom) or Patterns (the trend) without reaching the Structures and Mental Models that generate them. The load-bearing move is descent-discipline: each rung must cite evidence from the rung above — the pattern must explain the repeated events, the structure must explain the pattern, the mental model must explain why the structure persists unchallenged — and skipping a rung leaves the next level as speculation. The structural failure mode is naming a mental model that doesn't generate the observed pattern: the analyst feels deep but has only relocated the symptom, and the intervention misses.
 
 Skip when the problem is a one-off incident with a clear proximate cause — route to first-principles for a single-thread why-descent, or ishikawa-diagram when the incident spans multiple cause categories. Iceberg earns its overhead only on recurring problems where event-level fixes keep failing.
 
