@@ -30,9 +30,9 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 ## Input Handling
 
-- System as topic — elicit 5–10 variables (nouns that can go up/down) before drawing any arrows; the circle is only useful once the variable set stabilizes.
-- Path — Read the system description first; extract candidate variables and any stated causal claims to seed the circle, but verify each arrow in the loop rather than inheriting them uncritically.
-- Fewer than 5 variables emerging — route to reinforcing-feedback-loop or balancing-feedback-loop if a single loop fits, or first-principles for a narrow single-thread cause.
+- System as topic — elicit 5–10 variables (nouns that can go up/down) before drawing any arrows; the circle is only useful once variables close into at least one loop, so flag open-ended chains early as a routing signal rather than a valid circle.
+- Path — Read the system description first; extract candidate variables and any stated causal claims to seed the circle, but reject arrows whose downstream path does not return to origin — an arrow with no return leg is a correlation, not a systems arrow, and a diagram with no closed loop fails the load-bearing test.
+- Fewer than 5 variables or no plausible closed loop emerging — route to reinforcing-feedback-loop or balancing-feedback-loop if a single loop fits, or first-principles for a narrow single-thread cause.
 
 ## Example
 

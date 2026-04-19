@@ -35,7 +35,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 - Decision as topic — run the loop directly.
 - Path — Read the document describing the decision first.
-- Enumerate 2–4 candidate first-order effects and tag whether each is already priced into the proposal's pros/cons. Target the effect whose downstream chain compounds over time but stays invisible at decision time; skip effects already named in the existing frame since the skill adds no leverage there.
+- Enumerate 2–4 candidate first-order effects and tag whether each is already priced into the proposal's pros/cons. Target the effect whose downstream chain bleeds into a different domain than the first-order effect (work decision → relationships, health → finances, team change → identity) — cross-domain ripples are what the existing frame can't already see; a chain that compounds within the same domain means the skill is adding no leverage and the chain should be re-rolled pressing for sideways effects. Skip effects already named in the existing frame.
 
 ## Example
 

@@ -32,7 +32,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 - Plan as topic — run the loop.
 - Path — Read the plan doc first; extract the success statement plus the key constraints (timeline, scope, owner, dependencies) so failure modes have concrete anchors.
-- Name 2–3 candidate failure modes before inverting — mode coverage matters more than single-mode depth. Skip the skill when the plan is already pre-mortemed or under a week of work; inversion's value scales with plan duration and cross-team surface.
+- Name 2–3 candidate failure modes before inverting, each paired with the attack-surface mechanism that would actually kill the plan — a failure mode whose "why would that kill it?" has no traceable mechanism is noise and stays out of the loop. Mode breadth without mechanism grounding produces a failure list that can't convert to preventive actions, which is pessimism with extra steps. Skip the skill when the plan is already pre-mortemed or under a week of work; inversion's value scales with plan duration and cross-team surface.
 
 ## Example
 
