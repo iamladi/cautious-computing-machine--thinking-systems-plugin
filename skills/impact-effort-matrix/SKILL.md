@@ -1,6 +1,6 @@
 ---
 name: impact-effort-matrix
-description: Sorts tasks across Impact × Effort into Quick Wins / Major Projects / Fill-ins / Thankless Tasks. Use when the user has a long backlog and limited time, when a team is debating what to work on next, when you want to surface quick wins alongside strategic bets, or when they say "quick wins", "impact vs effort", "what do we ship next", or "prioritize the backlog".
+description: Sorts tasks across Impact × Effort into Quick Wins / Major Projects / Fill-ins / Thankless Tasks. Use when the user has a long backlog and limited time, when a team is debating what to work on next, when scope must be cut without losing value, when you want to surface quick wins alongside strategic bets, or when they say "quick wins", "low-hanging fruit", "impact vs effort", "what do we ship next", or "prioritize the backlog".
 allowed-tools: AskUserQuestion, Read
 ---
 

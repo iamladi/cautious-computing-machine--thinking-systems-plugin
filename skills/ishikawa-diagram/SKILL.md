@@ -1,6 +1,6 @@
 ---
 name: ishikawa-diagram
-description: Builds a fishbone diagram mapping candidate root causes across categories (People, Equipment, Methods, Measurement, Material, Environment — or custom). Use when the cause of a problem isn't clear and could span several domains, when multiple teams or factors are involved and finger-pointing has started, or when the user says "fishbone", "root cause analysis", "what could be causing this", or "Ishikawa".
+description: Builds a fishbone diagram mapping candidate root causes across categories (People, Equipment, Methods, Measurement, Material, Environment — or custom). Use when the cause of a problem isn't clear and could span several domains, when multiple teams or factors are involved and finger-pointing has started, when a post-incident review needs structured causation, or when the user says "fishbone", "cause and effect diagram", "root cause analysis", "what could be causing this", or "Ishikawa".
 allowed-tools: AskUserQuestion, Read
 ---
 
