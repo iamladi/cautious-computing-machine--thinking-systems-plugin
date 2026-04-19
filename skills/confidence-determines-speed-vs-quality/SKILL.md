@@ -41,7 +41,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 <example>
 Topic: "New AI-powered search feature."
 
-<thinking>No user research yet. Problem confidence is low. Don't polish.</thinking>
+<thinking>Polishing before validation is the dominant failure mode here — AI search is high-cost to build and the problem ("do users want this over existing search?") has zero direct evidence. Polish commits the team to a solution shape before the demand signal exists, so sunk cost then resists pivots. The right move at low problem confidence is a rough-but-real shipped prototype that produces behavior data, not more internal debate about the polished version.</thinking>
 
 Calls AskUserQuestion (Round 3):
 - Question: "Given low problem confidence, what's the right first move?"

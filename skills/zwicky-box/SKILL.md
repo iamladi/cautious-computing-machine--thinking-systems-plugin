@@ -38,7 +38,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 <example>
 Problem: "Design a customer-feedback collection system."
 
-<thinking>Attributes: method, timing, format, incentive, analysis. All independent.</thinking>
+<thinking>Coupled axes kill the method — if "format" implied "timing" (e.g., voice only works post-interaction), then every combination containing voice duplicates existing options and the 5×3×3×3×3 grid collapses back to defaults. Testing independence first: method (how-asked) doesn't dictate timing (when-asked), format (voice/text/video) doesn't dictate incentive, and analysis (AI/manual) is orthogonal to collection. That confirms 5 real axes, so the combinations will actually span novel territory rather than paraphrase the familiar.</thinking>
 
 Calls AskUserQuestion (Round N+1 — Combinations):
 - Question: "Which combination is worth prototyping?"

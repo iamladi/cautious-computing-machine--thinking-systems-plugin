@@ -40,7 +40,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 <example>
 Trend: "Our AI-feature usage is growing exponentially; infra costs are outpacing revenue."
 
-<thinking>Reinforcing loop on usage × features. Balancing loop: infra budget. Ceiling is coming.</thinking>
+<thinking>The exponential shape ("infra costs outpacing revenue") means the reinforcing loop (more usage → more features → more usage) is real — but the load-bearing question isn't identifying the loop, it's naming the ceiling. Without a ceiling the system runs until it breaks catastrophically (unit economics collapse, forced emergency throttle). The candidate ceilings have very different timelines: budget constraint (hard, near-term), segment saturation (soft, slow), cost-curve bailout (speculative) — picking the wrong one lets the team plan against the comfortable ceiling while the real one hits first.</thinking>
 
 Calls AskUserQuestion (Round 6):
 - Question: "What's the ceiling that will constrain this loop?"
