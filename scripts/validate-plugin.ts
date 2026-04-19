@@ -97,6 +97,24 @@ function validateSkill(dir: string, knownSkills: Set<string>): Issue[] {
     }
   }
 
+  for (const section of ["Priorities", "Loop", "Example"]) {
+    const re = new RegExp(`^## ${section}\\b`, "m");
+    if (!re.test(body)) {
+      issues.push({ skill: dir, level: "error", message: `missing ## ${section} section` });
+    }
+  }
+
+  if (parsed.success) {
+    const quoteCount = (parsed.data.description.match(/"/g) ?? []).length;
+    if (quoteCount < 4) {
+      issues.push({
+        skill: dir,
+        level: "warn",
+        message: `description has ${quoteCount / 2} quoted trigger phrase(s); recommend ≥2 for discovery`,
+      });
+    }
+  }
+
   if (/\$ARGUMENTS/.test(body)) {
     issues.push({ skill: dir, level: "warn", message: "contains literal $ARGUMENTS (skills do not substitute)" });
   }
