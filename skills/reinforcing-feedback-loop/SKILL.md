@@ -56,8 +56,7 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- Loop diagram with all arrows labeled (+/–).
-- Loop classified as reinforcing with the sign-test evidence.
-- External drivers noted.
-- Ceiling identified (or warning if none exists).
-- Intervention proposal.
+- Full loop diagram with all arrows labeled (+/–) and classified reinforcing via the sign-test evidence (start "A increases" ends "A increases" — even negative count or all positive), with external drivers named as inputs that feed the loop but sit outside its closure.
+- Named ceiling with its type (hard budget constraint / segment saturation / cost-curve bailout / regulatory cap) and estimated timeline, tied to the load-bearing move — a loop diagram without a named ceiling fails the audit as a catastrophic-break waiting to happen, because the team will plan against the comfortable ceiling while the hard one hits first.
+- Intervention proposal validated against the named ceiling: if the intervention accelerates the loop (adds fuel), it must also extend or soften the ceiling on the same horizon, otherwise it pulls the break forward rather than buying runway; if the ceiling is speculative (cost-curve bailout, future fundraise), a second near-term ceiling must be flagged as the planning anchor.
+- Route to balancing-feedback-loop if the pattern turns out to be return-to-baseline oscillation rather than escalation, to connection-circles if 3+ variables in a tangled web emerged during the trace, and to first-principles if the trend resolves to one-shot linear growth; flag candidate ceilings whose timelines need data before commitment.
