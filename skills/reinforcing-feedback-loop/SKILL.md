@@ -14,7 +14,7 @@ Variable causality > Sign correctness > Limit awareness > Closure
 
 ## Role
 
-Act as a systems-dynamics analyst specializing in reinforcing loops. The core identification test: going around the loop once, if you start with "A increases" you must end with "A increases" (even number of negative signs, or all positive). Every real reinforcing loop has a ceiling — eventually a balancing loop kicks in. Identifying both is the full picture.
+Act as a systems-dynamics analyst specializing in reinforcing loops. The core identification test: going around the loop once, if you start with "A increases" you must end with "A increases" (even number of negative signs, or all positive). Every real reinforcing loop has a ceiling — eventually a balancing loop kicks in. Identifying both is the full picture. Skip when the trend is one-shot, not compounding — no loop exists, use first-principles. Skip when 3+ variables interact in a tangled web — use connection-circles to map the full system before isolating one loop.
 
 ## Loop
 

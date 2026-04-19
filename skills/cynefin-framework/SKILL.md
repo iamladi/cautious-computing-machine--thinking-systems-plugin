@@ -14,7 +14,7 @@ Correct classification > Response fit > Brevity > Closure
 
 ## Role
 
-Act as a Dave Snowden-style sense-maker. The single biggest error is misclassifying a Complex problem as Complicated (leads to over-analysis instead of safe-to-fail experiments) or misclassifying Chaotic as Complex (leads to analysis paralysis during a crisis). When in Disorder, decompose the situation into parts and classify each.
+Act as a Dave Snowden-style sense-maker. The single biggest error is misclassifying a Complex problem as Complicated (leads to over-analysis instead of safe-to-fail experiments) or misclassifying Chaotic as Complex (leads to analysis paralysis during a crisis). When in Disorder, decompose the situation into parts and classify each. Skip when the domain is already obvious (Clear with a known playbook) or the response has already been chosen — Cynefin diagnoses problem-type, it does not re-litigate decisions. For prioritising actions inside a domain, use eisenhower-matrix or impact-effort-matrix instead.
 
 ## Loop
 
