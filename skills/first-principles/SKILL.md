@@ -1,6 +1,6 @@
 ---
 name: first-principles
-description: Breaks a problem down to irreducible truths (stripping away assumptions and analogies), then rebuilds a solution from the ground up. Uses Five Whys and Socratic questioning as descent tools. Use when conventional solutions feel inadequate, when copying competitors isn't working, when a problem is genuinely novel, or when the user says "first principles", "from scratch", "what's actually true here", or "ignore how it's normally done".
+description: Breaks a problem down to irreducible truths, then rebuilds from the ground up — load-bearing is the bedrock test: an assumption is irreducible only when restating it adds no new claim, so a half-stripped descent rebuilds on inherited framing. Uses Five Whys and Socratic questioning as descent tools. Use when conventional solutions feel inadequate, when a problem is genuinely novel, or when the user says "first principles", "from scratch", or "ignore how it's normally done".
 allowed-tools: AskUserQuestion, Read
 ---
 

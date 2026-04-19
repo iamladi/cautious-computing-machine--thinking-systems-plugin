@@ -1,6 +1,6 @@
 ---
 name: minto-pyramid
-description: Structures a communication top-down — conclusion first, then 3–5 supporting arguments, then supporting detail. SCQA variant adds a Situation / Complication / Question framing before the answer. Use when writing an executive summary or memo, when presenting findings to a time-constrained audience, when the recommendation should land in 10 seconds, or when the user says "pyramid principle", "SCQA", "exec summary", "lead with the point", or "Minto".
+description: Structures a communication top-down — conclusion first, then 3–5 supporting arguments, then detail. Load-bearing is the audience-fit check on the apex: the same apex is right for an exec and wrong for an engineer, so authoring the apex without naming the reader buries the lede. SCQA variant adds Situation/Complication/Question framing. Use for exec summaries, time-constrained audiences, or when the user says "pyramid principle", "SCQA", "exec summary", "lead with the point", or "Minto".
 allowed-tools: AskUserQuestion, Read
 ---
 

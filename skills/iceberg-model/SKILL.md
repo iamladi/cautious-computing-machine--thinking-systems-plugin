@@ -1,6 +1,6 @@
 ---
 name: iceberg-model
-description: Investigates why a problem recurs by examining four levels — Events (visible) → Patterns over time → Structures (rules, incentives, feedback loops) → Mental Models (beliefs, assumptions). Leverage comes from the lower levels. Use when the user keeps fixing the same event-level problem without lasting resolution, when a recurring issue suggests something structural or cultural, or when they say "iceberg", "why does this keep happening", "underneath the surface", or "systemic cause".
+description: Investigates why a problem recurs by descending Events → Patterns → Structures → Mental Models — load-bearing is descent-discipline: each rung must cite evidence from the rung above, since a mental model that doesn't explain the pattern just relocates the symptom. Use when the user keeps fixing the same event-level problem, when a recurring issue suggests something structural, or when they say "iceberg", "why does this keep happening", or "systemic cause".
 allowed-tools: AskUserQuestion, Read
 ---
 

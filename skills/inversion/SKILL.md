@@ -1,6 +1,6 @@
 ---
 name: inversion
-description: Pressure-tests a plan by asking "how would I guarantee failure here?" and deriving preventive actions from each failure mode. Includes pre-mortem variant (imagine the project failed — narrate why). Use when you want to stress-test a plan before executing, when a team is over-optimistic, when "good" is hard to imagine but "terrible" is easy, or when the user says "pre-mortem", "inversion", "how would this fail", or "what could go wrong".
+description: Pressure-tests a plan by asking "how would I guarantee failure here?" — load-bearing is the mechanism question ("why would that actually kill the project?") that converts each vague fear into a named attack surface and a specific preventive action. Pre-mortem variant: imagine the project failed, narrate why. Use when a team is over-optimistic, when "terrible" is easier to imagine than "good", or when the user says "pre-mortem", "inversion", or "how would this fail".
 allowed-tools: AskUserQuestion, Read
 ---
 
