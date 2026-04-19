@@ -107,7 +107,7 @@ function validateSkill(dir: string, knownSkills: Set<string>): Issue[] {
     }
   }
 
-  for (const section of ["Priorities", "Loop", "Example"]) {
+  for (const section of ["Priorities", "Loop", "Input Handling", "Example", "Completion"]) {
     const re = new RegExp(`^## ${section}\\b`, "m");
     if (!re.test(body)) {
       issues.push({ skill: dir, level: "error", message: `missing ## ${section} section` });
