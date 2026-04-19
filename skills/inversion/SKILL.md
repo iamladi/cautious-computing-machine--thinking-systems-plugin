@@ -9,7 +9,7 @@ allowed-tools: AskUserQuestion, Read
 ## Priorities
 
 ```
-Failure-mode coverage > Prevention mapping > Brevity > Closure
+Mechanism-grounded failure modes > Prevention mapping > Upstream-failure audit > Closure
 ```
 
 ## Role

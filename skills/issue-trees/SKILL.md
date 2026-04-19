@@ -9,7 +9,7 @@ allowed-tools: AskUserQuestion, Read
 ## Priorities
 
 ```
-MECE discipline > 80/20 prioritization > Brevity > Closure
+Axis selection > MECE discipline > Actionable-leaf check > Closure
 ```
 
 ## Role

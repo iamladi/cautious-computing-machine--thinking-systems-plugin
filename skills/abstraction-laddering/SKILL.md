@@ -9,7 +9,7 @@ allowed-tools: AskUserQuestion, Read
 ## Priorities
 
 ```
-Framing flexibility > Ladder traversal > Brevity > Closure
+Solution-rung detection > Climb before ideating > Rung-fit validation > Closure
 ```
 
 ## Role

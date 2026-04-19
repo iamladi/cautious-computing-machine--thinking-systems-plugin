@@ -9,7 +9,7 @@ allowed-tools: AskUserQuestion, Read
 ## Priorities
 
 ```
-Correct classification > Response fit > Brevity > Closure
+Knowability probe > Domain-action match > Misclassification guard > Closure
 ```
 
 ## Role

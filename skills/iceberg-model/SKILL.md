@@ -9,7 +9,7 @@ allowed-tools: AskUserQuestion, Read
 ## Priorities
 
 ```
-Level descent > Leverage identification > Brevity > Closure
+Descent-discipline > Rung-evidence chain > Leverage identification > Closure
 ```
 
 ## Role

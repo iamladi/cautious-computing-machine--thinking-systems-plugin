@@ -9,7 +9,7 @@ allowed-tools: AskUserQuestion, Read
 ## Priorities
 
 ```
-Classification accuracy > Deliberation match > Brevity > Closure
+Comparability pre-test > Quadrant accuracy > Deliberation match > Closure
 ```
 
 ## Role
