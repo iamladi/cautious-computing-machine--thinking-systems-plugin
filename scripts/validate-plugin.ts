@@ -217,6 +217,33 @@ function validateSkill(dir: string, knownSkills: Set<string>): Issue[] {
         message: "Example missing canonical 'Not sure - you decide' fallback option",
       });
     }
+    if (!exampleBody.includes("AskUserQuestion")) {
+      issues.push({
+        skill: dir,
+        level: "warn",
+        message: "Example does not reference AskUserQuestion (should demo the tool declared in allowed-tools)",
+      });
+    }
+  }
+
+  const inputMatch = body.match(/## Input Handling\n([\s\S]*?)(?=\n## )/);
+  if (inputMatch) {
+    const inputBody = inputMatch[1];
+    const bulletCount = (inputBody.match(/^- /gm) ?? []).length;
+    if (bulletCount < 2) {
+      issues.push({
+        skill: dir,
+        level: "warn",
+        message: `Input Handling has ${bulletCount} bullet(s); recommend ≥2 to cover topic + path cases`,
+      });
+    }
+    if (!/\bPath\b/.test(inputBody)) {
+      issues.push({
+        skill: dir,
+        level: "warn",
+        message: "Input Handling missing 'Path' bullet for file-input case (canonical: '- Path — Read ... first.')",
+      });
+    }
   }
 
   if (parsed.success) {

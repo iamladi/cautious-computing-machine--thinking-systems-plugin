@@ -36,7 +36,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 ## Input Handling
 
 - Topic provided in the prompt — run the loop from scratch.
-- Draft doc path — Read the draft first; reverse-engineer the current pyramid (or lack of one), then restructure.
+- Path to draft doc — Read the draft first; reverse-engineer the current pyramid (or lack of one), then restructure.
 
 ## Example
 
