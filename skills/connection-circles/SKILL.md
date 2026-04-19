@@ -55,7 +55,3 @@ Footer: `Reply format: 1a 2b or defaults`
 - All closed loops identified and classified (reinforcing/balancing).
 - Leverage point with proposed intervention.
 - Residual uncertainty (arrows that need data to confirm).
-
-## Topic
-
-$ARGUMENTS

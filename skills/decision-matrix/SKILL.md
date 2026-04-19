@@ -18,7 +18,7 @@ Act as a weighted-decision analyst. Force explicit weights before scores. When t
 
 ## Loop
 
-1. <thinking>Extract options and candidate factors from `$ARGUMENTS` or prior context. If absent, elicit.</thinking>
+1. <thinking>Extract options and candidate factors from the user prompt or prior context. If absent, elicit.</thinking>
 2. **Round 1 — Options**: confirm the options list via `AskUserQuestion`. Lock it before scoring.
 3. **Round 2 — Factors**: propose 3–5 factors that matter. User adds or removes.
 4. **Round 3 — Weights**: assign each factor a weight 1–5.
@@ -58,7 +58,3 @@ Footer: `Reply format: 1a 2b or defaults`
 - Ranked recommendation.
 - Gut-check outcome. If mis-calibrated weights, re-ranked with explanation.
 - Audit trail: every weight and score has a one-line rationale.
-
-## Topic
-
-$ARGUMENTS

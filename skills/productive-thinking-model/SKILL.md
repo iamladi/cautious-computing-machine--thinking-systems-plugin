@@ -61,7 +61,3 @@ Footer: `Reply format: 1a 2b or defaults`
 - Selected solution with decision rationale.
 - Resource plan with owners, timelines, and dependencies.
 - Explicit accountability for each step.
-
-## Topic
-
-$ARGUMENTS

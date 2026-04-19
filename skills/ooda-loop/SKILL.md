@@ -61,7 +61,3 @@ Footer: `Reply format: 1a 2b or defaults`
 - Measurement plan for the Act phase.
 - Pace recommendation for the next cycle.
 - Residual risks the cycle did not resolve.
-
-## Topic
-
-$ARGUMENTS

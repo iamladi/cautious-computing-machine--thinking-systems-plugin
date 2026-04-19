@@ -33,7 +33,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 ## Input Handling
 
-- Topic as `$ARGUMENTS` — run the loop from scratch.
+- Topic provided in the prompt — run the loop from scratch.
 - Draft doc path — Read the draft first; reverse-engineer the current pyramid (or lack of one), then restructure.
 
 ## Example
@@ -59,7 +59,3 @@ Footer: `Reply format: 1a 2b or defaults`
 - Full top-down structure: (optional SCQA) → Apex → 3–5 Arguments → Supporting detail per argument.
 - Rendered document or slide structure.
 - Readable at any depth — exec reads the apex; analyst reads the detail.
-
-## Topic
-
-$ARGUMENTS

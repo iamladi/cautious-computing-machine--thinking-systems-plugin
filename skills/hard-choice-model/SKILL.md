@@ -59,7 +59,3 @@ Footer: `Reply format: 1a 2b or defaults`
 - Prescribed strategy + rough time budget.
 - If Hard Choice: surface the values at stake, not a scoring exercise.
 - Suggested next action consistent with the class.
-
-## Topic
-
-$ARGUMENTS

@@ -58,7 +58,3 @@ Footer: `Reply format: 1a 2b or defaults`
 - Solution-confidence assessment with supporting evidence.
 - Strategy (speed/balance/quality) with rationale.
 - Concrete scope decisions: what gets cut or added given the strategy.
-
-## Topic
-
-$ARGUMENTS

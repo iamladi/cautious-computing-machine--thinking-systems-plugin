@@ -66,7 +66,3 @@ After every task is placed:
 - Render the full 2×2 matrix with tasks per quadrant.
 - Give the execution order (Q1 → Q2 → Q3 → Q4).
 - Flag the "Q3 eating Q2" pattern if it appears.
-
-## Topic
-
-$ARGUMENTS

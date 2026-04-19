@@ -58,7 +58,3 @@ Footer: `Reply format: 1a 2b or defaults`
 - 10-10-10 summary table.
 - Which downstream effects would change the decision if weighted honestly?
 - Revised recommendation or confirmed commitment.
-
-## Topic
-
-$ARGUMENTS

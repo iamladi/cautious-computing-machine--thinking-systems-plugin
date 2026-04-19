@@ -55,7 +55,3 @@ Footer: `Reply format: 1a 2b or defaults`
 - Leverage map: which interventions at which level.
 - At least one Mental Model challenged explicitly.
 - Proposed intervention with its level (Event/Pattern/Structure/Mental Model) labeled.
-
-## Topic
-
-$ARGUMENTS

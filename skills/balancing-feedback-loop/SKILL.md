@@ -56,7 +56,3 @@ Footer: `Reply format: 1a 2b or defaults`
 - Delays identified with estimated magnitude.
 - Whether the loop should be strengthened, weakened, or left alone.
 - Intervention proposal with expected side effects.
-
-## Topic
-
-$ARGUMENTS

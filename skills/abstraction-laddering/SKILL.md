@@ -55,7 +55,3 @@ Footer: `Reply format: 1a 2b or defaults`
 - Selected rung + rationale.
 - Concrete solutions generated from the selected rung.
 - If a higher rung was selected, the original problem statement is reframed.
-
-## Topic
-
-$ARGUMENTS

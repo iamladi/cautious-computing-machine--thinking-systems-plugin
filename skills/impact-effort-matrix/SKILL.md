@@ -33,7 +33,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 ## Input Handling
 
-- Backlog in `$ARGUMENTS` — iterate.
+- Backlog provided in the prompt — iterate.
 - Path to a backlog file — Read first.
 - Vague topic — elicit 5–10 candidate tasks in round 1.
 
@@ -60,7 +60,3 @@ Footer: `Reply format: 1a 2b or defaults`
 - Full 2×2 with tasks per quadrant.
 - Execution order: Quick Wins now, Major Projects scheduled, Fill-ins on slack time, Thankless Tasks defer or drop.
 - Tasks where impact or effort estimates need data — flag for validation before committing.
-
-## Topic
-
-$ARGUMENTS

@@ -67,7 +67,3 @@ Footer: `Reply format: 1a 2b or defaults`
 - Any leaps that rested on unverified assumptions.
 - At least one plausible alternative interpretation surfaced at a lower rung.
 - Revised belief/decision, or confirmation of the original with clearer grounds.
-
-## Topic
-
-$ARGUMENTS

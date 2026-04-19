@@ -60,7 +60,3 @@ Footer: `Reply format: 1a 2b or defaults`
 - Rebuilt solution from those truths.
 - Validation that the rebuild solves the original problem.
 - Acknowledgment of constraints that were actually fundamental vs habitual.
-
-## Topic
-
-$ARGUMENTS

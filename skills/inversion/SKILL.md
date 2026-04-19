@@ -55,7 +55,3 @@ Footer: `Reply format: 1a 2b or defaults`
 - Preventive action for each.
 - Prioritized action list: which preventions to start immediately vs monitor.
 - Revised plan incorporating the top preventions.
-
-## Topic
-
-$ARGUMENTS

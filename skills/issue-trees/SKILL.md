@@ -54,7 +54,3 @@ Footer: `Reply format: 1a 2b or defaults`
 - Full tree rendered as nested bullets: root → first-level branches → sub-branches → actionable leaves.
 - Prioritized branch (the 20% driving 80%) with data (or a plan to gather data).
 - Focused solution effort on that branch.
-
-## Topic
-
-$ARGUMENTS

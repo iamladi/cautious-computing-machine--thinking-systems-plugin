@@ -55,7 +55,3 @@ Footer: `Reply format: 1a 2b or defaults`
 - 3–5 complete combinations highlighted.
 - 1–2 selected for prototyping with feasibility rationale.
 - Rejected combinations + why (drives the next iteration of attribute thinking).
-
-## Topic
-
-$ARGUMENTS

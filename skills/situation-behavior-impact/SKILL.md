@@ -57,7 +57,3 @@ Footer: `Reply format: 1a 2b or defaults`
 - Draft opening line and closing question.
 - Red flags for the deliverer: phrases to avoid ("you always", "you never", "you were being X").
 - If positive: end with reinforcement. If critical: end with invitation to respond.
-
-## Topic
-
-$ARGUMENTS

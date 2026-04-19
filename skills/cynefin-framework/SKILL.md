@@ -60,7 +60,3 @@ Footer: `Reply format: 1a 2b or defaults`
 - Prescribed action sequence.
 - Experiments or analyses to start immediately.
 - Drift risks (which domain might this slip into?).
-
-## Topic
-
-$ARGUMENTS

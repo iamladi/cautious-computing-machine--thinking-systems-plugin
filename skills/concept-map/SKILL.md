@@ -56,7 +56,3 @@ Footer: `Reply format: 1a 2b or defaults`
 - All links labeled with explicit verbs or prepositions.
 - Cross-links between branches identified.
 - At least 2 knowledge gaps flagged for further investigation.
-
-## Topic
-
-$ARGUMENTS

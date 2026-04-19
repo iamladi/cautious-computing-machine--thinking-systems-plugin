@@ -56,7 +56,3 @@ Footer: `Reply format: 1a 2b or defaults`
 - Invalidated assumption.
 - New solution that meets both needs.
 - Specific proposed next action both sides can agree to.
-
-## Topic
-
-$ARGUMENTS

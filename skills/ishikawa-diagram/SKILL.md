@@ -53,7 +53,3 @@ Footer: `Reply format: 1a 2b or defaults`
 - Full fishbone: problem at head, categorized branches, sub-cause chains.
 - Prioritized 2–3 root causes for investigation + what data would confirm each.
 - Explicit callout of which candidate causes were considered and ruled out.
-
-## Topic
-
-$ARGUMENTS

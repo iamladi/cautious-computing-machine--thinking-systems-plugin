@@ -70,7 +70,3 @@ After the closing Blue hat, produce:
 - Consolidated recommendation.
 - Rejected alternatives with reasons.
 - Open questions that warrant more data.
-
-## Topic
-
-$ARGUMENTS

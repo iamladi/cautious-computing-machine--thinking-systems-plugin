@@ -58,7 +58,3 @@ Footer: `Reply format: 1a 2b or defaults`
 - External drivers noted.
 - Ceiling identified (or warning if none exists).
 - Intervention proposal.
-
-## Topic
-
-$ARGUMENTS
