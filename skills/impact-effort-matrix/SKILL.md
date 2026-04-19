@@ -59,6 +59,7 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- Full 2×2 with tasks per quadrant.
+- Full 2×2 with tasks per quadrant, each with one-line impact and effort rationale.
 - Execution order: Quick Wins now, Major Projects scheduled, Fill-ins on slack time, Thankless Tasks defer or drop.
 - Tasks where impact or effort estimates need data — flag for validation before committing.
+- Borderline placements called out: what was almost reclassified and why it stayed.

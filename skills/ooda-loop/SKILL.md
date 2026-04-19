@@ -60,6 +60,7 @@ Footer: `Reply format: 1a 2b or defaults`
 ## Completion
 
 - Full OODA cycle recorded: Observation → Orientation → Decision → Action.
-- Measurement plan for the Act phase.
-- Pace recommendation for the next cycle.
+- Orientation anchor named: the mental model driving the Decision, and what evidence would invalidate it.
+- Measurement plan for the Act phase — what signal proves or kills the hypothesis.
+- Pace recommendation for the next cycle, faster than the adversary's or environment's clock.
 - Residual risks the cycle did not resolve.

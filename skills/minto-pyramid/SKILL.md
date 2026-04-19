@@ -60,4 +60,6 @@ Footer: `Reply format: 1a 2b or defaults`
 
 - Full top-down structure: (optional SCQA) → Apex → 3–5 Arguments → Supporting detail per argument.
 - Rendered document or slide structure.
+- Audience-fit check: apex answers the question the primary reader is actually asking.
+- MECE check on the argument layer — no argument overlaps or leaves a gap.
 - Readable at any depth — exec reads the apex; analyst reads the detail.

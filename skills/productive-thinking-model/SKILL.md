@@ -59,7 +59,8 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- All six steps recorded.
-- Selected solution with decision rationale.
+- Each of the six Hurson steps recorded with its key finding (What's going on? / What's success? / What's the question? / Generate answers / Forge solution / Align resources).
+- Selected solution with decision rationale tied to the Step 2 success criteria.
 - Resource plan with owners, timelines, and dependencies.
-- Explicit accountability for each step.
+- Explicit accountability for each step — who owns follow-through past the workshop.
+- Assumptions flagged at Steps 1–3 that would invalidate the chosen path if wrong.

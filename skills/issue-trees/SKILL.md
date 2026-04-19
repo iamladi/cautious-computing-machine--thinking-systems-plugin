@@ -54,5 +54,7 @@ Footer: `Reply format: 1a 2b or defaults`
 ## Completion
 
 - Full tree rendered as nested bullets: root → first-level branches → sub-branches → actionable leaves.
+- MECE check at each level with a one-line justification for the split choice.
 - Prioritized branch (the 20% driving 80%) with data (or a plan to gather data).
 - Focused solution effort on that branch.
+- Rejected alternative splits with why they would overlap or miss cases.

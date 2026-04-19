@@ -64,7 +64,7 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-After every task is placed:
-- Render the full 2×2 matrix with tasks per quadrant.
-- Give the execution order (Q1 → Q2 → Q3 → Q4).
-- Flag the "Q3 eating Q2" pattern if it appears.
+- Full 2×2 matrix with tasks per quadrant, each with a one-line urgency+importance rationale.
+- Execution order (Q1 → Q2 → Q3 → Q4) with a rough time budget per quadrant.
+- "Q3 eating Q2" pattern flagged if present, naming the Q2 work being displaced and its cost.
+- Tasks whose importance is unclear — flag for goal clarification before execution commits.
