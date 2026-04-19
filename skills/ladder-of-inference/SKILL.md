@@ -44,6 +44,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 - Belief as topic — run the descent on it.
 - Path — Read the note/doc, then pick the strongest claim to descend on — trait judgments ("not a team player", "can't be trusted", "doesn't care about quality") over provisional opinions, since reflexive-loop risk is highest at the Beliefs rung.
+- Descent must reach the Data rung — force camera-observable content (verbatim words, timestamps, gestures) distinct from conclusions — before rebuilding upward. Stopping at Meanings or Assumptions rebuilds on interpretations the user still accepts as data, which is the reflexive-loop failure the skill exists to interrupt.
 - If the belief already cites a specific observable event ("sent slack at 3am yesterday") it is already at the Data rung — route to situation-behavior-impact for behavior-level feedback rather than running the descent.
 
 ## Example
