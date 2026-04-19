@@ -36,7 +36,8 @@ Footer every round: `Reply format: 1a 2b or defaults`
 ## Input Handling
 
 - Situation as topic — run the loop.
-- Path — Read the situation report or incident doc first.
+- Path — Read the situation report or incident doc first; extract the specific action or decision being contemplated, not just the domain backdrop.
+- Probe cause-effect knowability before classifying: if experts can predict outcomes (Clear/Complicated), if cause only emerges after action (Complex), or if stabilization must precede analysis (Chaotic). Skip the skill when classification is already settled upstream — re-litigating domain is zero-value work.
 
 ## Example
 

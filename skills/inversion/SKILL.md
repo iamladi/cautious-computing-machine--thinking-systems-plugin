@@ -31,7 +31,8 @@ Footer every round: `Reply format: 1a 2b or defaults`
 ## Input Handling
 
 - Plan as topic — run the loop.
-- Path — Read the plan doc first.
+- Path — Read the plan doc first; extract the success statement plus the key constraints (timeline, scope, owner, dependencies) so failure modes have concrete anchors.
+- Name 2–3 candidate failure modes before inverting — mode coverage matters more than single-mode depth. Skip the skill when the plan is already pre-mortemed or under a week of work; inversion's value scales with plan duration and cross-team surface.
 
 ## Example
 

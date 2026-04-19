@@ -31,7 +31,8 @@ Footer every round: `Reply format: 1a 2b or defaults`
 ## Input Handling
 
 - Problem statement as topic — run the loop.
-- Path — Read the problem doc first; extract the statement.
+- Path — Read the problem doc first; extract the single-sentence statement before climbing.
+- Detect solution-rung framing upfront: if the statement names an artifact (can opener, dashboard, onboarding flow) instead of the outcome users need, climb up first — otherwise the skill reinforces the locked frame rather than challenging it.
 
 ## Example
 

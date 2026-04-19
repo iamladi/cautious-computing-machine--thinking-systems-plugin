@@ -35,7 +35,8 @@ Footer every round: `Reply format: 1a 2b or defaults`
 ## Input Handling
 
 - Decision as topic — run the loop.
-- Path — Read the doc first; classify the decision it describes.
+- Path — Read the doc first; extract the 2–3 dimensions that actually separate the options (salary, timeline, team fit, craft-vs-management path).
+- Run the comparability pre-test before classifying: if every dimension maps to a shared metric the decision is Big — route to decision-matrix. If any dimension is values-based (identity, life path, what kind of person to be) the decision is Hard and this skill's move applies.
 
 ## Example
 
