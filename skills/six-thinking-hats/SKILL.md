@@ -53,7 +53,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 <example>
 Topic: "Should we migrate the payment pipeline to Stripe Connect?"
 
-<thinking>Blue hat opens — scope is load-bearing because full migration, dual-run, and spike each produce different White/Black hat findings later. Lock scope before the factual and risk passes.</thinking>
+<thinking>Blue hat opens and the scope-lock is load-bearing: if the question stays vague ("should we modernize payments?"), White hat produces generic industry facts, Black hat invents generic migration risks, and Green hat offers generic alternatives. A tight scope (full migration / dual-run / spike) forces each later hat to name *this-decision-specific* signal — Postgres-to-Stripe-ledger reconciliation risks vs dual-write consistency risks vs spike-only learning gaps. Lock scope here so the next five hats cannot drift into talking points.</thinking>
 
 Calls AskUserQuestion:
 - Question (Blue): "What's the real decision here?"

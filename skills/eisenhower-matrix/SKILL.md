@@ -49,7 +49,7 @@ If the user's long-term goals aren't stated or visible in context, ask once at t
 <example>
 Topic: "Help me triage today's backlog"
 
-<thinking>Eisenhower's "important" axis is defined as "advances long-term goals". Without a stated goal, importance collapses into urgency and the 2×2 degenerates into a flat to-do list. Ask once up-front, not per-task, since the same goal anchor is reused for every triage decision today.</thinking>
+<thinking>Eisenhower's "important" axis is defined as "advances long-term goals". Without a stated goal, importance collapses into urgency and the 2×2 degenerates into a flat to-do list. Ask once up-front, not per-task — the named goal becomes the anchor cited by name in every subsequent quadrant call ("advances onboarding-redesign ship? yes → important; slack thread about stale docs? no → not important, regardless of how loud the ping feels"). A task that doesn't advance the named goal cannot enter Q1/Q2 on felt-urgency alone; that displacement is what the anchor prevents.</thinking>
 
 Calls AskUserQuestion:
 - Question: "What's the highest-priority goal for this week that tasks should be judged against?"
