@@ -132,6 +132,42 @@ function validateSkill(dir: string, knownSkills: Set<string>): Issue[] {
   return issues;
 }
 
+function extractTriggerPhrases(description: string): string[] {
+  const out: string[] = [];
+  const re = /"([^"]+)"/g;
+  for (const match of description.matchAll(re)) {
+    out.push(match[1].toLowerCase().trim());
+  }
+  return out;
+}
+
+function validateTriggerUniqueness(skills: string[]): Issue[] {
+  const triggerToSkills = new Map<string, string[]>();
+  for (const dir of skills) {
+    const body = readFileSync(join(SKILLS_DIR, dir, "SKILL.md"), "utf8");
+    const fm = parseFrontmatter(body);
+    if (!fm?.description) continue;
+    for (const trig of extractTriggerPhrases(fm.description)) {
+      const list = triggerToSkills.get(trig) ?? [];
+      list.push(dir);
+      triggerToSkills.set(trig, list);
+    }
+  }
+  const issues: Issue[] = [];
+  for (const [trig, owners] of triggerToSkills) {
+    if (owners.length > 1) {
+      for (const owner of owners) {
+        issues.push({
+          skill: owner,
+          level: "warn",
+          message: `trigger phrase "${trig}" also claimed by ${owners.filter((o) => o !== owner).join(", ")}`,
+        });
+      }
+    }
+  }
+  return issues;
+}
+
 function validatePluginManifest(): Issue[] {
   const manifestPath = join(ROOT, ".claude-plugin", "plugin.json");
   try {
@@ -165,6 +201,7 @@ function main(): number {
   const allIssues = [
     ...validatePluginManifest(),
     ...skills.flatMap((d) => validateSkill(d, knownSkills)),
+    ...validateTriggerUniqueness(skills),
   ];
 
   const errors = allIssues.filter((i) => i.level === "error");
