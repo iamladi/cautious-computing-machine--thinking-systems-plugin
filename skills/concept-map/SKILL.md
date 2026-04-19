@@ -40,7 +40,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 <example>
 Focus question: "How do permissions flow in our B2B SaaS?"
 
-<thinking>Authorization resolves top-down from tenant boundary to resource, so rooting at Organizations keeps permission inheritance traceable and makes cross-tenant leakage impossible-by-structure. Rooting at Users or Roles would force every permission check to re-verify tenancy, inverting the invariant. Inheritance is an explicit edge (not implied by nesting) because the real confusions in permission systems come from unstated override rules.</thinking>
+<thinking>The Round 1 focus question — "how permissions *flow*" — is what makes this Round 5 cross-link testable: a looser focus like "our security architecture" would have accepted "Inheritance → affects → everything" as a valid cross-link, since nothing would contradict it. Focus-question precision pays out rounds later by discriminating between "inherit from" (flow-directional, testable) and "affects" (undirected, vacuous). Authorization resolves top-down from tenant boundary to resource, so rooting at Organizations keeps permission inheritance traceable and makes cross-tenant leakage impossible-by-structure. Rooting at Users or Roles would force every permission check to re-verify tenancy, inverting the invariant. Inheritance must be an explicit edge (not implied by nesting) because the real confusions in permission systems come from unstated override rules, and a sharp focus question is what lets us reject the unstated-override phrasings.</thinking>
 
 Calls AskUserQuestion (Round 5 — cross-link):
 - Question: "How does Inheritance cross-link into this hierarchy?"

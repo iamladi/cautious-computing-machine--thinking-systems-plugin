@@ -42,7 +42,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 <example>
 Topic: "New AI-powered search feature."
 
-<thinking>Polishing before validation is the dominant failure mode here — AI search is high-cost to build and the problem ("do users want this over existing search?") has zero direct evidence. Polish commits the team to a solution shape before the demand signal exists, so sunk cost then resists pivots. The right move at low problem confidence is a rough-but-real shipped prototype that produces behavior data, not more internal debate about the polished version.</thinking>
+<thinking>The two-axis split is load-bearing here: problem confidence (zero direct evidence users want AI search over existing search) reads independently from solution confidence (implementation cost is known-high, and the team can describe the build concretely). Collapsing the axes produces the default reflex "we've discussed it a lot, let's polish", which treats team conviction as evidence on both axes and commits sunk cost to a solution shape before the demand signal exists. Splitting first reveals low-problem / high-solution-cost — the combination where rough-but-real shipped prototype produces the behavior data the polish conversation keeps substituting internal debate for. If problem confidence had been high (e.g., active users asking for AI search), the same solution-cost would flip the recommendation toward Quality; the split is what keeps the recommendation honest.</thinking>
 
 Calls AskUserQuestion (Round 3):
 - Question: "Given low problem confidence, what's the right first move?"
