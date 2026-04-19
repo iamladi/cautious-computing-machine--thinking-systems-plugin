@@ -44,7 +44,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 <example>
 Task: "Add dark mode"
 
-<thinking>Classic wishful-thinking trap. Feels like Quick Win; actually Major Project once you hit component theming.</thinking>
+<thinking>"Dark mode" reads as a UI toggle, so the default classification is Quick Win. The structural reason that's wrong: theming cost scales with component count, not with the toggle — every existing component, every image asset, and settings persistence each add hidden surface area invisible at the feature name. Price effort against the long tail (components × states × assets) before ranking, or dark mode lands in Quick Win and displaces higher-yield work.</thinking>
 
 Calls AskUserQuestion:
 - Question: "Effort for a production-grade dark mode?"

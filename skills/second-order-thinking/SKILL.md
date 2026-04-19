@@ -41,7 +41,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 <example>
 Topic: "Should I take the senior role in another city?"
 
-<thinking>First-order effects: (a) higher salary, (b) relocation, (c) new team. Pick (b) — highest hidden cost.</thinking>
+<thinking>Salary compounds visibly (savings, lifestyle) so its second-order chain already gets weighed in the first-order decision. New team risk is in the job-acceptance frame itself. Relocation is the effect whose downstream costs — partner's career disruption, social network rebuild, housing-market lock-in — compound over years and stay invisible at decision time. Picking (b) targets the effect where second-order weight most exceeds first-order framing, which is exactly what the skill is engineered to surface.</thinking>
 
 Calls AskUserQuestion:
 - Question: "Second-order effect of relocating?"

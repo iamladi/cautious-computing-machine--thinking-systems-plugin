@@ -39,7 +39,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 <example>
 Conflict: "Eng wants a full rewrite; Product wants to keep shipping features."
 
-<thinking>Need behind rewrite: stability, velocity, confidence. Need behind features: revenue, customer commitments. Shared goal: sustainable growth.</thinking>
+<thinking>Picking a winner between rewrite and features reinforces the zero-sum framing the skill exists to break. The structural reason the conflict looks binary: both sides treat "rewrite" as a full-stop 6-month mode that halts shipping — that unstated assumption is what forces stability and revenue onto opposite sides of the scale. The load-bearing move is to surface and invalidate that assumption (incremental modernization in-flight with features), not to pick which need wins.</thinking>
 
 Calls AskUserQuestion:
 - Question: "What assumption makes 'rewrite' and 'ship features' look incompatible?"
