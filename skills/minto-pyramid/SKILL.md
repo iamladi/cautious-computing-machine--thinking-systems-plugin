@@ -44,7 +44,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 <example>
 Topic: "Recommend entering Market X, for the exec team."
 
-<thinking>Exec audience — answer first. Apex = "enter Market X". Arguments must be external market evidence (size, fit, competition), not internal capability, since the question exec-readers are weighing is whether the market justifies investment.</thinking>
+<thinking>Extract reader and the question they are weighing before extracting the apex itself: exec team → weighing whether the market justifies investment of capital and attention. Apex = "enter Market X" answers that exec-question directly. Contrast: an engineering reader would be weighing integration cost and feasibility, so the same words "enter Market X" would land flat — for that audience the apex would be "the integration is 6 weeks and the data model fits" (a feasibility claim, not a market claim). Naming the reader plus the weighed-question first is what discriminates the right apex from a structurally-correct-but-flat apex; arguments then follow from that named question — for exec-question, external market evidence (size, fit, competition), not internal capability.</thinking>
 
 Calls AskUserQuestion (Round 4):
 - Question: "Which three-argument set best supports 'enter Market X'?"

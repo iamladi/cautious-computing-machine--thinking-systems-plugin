@@ -41,7 +41,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 <example>
 Topic: "Which deployment platform — Vercel, Fly.io, or Railway?"
 
-<thinking>Three platforms span different architectures — serverless (Vercel), container (Fly), PaaS (Railway). Factor discrimination is load-bearing: pick factors whose likely score-spread separates the options (cold-start, region, Postgres integration each score differently per architecture), and drop any that would land within one point across all three — "ease of use" and "docs quality" fail that test and stay decorative if included. Generic factors collapse the matrix to a decoration around the pre-existing preference.</thinking>
+<thinking>Extraction first: lock the option set to {Vercel, Fly.io, Railway} before proposing any factor — if a fourth option (Render, Heroku) arrives after weights are calibrated against this three-way spread, the spread shifts and the weights silently mis-calibrate. With the set locked, three platforms span different architectures — serverless (Vercel), container (Fly), PaaS (Railway). Factor discrimination is load-bearing: pick factors whose likely score-spread separates the locked option set (cold-start, region, Postgres integration each score differently per architecture), and drop any that would land within one point across all three — "ease of use" and "docs quality" fail that test and stay decorative if included. Generic factors collapse the matrix to a decoration around the pre-existing preference.</thinking>
 
 Calls AskUserQuestion (Round 2 — Factors):
 - Question: "Which factors matter most for this decision?"
