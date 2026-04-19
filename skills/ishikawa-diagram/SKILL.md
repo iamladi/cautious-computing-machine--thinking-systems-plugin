@@ -37,7 +37,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 <example>
 Problem: "Signups are declining month over month."
 
-<thinking>Round 2 — pick categories. For a digital product, the classic 6 don't all fit.</thinking>
+<thinking>Classic 6M (People/Machines/Methods/Materials/Measurement/Environment) is a manufacturing taxonomy — a signup-decline problem gets double-counted under Methods and Measurement and loses the actually load-bearing axes (acquisition channel, landing conversion, pricing pressure). Category choice is the highest-leverage decision of the whole diagram: wrong categories hide causes, right categories make them visible.</thinking>
 
 Calls AskUserQuestion:
 - Question: "Which category set fits a digital-product signup problem?"

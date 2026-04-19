@@ -39,7 +39,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 <example>
 Focus question: "How do permissions flow in our B2B SaaS?"
 
-<thinking>Entities: Users, Roles, Permissions, Resources, Organizations, Inheritance, Workspaces. Hierarchy: Organizations → Workspaces → Users → Roles → Permissions → Resources.</thinking>
+<thinking>Authorization resolves top-down from tenant boundary to resource, so rooting at Organizations keeps permission inheritance traceable and makes cross-tenant leakage impossible-by-structure. Rooting at Users or Roles would force every permission check to re-verify tenancy, inverting the invariant. Inheritance is an explicit edge (not implied by nesting) because the real confusions in permission systems come from unstated override rules.</thinking>
 
 Calls AskUserQuestion (Round 5 — cross-link):
 - Question: "How does Inheritance cross-link into this hierarchy?"

@@ -50,7 +50,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 <example>
 Topic: "Alex is not a team player."
 
-<thinking>User is at Beliefs. Descend one rung — what's the Conclusion that led here?</thinking>
+<thinking>"Not a team player" is a trait judgment at the Beliefs rung — durable, generalized, and resistant to revision. The descent must surface the specific conclusion that generalized into this belief, before the reflexive loop filters future data to confirm it. Attachment to the trait label is the risk; naming the concrete event resets the ladder to something checkable.</thinking>
 
 Calls AskUserQuestion:
 - Question: "Which recent event gave you this conclusion?"

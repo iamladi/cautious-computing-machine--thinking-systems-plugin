@@ -43,7 +43,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 <example>
 Topic: "Launching a product in a new market segment."
 
-<thinking>Novel + cause-effect unknown → likely Complex.</thinking>
+<thinking>New segment means no expert has calibrated intuition yet — rules out Complicated's "hire a consultant" prescription. Cause-effect emerges only after action (which messaging lands, which price point converts), so analysis-first planning burns weeks discovering what a probe would reveal in days. Complex's safe-to-fail experiments are the only response that matches this truth-gathering structure.</thinking>
 
 Calls AskUserQuestion (Round 3 confirmation):
 - Question: "Which domain fits?"

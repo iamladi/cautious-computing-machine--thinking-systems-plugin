@@ -42,7 +42,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 <example>
 Topic: "Take the new job or stay?"
 
-<thinking>Impact is high. Comparability depends on how the two offers compare on comparable dimensions.</thinking>
+<thinking>Career moves often look Big (high-impact, same metrics — salary, seniority) but become Hard when a dimension like "management vs IC path" enters, since that's a values question no weighted score can settle. Test comparability before investing analysis: if dimensions don't map cleanly, decision-matrix is the wrong tool and the conversation must turn to which life the user wants to live.</thinking>
 
 Calls AskUserQuestion (Round 2):
 - Question: "Can you compare the two options on the same dimensions (salary, seniority, growth)?"

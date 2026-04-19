@@ -38,7 +38,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 <example>
 System: "Customer-support spiral."
 
-<thinking>Elements: unhappy customers, bugs, response times, support tickets, new features. Look for the trap loop.</thinking>
+<thinking>"Spiral" signals reinforcing dynamics, not a single cause. Linear chains (team size → queue) don't explain why this worsens on its own — only a closed loop does. Look for the back-link from downstream symptoms (unhappy customers) to upstream drivers (pressure to ship features), since that return arrow is what makes the pattern self-propelling rather than a one-off incident.</thinking>
 
 Calls AskUserQuestion (Round N+1):
 - Question: "Which loop is trapping the team?"
