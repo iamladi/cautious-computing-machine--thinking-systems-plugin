@@ -54,7 +54,7 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- Full matrix: attributes × values.
-- 3–5 complete combinations highlighted.
-- 1–2 selected for prototyping with feasibility rationale.
-- Rejected combinations + why (drives the next iteration of attribute thinking).
+- Full matrix: 4–6 attributes × 3–5 values each, with at least one unconventional value per column.
+- Axis-independence test: for every pair of attributes, show that fixing one value does not constrain another's available values — if any pair is coupled (format implies timing, audience implies channel) the grid collapses to defaults and the load-bearing move has failed; collapse the coupled pair into a single axis or re-pick independent ones before generating combinations.
+- 1–2 combinations selected for prototyping, each validated as genuinely novel by contrasting against the baseline default combination the team would have reached without the grid; a "novel" pick that reads as the obvious default means the axes weren't independent enough to generate new territory.
+- Rejected combinations with structural reason (coupling exposed after the fact, infeasibility, or duplicate of existing offer) — feeds the next iteration of axis selection rather than just listing discards.

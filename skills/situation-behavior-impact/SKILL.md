@@ -56,7 +56,7 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- Full SBI script: Situation + Behavior (clean) + Impact + (optional) Intent question.
-- Draft opening line and closing question.
-- Red flags for the deliverer: phrases to avoid ("you always", "you never", "you were being X").
-- If positive: end with reinforcement. If critical: end with invitation to respond.
+- Full SBI script: Situation (date/place/meeting specific) + Behavior (video-frame observable) + Impact (consequence on you/team/work) + Intent question where appropriate.
+- Video-frame test on the Behavior rung: every phrase must be something a recorded camera would capture — words spoken, gestures made, timestamp — with zero interpretation or motive words; if "dismissive" / "disengaged" / "doesn't care" / "were being X" survives in Behavior, the load-bearing move has failed and the recipient will hear a trait judgment and defend rather than receive data.
+- Intent-slot validation: for critical feedback confirm an Intent question is present (skipping it is the second structural failure mode — launching from observation straight to Impact assumes the speaker understood their effect and collapses into accusation); for positive feedback, confirm the script ends with reinforcement rather than an opening for correction.
+- Residual: red-flag phrases rewritten to video-frame form ("you always X" → "on [date] you did X"), pattern-level concerns separated out and routed to productive-thinking-model, and any motive claim the deliverer believes but cannot evidence flagged for ladder-of-inference rather than smuggled back into Behavior.

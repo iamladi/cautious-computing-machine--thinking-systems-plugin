@@ -57,7 +57,7 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- Problem-confidence assessment with supporting evidence.
-- Solution-confidence assessment with supporting evidence.
-- Strategy (speed/balance/quality) with rationale.
-- Concrete scope decisions: what gets cut or added given the strategy.
+- Two-axis read kept explicitly separate: problem-confidence (is this the right problem?) and solution-confidence (is this the right approach?), each rated with the concrete evidence that backed the rating (user interviews, prototypes, analogue wins, live metrics).
+- Evidence-grounding test on each axis: any rating backed only by "we've discussed it a lot" or "the team feels strongly" downgrades to low-confidence regardless of stated strength — the load-bearing move is the two-axis split, and collapsing the axes or treating intuition as evidence reintroduces the polish-before-validation failure.
+- Strategy validated against the axis combination: low problem → Speed (ship rough), high problem / low solution → Balance, high both → Quality; if the recommendation disagrees with the axes (e.g., polished build at low problem-confidence) the strategy is wrong, not the axes, because the combination determines the move.
+- Residual scope decisions: concrete items cut or added under the strategy, items kept pending evidence arrival (with the specific evidence that would flip the rating), and route-outs when both axes are already explicit (execution-only), chaotic domain (→ cynefin-framework), or pure prioritization (→ eisenhower-matrix / impact-effort-matrix).

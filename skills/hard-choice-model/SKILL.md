@@ -58,7 +58,7 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- Quadrant classification with rationale.
-- Prescribed strategy + rough time budget.
-- If Hard Choice: surface the values at stake, not a scoring exercise.
-- Suggested next action consistent with the class.
+- Quadrant classification (No-Brainer / Apples-and-Oranges / Big Choice / Hard Choice) with the impact and comparability readings that produced it.
+- Comparability pre-test evidence: the specific dimension(s) that do or do not map to a shared metric — a Hard verdict must cite at least one values/identity dimension that no weight can settle; a Big verdict must show that every dimension maps to comparable units. Without that evidence the classification is gut-feel, which is the structural failure mode (hard-choice machinery on comparable options).
+- Prescribed strategy with a rough time budget that matches the quadrant (minutes for No-Brainer, days for Apples-and-Oranges, weeks for Big, values-work for Hard); if the user is already spending far more time than the class prescribes, flag the mismatch as the real finding.
+- Residual route-out: if Hard, the values at stake named as identity-shaped questions (not scoring factors), plus an explicit note that decision-matrix will not resolve this; if Big, route to decision-matrix; if No-Brainer / Apples-and-Oranges, flag deliberation overhead as the cost to cut.

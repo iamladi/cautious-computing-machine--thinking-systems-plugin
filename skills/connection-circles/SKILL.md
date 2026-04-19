@@ -54,7 +54,7 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- Circle with 5–10 elements and labeled arrows (+/–).
-- All closed loops identified and classified (reinforcing/balancing).
-- Leverage point with proposed intervention.
-- Residual uncertainty (arrows that need data to confirm).
+- Circle with 5–10 elements and labeled arrows (+/–), each arrow carrying a verb that names the mechanism (not just co-occurrence).
+- Closed-loop trace: at least one loop whose arrows return to their starting element, classified reinforcing (even count of –) or balancing, with the loop's narrative stated as a self-propelling story ("pressure → bugs → tickets → pressure"); a diagram with no closed loop fails the load-bearing test and is a mislabeled org chart, not a systems map.
+- Leverage-point validation: the proposed intervention must sit on an arrow inside the identified closed loop (breaking or redirecting the return leg) — interventions on non-loop arrows only change correlations and won't shift the pattern.
+- Residual arrows flagged: correlations drawn without confirmed causal mechanism, variables proposed but excluded (with reason), and any single-thread sub-chain that escapes the circle (route to reinforcing-feedback-loop / balancing-feedback-loop if 2-var, first-principles if single-thread).

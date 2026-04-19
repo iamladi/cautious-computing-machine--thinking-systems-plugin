@@ -57,7 +57,7 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- Full ripple map: first-order → second-order → third-order per branch.
-- 10-10-10 summary table.
-- Which downstream effects would change the decision if weighted honestly?
-- Revised recommendation or confirmed commitment.
+- Ripple map: first-order → second-order → third-order per branch, with each second/third-order node tagged same-domain vs cross-domain (work↔relationships, health↔finances, team↔identity).
+- Cross-domain weighting: the load-bearing move is surfacing the ripples the first-order frame already prices in vs the ones that bleed sideways — the finding is the highest-weight cross-domain effect that was invisible in the original pros/cons, not the longest chain; a ripple map full of same-domain effects means the skill added no leverage and the chain should be re-rolled pressing for cross-domain shifts.
+- 10-10-10 validation: check which node's weight changes across horizons (10 min / 10 months / 10 years) — if the same effect dominates all three windows the horizon lens is dead weight; if weight flips between windows (sunk cost visible at 10 months, identity cost at 10 years) those flip-points are the real decision inputs.
+- Residual: effects that would change the decision if weighted honestly (named separately from the ones that don't), plus chains stopped at second-order because third-order is speculative (flagged rather than padded) — feeds a revised recommendation or confirmed commitment.
