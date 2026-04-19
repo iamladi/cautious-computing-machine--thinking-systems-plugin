@@ -224,6 +224,37 @@ function validateSkill(dir: string, knownSkills: Set<string>): Issue[] {
         message: "Example does not reference AskUserQuestion (should demo the tool declared in allowed-tools)",
       });
     }
+    const innerMatch = exampleBody.match(/<example>\n([\s\S]*?)<\/example>/);
+    const innerBody = innerMatch ? innerMatch[1] : exampleBody;
+    if (!/^[A-Z][A-Za-z ]{1,30}: "/m.test(innerBody)) {
+      issues.push({
+        skill: dir,
+        level: "warn",
+        message: "Example should open with a labeled quoted scenario (e.g., 'Topic: \"...\"', 'Problem: \"...\"')",
+      });
+    }
+    if (!/^- Question\b/m.test(exampleBody)) {
+      issues.push({
+        skill: dir,
+        level: "warn",
+        message: "Example missing canonical '- Question' bullet (AskUserQuestion body)",
+      });
+    }
+    if (!/^- Options:/m.test(exampleBody)) {
+      issues.push({
+        skill: dir,
+        level: "warn",
+        message: "Example missing canonical '- Options:' bullet",
+      });
+    }
+    const optionBullets = (exampleBody.match(/^  - `[^`]+`/gm) ?? []).length;
+    if (optionBullets < 4) {
+      issues.push({
+        skill: dir,
+        level: "warn",
+        message: `Example has ${optionBullets} backtick-wrapped option(s); recommend ≥4 (3 recommendations + 'Not sure' fallback)`,
+      });
+    }
   }
 
   const inputMatch = body.match(/## Input Handling\n([\s\S]*?)(?=\n## )/);
