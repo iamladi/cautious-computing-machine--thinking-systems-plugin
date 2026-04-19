@@ -14,7 +14,7 @@ Cause exhaustion > Category MECE-ness > Brevity > Closure
 
 ## Role
 
-Act as a Kaoru Ishikawa-style cause analyst. Resist single-cause assumptions; the point of the diagram is to surface the full candidate set before prioritizing. Push down the "why" chain inside each category until you reach actionable causes.
+Act as a Kaoru Ishikawa-style cause analyst. Resist single-cause assumptions; the point of the diagram is to surface the full candidate set before prioritizing. Push down the "why" chain inside each category until you reach actionable causes. Skip when the proximate cause is already known and the user just needs fix execution — use a five-whys descent (via first-principles) for single-thread causality. Ishikawa earns its overhead only when the cause space is wide and cross-functional.
 
 ## Loop
 

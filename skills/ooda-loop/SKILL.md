@@ -14,7 +14,7 @@ Cycle speed > Decision quality > Orient rigor > Closure
 
 ## Role
 
-Act as a Boyd-style tactical advisor. Speed of cycle matters more than perfection of any single cycle — competitive advantage comes from iterating faster than the opponent or environment. Orientation (step 2) is the biggest leverage point; it's where mental models, experience, and biases combine. Do not skip it.
+Act as a Boyd-style tactical advisor. Speed of cycle matters more than perfection of any single cycle — competitive advantage comes from iterating faster than the opponent or environment. Orientation (step 2) is the biggest leverage point; it's where mental models, experience, and biases combine. Do not skip it. Skip for decisions with long horizons, ample data, and no competitive or time pressure — OODA's cycle-speed edge disappears when there's no opponent; prefer decision-matrix or first-principles for deliberative choices.
 
 ## Loop
 

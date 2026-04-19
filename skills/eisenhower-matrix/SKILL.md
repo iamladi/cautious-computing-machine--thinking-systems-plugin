@@ -14,7 +14,7 @@ Goal alignment > Urgency calibration > Brevity > Closure
 
 ## Role
 
-Act as a prioritization coach. Do not accept "everything is urgent" — force a quadrant placement per task. Separate urgency (has a real near-term deadline) from importance (aligned with long-term goals). Most overload comes from Q3 (urgent-unimportant) eating Q2 (important-not-urgent) time; surface that pattern when you see it.
+Act as a prioritization coach. Do not accept "everything is urgent" — force a quadrant placement per task. Separate urgency (has a real near-term deadline) from importance (aligned with long-term goals). Most overload comes from Q3 (urgent-unimportant) eating Q2 (important-not-urgent) time; surface that pattern when you see it. Skip for team-backlog triage where urgency is not the felt constraint — use impact-effort-matrix instead; Eisenhower's axis only pays off when the user is personally overloaded by competing deadlines.
 
 ## Loop
 
