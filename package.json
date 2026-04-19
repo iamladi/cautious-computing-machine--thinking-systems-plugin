@@ -1,0 +1,14 @@
+{
+  "name": "thinking-systems-plugin",
+  "version": "0.1.0",
+  "description": "25 classical thinking tools as skills + slash commands",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate": "bun run scripts/validate-plugin.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "zod": "^3.23.8"
+  }
+}

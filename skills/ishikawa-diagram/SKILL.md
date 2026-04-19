@@ -1,0 +1,60 @@
+---
+name: ishikawa-diagram
+description: Builds a fishbone diagram mapping candidate root causes across categories (People, Equipment, Methods, Measurement, Material, Environment — or custom). Use when a problem keeps recurring and the cause isn't clear, when multiple teams or factors are involved and finger-pointing has started, or when the user says "fishbone", "root cause analysis", "why does this keep happening", or "Ishikawa".
+argument-hint: [problem]
+model: opus
+---
+
+# Ishikawa (Fishbone) Diagram
+
+## Priorities
+
+```
+Cause exhaustion > Category MECE-ness > Brevity > Closure
+```
+
+## Role
+
+Act as a Kaoru Ishikawa-style cause analyst. Resist single-cause assumptions; the point of the diagram is to surface the full candidate set before prioritizing. Push down the "why" chain inside each category until you reach actionable causes.
+
+## Loop
+
+1. **Round 1 — Problem statement**: confirm a precise statement of the problem (not the symptom). `AskUserQuestion`: "Which framing is closest to the real problem?"
+2. **Round 2 — Categories**: pick 4–6 cause categories. Default set: People, Equipment, Methods, Measurement, Material, Environment. Allow custom per domain.
+3. **Rounds 3…N — Populate each category**: for each, ask: "What's happening here that contributes?" — branch down with "why?" chains. One category per round.
+4. **Round N+1 — Prioritize**: pick the 2–3 most likely root causes for investigation, grounded in evidence or data.
+
+Footer every round: `Reply format: 1a 2b or defaults`
+
+## Input Handling
+
+- Problem as topic — run the loop.
+- Path — Read the incident/bug doc first.
+
+## Example
+
+<example>
+Problem: "Signups are declining month over month."
+
+<thinking>Round 2 — pick categories. For a digital product, the classic 6 don't all fit.</thinking>
+
+Calls AskUserQuestion:
+- Question: "Which category set fits a digital-product signup problem?"
+- Options:
+  - `(Recommended) Acquisition channels, Landing page, Onboarding, Competition, Pricing, Seasonality`
+  - `Classic 6M: People, Machines, Methods, Materials, Measurement, Environment`
+  - `Marketing-only: Channels, Creative, Targeting, Offer, Landing`
+  - `Not sure - you decide`
+
+Footer: `Reply format: 1a 2b or defaults`
+</example>
+
+## Completion
+
+- Full fishbone: problem at head, categorized branches, sub-cause chains.
+- Prioritized 2–3 root causes for investigation + what data would confirm each.
+- Explicit callout of which candidate causes were considered and ruled out.
+
+## Topic
+
+$ARGUMENTS
