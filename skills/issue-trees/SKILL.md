@@ -30,8 +30,9 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 ## Input Handling
 
-- Problem or goal as topic — run the loop.
-- Path — Read the source doc first.
+- Problem or goal as topic — extract the apex question first (answer-shaped, single focus) before splitting.
+- Path — Read the source doc first; identify the apex question and any pre-existing branches to reuse or reject.
+- Multiple candidate apex questions — surface them in Round 1 and pick one; misaligned apex breaks MECE downstream.
 
 ## Example
 

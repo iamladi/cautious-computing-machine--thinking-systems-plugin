@@ -30,8 +30,9 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 ## Input Handling
 
-- System as topic — run the loop.
-- Path — Read the system description first.
+- System as topic — elicit 5–10 variables (nouns that can go up/down) before drawing any arrows; the circle is only useful once the variable set stabilizes.
+- Path — Read the system description first; extract candidate variables and any stated causal claims to seed the circle, but verify each arrow in the loop rather than inheriting them uncritically.
+- Fewer than 5 variables emerging — route to reinforcing-feedback-loop or balancing-feedback-loop if a single loop fits, or first-principles for a narrow single-thread cause.
 
 ## Example
 

@@ -29,8 +29,9 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 ## Input Handling
 
-- Problem as topic — run the loop.
-- Path — Read the incident/bug doc first.
+- Problem as topic — pick the category set first (classic 6M, or a domain-specific split) before brainstorming causes; category choice is the diagram's highest-leverage decision.
+- Path — Read the incident/bug doc first; note the problem domain (manufacturing / digital product / service) to inform category selection, and collect any prior cause hypotheses as seeds.
+- Non-manufacturing context (SaaS, UX, service) — reject classic 6M and propose a domain-fit category set (e.g., Users / Flow / Content / Infra / Market) in Round 1.
 
 ## Example
 

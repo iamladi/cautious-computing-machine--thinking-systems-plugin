@@ -30,8 +30,9 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 ## Input Handling
 
-- Problem as topic — run the loop.
-- Path — Read the design brief first.
+- Problem as topic — propose 3–5 candidate axes (parameters) in Round 1, each with 3+ independent values; reject axes where one value implies another.
+- Path — Read the design brief first; extract stated requirements as axis candidates and flag any coupled pairs before building the grid.
+- Single-axis problem (only one real parameter varies) — route to first-principles or six-thinking-hats; Zwicky adds no value without 2+ independent dimensions.
 
 ## Example
 

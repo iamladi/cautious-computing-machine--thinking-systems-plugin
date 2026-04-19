@@ -30,8 +30,9 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 ## Input Handling
 
-- Recurring problem as topic — run the loop.
-- Path — Read the incident log or retro doc first.
+- Recurring problem as topic — confirm recurrence signal (2+ occurrences, not a one-off) before descending.
+- Path — Read the incident log or retro doc first; extract the event timeline and any repeat-pattern signal before Round 1.
+- No recurrence evidence yet — elicit it in Round 1; if none exists, route to first-principles instead.
 
 ## Example
 
