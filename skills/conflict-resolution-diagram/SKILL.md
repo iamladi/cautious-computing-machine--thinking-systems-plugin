@@ -31,8 +31,9 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 ## Input Handling
 
-- Conflict described as topic — run the loop.
-- Path — Read the thread, email, or spec where the disagreement lives; extract the two positions.
+- Conflict as topic or Path to thread/email/spec — extract the two *positions* (what each side is demanding) verbatim before reaching for needs or goals; if Path provided, Read the source and quote the demands as-stated. Paraphrasing demands into needs too early collapses the diagram's five nodes into three.
+- Name the shared higher goal explicitly before surfacing assumptions — the diagram collapses if the goal is generic ("success") or actually two goals. A load-bearing shared goal is specific enough that both sides can say "yes, that's what we're both trying to serve".
+- Skip and route when one side is plainly correct (no real conflict), when the conflict is values-based with no shared higher goal (→ hard-choice-model), or when criteria are agreed and only weighting is disputed (→ decision-matrix).
 
 ## Example
 

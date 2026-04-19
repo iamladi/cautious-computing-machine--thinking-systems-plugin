@@ -33,8 +33,9 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 ## Input Handling
 
-- Project/feature as topic — run the loop.
-- Path — Read the spec or RFC first.
+- Project/feature as topic or Path to spec/RFC — extract the claim about *what problem is being solved* separately from *what solution is proposed*; if Path provided, Read the document and split these into two axes before the loop. Collapsing the two is the framework's signature failure.
+- Demand concrete evidence for each axis (user interviews, prototypes, analog wins, live metrics) — "we've discussed it a lot" and "the team feels strongly" are not evidence. Flag any confidence claim that lacks observable grounding as low-confidence regardless of stated strength.
+- Skip and route when both confidences are already explicit and only execution remains, when the domain is chaotic/unknown and the real question is what-kind-of-problem (→ cynefin-framework), or when the work is pure prioritization among already-scoped items (→ eisenhower-matrix / impact-effort-matrix).
 
 ## Example
 

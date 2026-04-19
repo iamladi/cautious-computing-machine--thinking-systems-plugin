@@ -32,8 +32,9 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 ## Input Handling
 
-- Trend or system as topic — run the loop.
-- Path — Read the metrics report or system description first.
+- Trend or system as topic or Path to metrics report/system description — extract the two+ variables that allegedly cause each other to grow (or decline), and check for exponential shape in the data; if Path provided, Read the metrics first and confirm the pattern is compounding, not one-shot linear growth.
+- Name the likely ceiling *before* the loop trace completes — every real reinforcing loop has a balancing loop that will eventually constrain it, and candidate ceilings have very different timelines (hard budget constraint, segment saturation, cost-curve bailout). Picking the comfortable ceiling misses the hard one.
+- Skip and route when the trend is one-shot not compounding (→ first-principles), when 3+ variables interact in a tangled web (→ connection-circles to map the full system first), or when the pattern is return-to-baseline rather than escalation (→ balancing-feedback-loop).
 
 ## Example
 

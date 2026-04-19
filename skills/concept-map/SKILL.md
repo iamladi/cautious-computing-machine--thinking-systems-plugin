@@ -31,8 +31,9 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 ## Input Handling
 
-- Domain or focus question as topic — run the loop.
-- Path — Read the domain documentation first.
+- Domain or focus question as topic or Path to domain documentation — extract the one specific *focus question* before listing entities (not "map our system" but "how do permissions flow in our B2B SaaS"); if Path provided, Read the documentation and enumerate 15–25 candidate nouns grounded in the source.
+- Each proposed link must read as a sentence with an explicit verb or preposition — reject "relates to" / "is associated with" / bare arrows. Unlabeled links convey nothing and hide the unstated override rules where real confusion lives.
+- Skip and route when fewer than 10 entities exist (→ connection-circles for 5–10 causal variables, → first-principles when the problem narrows to a single thread), or when the team already shares the mental model — concept-mapping a settled domain surfaces no gaps.
 
 ## Example
 

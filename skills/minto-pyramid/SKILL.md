@@ -35,8 +35,9 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 ## Input Handling
 
-- Topic provided in the prompt — run the loop from scratch.
-- Path to draft doc — Read the draft first; reverse-engineer the current pyramid (or lack of one), then restructure.
+- Topic or Path to draft doc in the prompt — extract the intended apex conclusion (the one answer, not the topic) before drafting arguments; if Path provided, Read the draft and reverse-engineer the current pyramid (or lack of one) first.
+- Name the audience and the decision they must make — apex fit is audience-specific; exec readers demand external market evidence, engineering readers demand feasibility claims. Buried-lede drafts fail because the apex was drafted for the wrong reader, not because the pyramid is wrong.
+- Skip and flag when the piece is narrative, exploratory, or tutorial — conclusion-first kills suspense, prejudges exploration, and breaks teaching sequence. Refuse the loop rather than force the structure.
 
 ## Example
 

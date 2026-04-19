@@ -31,8 +31,9 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 ## Input Handling
 
-- Feedback situation as topic — run the loop.
-- Path — Read any notes or incident reports first.
+- Feedback situation as topic or Path to notes/incident reports — extract a single observable incident (one place, one time, one verbatim behavior); if Path provided, Read notes first and surface the specific moment rather than the aggregated pattern.
+- Flag any trait words or motive claims in the prompt ("dismissive", "disengaged", "doesn't care") — these are ladder-of-inference Beliefs, not SBI Behavior. Rewrite to video-frame observable before entering the loop or the recipient will dispute the frame.
+- Skip and route when no specific incident anchors the feedback (→ ladder-of-inference to ground the belief), when the issue is pattern-level across months (→ productive-thinking-model or a review framework), or when the real question is whether to escalate (→ conflict-resolution-diagram).
 
 ## Example
 

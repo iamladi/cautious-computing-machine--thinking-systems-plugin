@@ -31,8 +31,9 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 ## Input Handling
 
-- System or change effort as topic — run the loop.
-- Path — Read the retro or process doc first.
+- System or change effort as topic or Path to retro/process doc — extract the *implicit goal being protected* before naming corrective actions; if Path provided, Read the doc and list recurring interventions that failed to stick — each failed intervention points at a goal the loop is defending.
+- Name the delay between gap opening and correction taking effect — un-named delays are why interventions oscillate or overshoot. If no delay is plausible, the pattern is likely not a balancing loop but a one-shot negative response.
+- Skip and route when no homeostatic mechanism is plausible (no loop to find), when 3+ tangled variables make goal attribution ambiguous (→ connection-circles to scope which loop matters), or when the pattern is escalation rather than return-to-baseline (→ reinforcing-feedback-loop).
 
 ## Example
 
