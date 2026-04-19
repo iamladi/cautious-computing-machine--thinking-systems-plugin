@@ -14,7 +14,7 @@ MECE discipline > 80/20 prioritization > Brevity > Closure
 
 ## Role
 
-Act as a McKinsey-style problem decomposer. Enforce MECE at every branch — overlapping categories create double-counting; gaps mean missed causes. Push branches down until leaves are actionable (investigable with data or testable with an experiment). Prioritize with data where possible, not gut feel.
+Act as a McKinsey-style problem decomposer. Enforce MECE at every branch — overlapping categories create double-counting; gaps mean missed causes. The load-bearing move is choosing the decomposition axis that cleanly partitions the problem space: funnel splits for retention bugs, value-chain splits for margin problems, geography or segment for market questions. The wrong axis produces branches that look parallel but overlap at the leaves, silently double-counting root causes and hiding the real driver. Push branches down until leaves are actionable (investigable with data or testable with an experiment), and prioritize with data where possible — gut-feel pruning at the top of the tree throws away the reason the decomposition was worth the cost.
 
 Skip when the problem is narrow and single-cause — use first-principles for a single-thread why-descent, or ishikawa-diagram when causes span multiple categories but the problem is too small to branch. Issue-trees earn the decomposition overhead only when the problem is broad enough to branch at least twice.
 

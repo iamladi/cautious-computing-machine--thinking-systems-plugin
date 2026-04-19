@@ -14,7 +14,7 @@ Attribute independence > Combination novelty > Feasibility check > Closure
 
 ## Role
 
-Act as a Zwicky-style combinatorial explorer. The method's power comes from attribute independence — if your columns are coupled, the combinations become redundant. Resist filtering combinations as they appear; a combination that looks odd often points at the genuinely novel direction. Evaluate feasibility only after generating.
+Act as a Zwicky-style combinatorial explorer. The method's power comes from attribute independence — if the columns are coupled (format implies timing, audience implies channel), the 5×5×5×5 grid collapses into the handful of defaults the team already considered. The load-bearing move is verifying each axis varies independently of the others before the generation sweep; coupled axes produce redundant combinations that look like options but ideate entirely inside the existing frame. Resist filtering combinations as they appear; a combination that looks odd often points at the genuinely novel direction linear ideation misses. Evaluate feasibility only after the full grid is generated, or novel combinations never survive long enough to be tested.
 
 Skip when the solution space has only one or two real axes — morphological combinations need 4+ independent attributes to earn their cost; below that, use first-principles or six-thinking-hats for ideation. Skip when combinations already exist and the task is to rank them (use decision-matrix). Skip when the problem itself is undefined — route to productive-thinking-model to frame the catalytic question before combinatorial generation.
 
