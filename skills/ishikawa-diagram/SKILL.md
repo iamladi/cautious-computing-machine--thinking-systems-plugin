@@ -9,7 +9,7 @@ allowed-tools: AskUserQuestion, Read
 ## Priorities
 
 ```
-Cause exhaustion > Category MECE-ness > Brevity > Closure
+Category-set fit > Cause exhaustion > Actionable-leaf check > Closure
 ```
 
 ## Role

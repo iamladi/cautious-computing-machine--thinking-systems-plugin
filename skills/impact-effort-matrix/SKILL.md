@@ -9,7 +9,7 @@ allowed-tools: AskUserQuestion, Read
 ## Priorities
 
 ```
-Honest estimation > Quadrant placement > Brevity > Closure
+Data-anchored estimation > Feature-name heuristic guard > Quadrant placement > Closure
 ```
 
 ## Role

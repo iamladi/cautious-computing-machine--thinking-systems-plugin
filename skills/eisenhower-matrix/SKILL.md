@@ -9,7 +9,7 @@ allowed-tools: AskUserQuestion, Read
 ## Priorities
 
 ```
-Goal alignment > Urgency calibration > Brevity > Closure
+Goal anchor > Urgency/importance split > Q3-displacement surfacing > Closure
 ```
 
 ## Role

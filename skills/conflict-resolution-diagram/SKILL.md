@@ -9,7 +9,7 @@ allowed-tools: AskUserQuestion, Read
 ## Priorities
 
 ```
-Shared-goal accuracy > Assumption surfacing > Brevity > Closure
+Hidden-assumption invalidation > Shared-goal accuracy > Compromise rejection > Closure
 ```
 
 ## Role

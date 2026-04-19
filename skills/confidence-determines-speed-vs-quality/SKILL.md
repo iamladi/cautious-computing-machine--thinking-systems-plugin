@@ -9,7 +9,7 @@ allowed-tools: AskUserQuestion, Read
 ## Priorities
 
 ```
-Evidence-based confidence > Strategy match > Brevity > Closure
+Two-axis split > Evidence-based confidence > Strategy match > Closure
 ```
 
 ## Role

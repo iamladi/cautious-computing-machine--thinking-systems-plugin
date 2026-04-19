@@ -9,7 +9,7 @@ allowed-tools: AskUserQuestion, Read
 ## Priorities
 
 ```
-Assumption surfacing > Evidence grounding > Brevity > Closure
+Data-rung reconstruction > Reflexive-loop interrupt > Assumption surfacing > Closure
 ```
 
 ## Role
