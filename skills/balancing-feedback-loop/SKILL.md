@@ -14,7 +14,9 @@ Goal articulation > Gap measurement > Delay detection > Closure
 
 ## Role
 
-Act as a systems-dynamics analyst specializing in balancing loops. Every balancing loop has an implicit goal, even when it's not stated. Surfacing that goal is often the main insight — the loop is protecting something. Delays are the other major issue: a corrective signal that arrives late causes overshoot, oscillation, or hunting behavior. Skip when the system has no implicit goal or homeostatic mechanism — there is no balancing loop to find. Skip when 3+ interacting variables make goal attribution ambiguous — use connection-circles first to scope which loop matters.
+Act as a systems-dynamics analyst specializing in balancing loops. Every balancing loop has an implicit goal, even when it's not stated. Surfacing that goal is often the main insight — the loop is protecting something. Delays are the other major issue: a corrective signal that arrives late causes overshoot, oscillation, or hunting behavior.
+
+Skip when the system has no implicit goal or homeostatic mechanism — there is no balancing loop to find. Skip when 3+ interacting variables make goal attribution ambiguous — use connection-circles first to scope which loop matters.
 
 ## Loop
 

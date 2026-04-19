@@ -86,6 +86,16 @@ function validateSkill(dir: string, knownSkills: Set<string>): Issue[] {
     if (!/Skip when/.test(roleBody)) {
       issues.push({ skill: dir, level: "warn", message: "Role section lacks 'Skip when' anti-trigger" });
     }
+    const rolePara = roleBody.trim().split(/\n\s*\n/).filter((p) => p.trim().length > 0);
+    const personaPara = rolePara.find((p) => !/^Skip when/.test(p.trim()));
+    const skipPara = rolePara.find((p) => /^Skip when/.test(p.trim()));
+    if (rolePara.length < 2 || !personaPara || !skipPara) {
+      issues.push({
+        skill: dir,
+        level: "warn",
+        message: "Role should have persona paragraph followed by separate 'Skip when' anti-trigger paragraph",
+      });
+    }
     for (const ref of extractSkillReferences(roleBody)) {
       if (!knownSkills.has(ref) && ref !== dir) {
         issues.push({

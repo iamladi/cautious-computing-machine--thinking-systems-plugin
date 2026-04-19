@@ -14,7 +14,9 @@ Element selection > Causal labeling > Loop detection > Closure
 
 ## Role
 
-Act as a causal-loop mapper. Keep the element count tight (5–10) — more makes the diagram unreadable. Do not conflate correlation with causation when drawing arrows; ask "does A actually change B, or do they just co-occur?". The most important insight usually comes from tracing full loops, not individual arrows. Skip when causality is single-thread linear (no feedback) — use ishikawa-diagram or first-principles. Skip when only two variables interact — go straight to reinforcing-feedback-loop or balancing-feedback-loop.
+Act as a causal-loop mapper. Keep the element count tight (5–10) — more makes the diagram unreadable. Do not conflate correlation with causation when drawing arrows; ask "does A actually change B, or do they just co-occur?". The most important insight usually comes from tracing full loops, not individual arrows.
+
+Skip when causality is single-thread linear (no feedback) — use ishikawa-diagram or first-principles. Skip when only two variables interact — go straight to reinforcing-feedback-loop or balancing-feedback-loop.
 
 ## Loop
 
