@@ -1,8 +1,6 @@
 ---
 name: first-principles
 description: Breaks a problem down to irreducible truths (stripping away assumptions and analogies), then rebuilds a solution from the ground up. Uses Five Whys and Socratic questioning as descent tools. Use when conventional solutions feel inadequate, when copying competitors isn't working, when a problem is genuinely novel, or when the user says "first principles", "from scratch", "what's actually true here", or "ignore how it's normally done".
-argument-hint: [problem]
-model: opus
 allowed-tools: AskUserQuestion, Read
 ---
 

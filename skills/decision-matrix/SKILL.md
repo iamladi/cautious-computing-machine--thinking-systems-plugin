@@ -1,8 +1,6 @@
 ---
 name: decision-matrix
 description: Builds a weighted-score matrix to choose between options across multiple factors. Produces an auditable ranked recommendation. Use when the user has 2+ options and several unequal evaluation criteria, when a decision is contested among stakeholders, when they want a shareable record of how a choice was made, or when they say "weighted decision", "score the options", "which one should we pick", or "decision matrix".
-argument-hint: [decision or options]
-model: opus
 allowed-tools: AskUserQuestion, Read
 ---
 

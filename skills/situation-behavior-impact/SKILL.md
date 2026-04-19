@@ -1,8 +1,6 @@
 ---
 name: situation-behavior-impact
 description: Delivers feedback using the SBI model — Situation (specific context) + Behavior (observable actions only) + Impact (consequences on you/team/work), then optionally asks Intent. Use when the user needs to give critical or positive feedback, when they're making assumptions about someone's motives, when they want feedback to be specific enough to be actionable, or when they say "SBI", "give feedback", or "how do I say this to them".
-argument-hint: [feedback to deliver]
-model: opus
 allowed-tools: AskUserQuestion, Read
 ---
 

@@ -1,8 +1,6 @@
 ---
 name: issue-trees
 description: Decomposes a complex problem (or goal) into a MECE (Mutually Exclusive, Collectively Exhaustive) branching tree — problem-tree for causes, solution-tree for options — then prioritizes branches using the 80/20 rule. Use when a problem is large and diffuse, when you need to communicate problem structure to stakeholders, when prioritizing root causes or solution directions, or when the user says "issue tree", "MECE", "break down the problem", or "structure this problem".
-argument-hint: [problem or goal]
-model: opus
 allowed-tools: AskUserQuestion, Read
 ---
 

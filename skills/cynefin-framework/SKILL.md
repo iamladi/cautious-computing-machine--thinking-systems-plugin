@@ -1,8 +1,6 @@
 ---
 name: cynefin-framework
 description: Classifies a situation into Clear, Complicated, Complex, Chaotic, or Disorder and prescribes the matching response (sense-categorize-respond, sense-analyze-respond, probe-sense-respond, act-sense-respond). Use when the user is unsure whether to apply best practices, call in experts, experiment, or act decisively, when a team is debating "more analysis vs act now", or when they say "Cynefin", "complex vs complicated", "Snowden framework", or "what kind of problem is this".
-argument-hint: [situation]
-model: opus
 allowed-tools: AskUserQuestion, Read
 ---
 

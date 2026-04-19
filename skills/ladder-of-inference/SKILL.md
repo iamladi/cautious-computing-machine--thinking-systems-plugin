@@ -1,8 +1,6 @@
 ---
 name: ladder-of-inference
 description: Traces a belief or decision back down through its reasoning chain (beliefs → conclusions → assumptions → interpretations → selected data → raw data) to surface unjustified leaps. Use when the user wants to validate their reasoning before acting, when a disagreement turns on different mental models, when a decision led to a bad outcome and needs a post-mortem, or when they say "check my reasoning", "why do I believe this", "am I jumping to conclusions", or "ladder of inference".
-argument-hint: [belief or conclusion]
-model: opus
 allowed-tools: AskUserQuestion, Read
 ---
 

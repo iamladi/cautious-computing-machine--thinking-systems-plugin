@@ -1,8 +1,6 @@
 ---
 name: ishikawa-diagram
 description: Builds a fishbone diagram mapping candidate root causes across categories (People, Equipment, Methods, Measurement, Material, Environment — or custom). Use when a problem keeps recurring and the cause isn't clear, when multiple teams or factors are involved and finger-pointing has started, or when the user says "fishbone", "root cause analysis", "why does this keep happening", or "Ishikawa".
-argument-hint: [problem]
-model: opus
 allowed-tools: AskUserQuestion, Read
 ---
 
