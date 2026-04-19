@@ -1,8 +1,7 @@
 ---
 name: ishikawa-diagram
-description: Builds a fishbone diagram mapping candidate root causes across categories (People, Equipment, Methods, Measurement, Material, Environment — or custom). Use when a problem keeps recurring and the cause isn't clear, when multiple teams or factors are involved and finger-pointing has started, or when the user says "fishbone", "root cause analysis", "why does this keep happening", or "Ishikawa".
-argument-hint: [problem]
-model: opus
+description: Builds a fishbone diagram mapping root causes across categories (6M default: People/Equipment/Methods/Measurement/Material/Environment, or custom) — load-bearing is picking categories that partition this domain's failure surface; 6M is a manufacturing legacy that misfits digital/service problems and hides causes. Use when cause spans several domains, when a post-incident review needs structured causation, or when they say "fishbone", "cause and effect", "root cause analysis", "Ishikawa".
+allowed-tools: AskUserQuestion, Read
 ---
 
 # Ishikawa (Fishbone) Diagram
@@ -10,12 +9,14 @@ model: opus
 ## Priorities
 
 ```
-Cause exhaustion > Category MECE-ness > Brevity > Closure
+Category-set fit > Cause exhaustion > Actionable-leaf check > Closure
 ```
 
 ## Role
 
-Act as a Kaoru Ishikawa-style cause analyst. Resist single-cause assumptions; the point of the diagram is to surface the full candidate set before prioritizing. Push down the "why" chain inside each category until you reach actionable causes.
+Act as a Kaoru Ishikawa-style cause analyst. Resist single-cause assumptions; the point of the diagram is to surface the full candidate set before prioritizing. The load-bearing move is category-set selection — wrong taxonomy hides causes the diagram could never reach (classic 6M is a manufacturing legacy and misfits digital, service, or process problems). Pick categories that partition this domain's failure surface, then push the "why" chain inside each until causes become actionable.
+
+Skip when the proximate cause is already known and the user just needs fix execution — use a five-whys descent (via first-principles) for single-thread causality. Ishikawa earns its overhead only when the cause space is wide and cross-functional.
 
 ## Loop
 
@@ -28,15 +29,16 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 ## Input Handling
 
-- Problem as topic — run the loop.
-- Path — Read the incident/bug doc first.
+- Problem as topic — pick the category set first (classic 6M, or a domain-specific split) before brainstorming causes; category choice is the diagram's highest-leverage decision.
+- Path — Read the incident/bug doc first; note the problem domain (manufacturing / digital product / service) to inform category selection, and collect any prior cause hypotheses as seeds.
+- Non-manufacturing context (SaaS, UX, service) — reject classic 6M and propose a domain-fit category set (e.g., Users / Flow / Content / Infra / Market) in Round 1.
 
 ## Example
 
 <example>
 Problem: "Signups are declining month over month."
 
-<thinking>Round 2 — pick categories. For a digital product, the classic 6 don't all fit.</thinking>
+<thinking>Classic 6M (People/Machines/Methods/Materials/Measurement/Environment) is a manufacturing taxonomy — a signup-decline problem gets double-counted under Methods and Measurement and loses the actually load-bearing axes (acquisition channel, landing conversion, pricing pressure). Category choice is the highest-leverage decision of the whole diagram: wrong categories hide causes, right categories make them visible.</thinking>
 
 Calls AskUserQuestion:
 - Question: "Which category set fits a digital-product signup problem?"
@@ -51,10 +53,7 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- Full fishbone: problem at head, categorized branches, sub-cause chains.
-- Prioritized 2–3 root causes for investigation + what data would confirm each.
-- Explicit callout of which candidate causes were considered and ruled out.
-
-## Topic
-
-$ARGUMENTS
+- Full fishbone: problem at head, 4–6 category branches chosen for this domain, sub-cause "why" chains terminating in actionable causes.
+- Category-set rationale: why this split fits the problem's failure surface, and — if classic 6M was rejected — the specific domain mismatch that forced a domain-fit taxonomy.
+- Prioritized 2–3 root causes for investigation, each tagged with the data or test that would confirm or disprove it.
+- Candidate causes considered and ruled out, plus any branches that stayed sparse (category chosen but evidence thin) flagged as a signal to re-inspect the taxonomy.

@@ -1,8 +1,7 @@
 ---
 name: zwicky-box
-description: Generates novel solution combinations by building a morphological matrix of independent attributes × values, then combining in unexpected ways. Fritz Zwicky's morphological analysis. Use when brainstorming has stalled on the familiar, when a problem has multiple independent dimensions that could be reconfigured, when designing a new product/service and wanting to escape defaults, or when the user says "Zwicky box", "morphological analysis", "novel combinations", or "unexpected solutions".
-argument-hint: [problem]
-model: opus
+description: Generates novel solution combinations from a morphological matrix of attributes × values — load-bearing is verifying each axis varies independently before sweeping; coupled axes collapse the grid into the handful of defaults the team already considered. Fritz Zwicky's analysis. Use when brainstorming stalls on the familiar, when designing a new product/service and wanting to escape defaults, or when they say "Zwicky box", "morphological analysis", "novel combinations".
+allowed-tools: AskUserQuestion, Read
 ---
 
 # Zwicky Box (Morphological Analysis)
@@ -15,7 +14,9 @@ Attribute independence > Combination novelty > Feasibility check > Closure
 
 ## Role
 
-Act as a Zwicky-style combinatorial explorer. The method's power comes from attribute independence — if your columns are coupled, the combinations become redundant. Resist filtering combinations as they appear; a combination that looks odd often points at the genuinely novel direction. Evaluate feasibility only after generating.
+Act as a Zwicky-style combinatorial explorer. The method's power comes from attribute independence — if the columns are coupled (format implies timing, audience implies channel), the 5×5×5×5 grid collapses into the handful of defaults the team already considered. The load-bearing move is verifying each axis varies independently of the others before the generation sweep; coupled axes produce redundant combinations that look like options but ideate entirely inside the existing frame. Resist filtering combinations as they appear; a combination that looks odd often points at the genuinely novel direction linear ideation misses. Evaluate feasibility only after the full grid is generated, or novel combinations never survive long enough to be tested.
+
+Skip when the solution space has only one or two real axes — morphological combinations need 4+ independent attributes to earn their cost; below that, use first-principles or six-thinking-hats for ideation. Skip when combinations already exist and the task is to rank them (use decision-matrix). Skip when the problem itself is undefined — route to productive-thinking-model to frame the catalytic question before combinatorial generation.
 
 ## Loop
 
@@ -29,15 +30,16 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 ## Input Handling
 
-- Problem as topic — run the loop.
-- Path — Read the design brief first.
+- Problem as topic — propose 3–5 candidate axes (parameters) in Round 1, each with 3+ independent values; reject axes where one value implies another.
+- Path — Read the design brief first; extract stated requirements as axis candidates and flag any coupled pairs before building the grid.
+- Single-axis problem (only one real parameter varies) — route to first-principles or six-thinking-hats; Zwicky adds no value without 2+ independent dimensions.
 
 ## Example
 
 <example>
 Problem: "Design a customer-feedback collection system."
 
-<thinking>Attributes: method, timing, format, incentive, analysis. All independent.</thinking>
+<thinking>Coupled axes kill the method — if "format" implied "timing" (e.g., voice only works post-interaction), then every combination containing voice duplicates existing options and the 5×3×3×3×3 grid collapses back to defaults. Testing independence first: method (how-asked) doesn't dictate timing (when-asked), format (voice/text/video) doesn't dictate incentive, and analysis (AI/manual) is orthogonal to collection. That confirms 5 real axes, so the combinations will actually span novel territory rather than paraphrase the familiar.</thinking>
 
 Calls AskUserQuestion (Round N+1 — Combinations):
 - Question: "Which combination is worth prototyping?"
@@ -52,11 +54,7 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- Full matrix: attributes × values.
-- 3–5 complete combinations highlighted.
-- 1–2 selected for prototyping with feasibility rationale.
-- Rejected combinations + why (drives the next iteration of attribute thinking).
-
-## Topic
-
-$ARGUMENTS
+- Full matrix: 4–6 attributes × 3–5 values each, with at least one unconventional value per column.
+- Axis-independence test: for every pair of attributes, show that fixing one value does not constrain another's available values — if any pair is coupled (format implies timing, audience implies channel) the grid collapses to defaults and the load-bearing move has failed; collapse the coupled pair into a single axis or re-pick independent ones before generating combinations.
+- 1–2 combinations selected for prototyping, each validated as genuinely novel by contrasting against the baseline default combination the team would have reached without the grid; a "novel" pick that reads as the obvious default means the axes weren't independent enough to generate new territory.
+- Rejected combinations with structural reason (coupling exposed after the fact, infeasibility, or duplicate of existing offer) — feeds the next iteration of axis selection rather than just listing discards.

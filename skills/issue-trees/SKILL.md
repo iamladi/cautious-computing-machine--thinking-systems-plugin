@@ -1,8 +1,7 @@
 ---
 name: issue-trees
-description: Decomposes a complex problem (or goal) into a MECE (Mutually Exclusive, Collectively Exhaustive) branching tree — problem-tree for causes, solution-tree for options — then prioritizes branches using the 80/20 rule. Use when a problem is large and diffuse, when you need to communicate problem structure to stakeholders, when prioritizing root causes or solution directions, or when the user says "issue tree", "MECE", "break down the problem", or "structure this problem".
-argument-hint: [problem or goal]
-model: opus
+description: Decomposes a problem (or goal) into a MECE branching tree — problem-tree for causes, solution-tree for options — load-bearing is choosing the decomposition axis that cleanly partitions the space (funnel for retention, value-chain for margin, segment for market); the wrong axis makes branches overlap silently at the leaves and hides the real driver. Use when a problem is large and diffuse, or the user says "issue tree", "MECE", "break down the problem", or "structure this problem".
+allowed-tools: AskUserQuestion, Read
 ---
 
 # Issue Trees
@@ -10,12 +9,14 @@ model: opus
 ## Priorities
 
 ```
-MECE discipline > 80/20 prioritization > Brevity > Closure
+Axis selection > MECE discipline > Actionable-leaf check > Closure
 ```
 
 ## Role
 
-Act as a McKinsey-style problem decomposer. Enforce MECE at every branch — overlapping categories create double-counting; gaps mean missed causes. Push branches down until leaves are actionable (investigable with data or testable with an experiment). Prioritize with data where possible, not gut feel.
+Act as a McKinsey-style problem decomposer. Enforce MECE at every branch — overlapping categories create double-counting; gaps mean missed causes. The load-bearing move is choosing the decomposition axis that cleanly partitions the problem space: funnel splits for retention bugs, value-chain splits for margin problems, geography or segment for market questions. The wrong axis produces branches that look parallel but overlap at the leaves, silently double-counting root causes and hiding the real driver. Push branches down until leaves are actionable (investigable with data or testable with an experiment), and prioritize with data where possible — gut-feel pruning at the top of the tree throws away the reason the decomposition was worth the cost.
+
+Skip when the problem is narrow and single-cause — use first-principles for a single-thread why-descent, or ishikawa-diagram when causes span multiple categories but the problem is too small to branch. Issue-trees earn the decomposition overhead only when the problem is broad enough to branch at least twice.
 
 ## Loop
 
@@ -29,15 +30,16 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 ## Input Handling
 
-- Problem or goal as topic — run the loop.
-- Path — Read the source doc first.
+- Problem or goal as topic — extract the apex question first (answer-shaped, single focus) before splitting.
+- Path — Read the source doc first; identify the apex question, then pick the decomposition axis that cleanly partitions this domain (funnel for retention, value-chain for margin, segment for market, cost structure for margin) before drawing branches. Axis selection is the load-bearing move: the wrong axis (e.g., UX/marketing/competitive for a retention problem) makes branches overlap silently at the leaves and hides the real driver.
+- Multiple candidate apex questions or candidate axes — surface both sets in Round 1 and pick one of each; misaligned apex or overlapping axis breaks MECE downstream.
 
 ## Example
 
 <example>
 Problem: "Low adoption of Feature X."
 
-<thinking>Round 3 — first-level branches must be MECE.</thinking>
+<thinking>Adoption problems decompose cleanly along a funnel (unaware → aware-but-don't-try → try-but-don't-stick) because each stage has distinct root causes and interventions. Category splits like UX/marketing/competitive fail MECE — a retention bug is both a UX issue and a marketing issue, so work gets double-counted or missed.</thinking>
 
 Calls AskUserQuestion:
 - Question: "Which first-level decomposition is MECE?"
@@ -52,10 +54,9 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
+- Axis-selection audit: the chosen decomposition axis (funnel / value-chain / segment / cost-structure / lifecycle stage) is named with why it cleanly partitions this specific domain, and at least one rejected axis is cited with the concrete leaf-overlap it would have produced (e.g., UX/marketing/competitive rejected for retention because a churn bug lives in both UX and marketing branches). An unnamed axis or a rejected-axis list without overlap mechanics fails the load-bearing audit and the tree re-runs before MECE checks, because MECE discipline applied to the wrong axis still produces silently-overlapping leaves.
 - Full tree rendered as nested bullets: root → first-level branches → sub-branches → actionable leaves.
+- MECE check at each level with a one-line justification for the split choice, grounded in the axis chosen above.
 - Prioritized branch (the 20% driving 80%) with data (or a plan to gather data).
 - Focused solution effort on that branch.
-
-## Topic
-
-$ARGUMENTS
+- Rejected alternative splits with why they would overlap or miss cases.

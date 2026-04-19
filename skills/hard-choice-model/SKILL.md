@@ -1,8 +1,7 @@
 ---
 name: hard-choice-model
-description: Classifies a decision by impact (low/high) and comparability (easy/hard) into No-Brainer / Apples-and-Oranges / Big Choice / Hard Choice, then matches a deliberation strategy. Use when the user is spending too much time on a decision and can't tell if the effort is justified, when a decision feels hard but they can't say why, or when they say "should I even be thinking about this", "is this worth deliberating", "stuck between options", or "hard choice".
-argument-hint: [decision]
-model: opus
+description: Classifies a decision by impact (low/high) and comparability (easy/hard) into No-Brainer / Apples-and-Oranges / Big Choice / Hard Choice, then matches deliberation strategy — load-bearing is the comparability pre-test; running hard-choice machinery on comparable options romanticizes analytical indecision and wastes weeks. Use when spending too much time on a decision, when it feels hard but they can't say why, or when they say "is this worth deliberating", "stuck between options", "hard choice".
+allowed-tools: AskUserQuestion, Read
 ---
 
 # Hard Choice Model
@@ -10,12 +9,14 @@ model: opus
 ## Priorities
 
 ```
-Classification accuracy > Deliberation match > Brevity > Closure
+Comparability pre-test > Quadrant accuracy > Deliberation match > Closure
 ```
 
 ## Role
 
-Act as a decision-type triager. The goal is not to make the decision — it is to determine what kind of decision this is, so the user applies the right amount of deliberation. A Hard Choice (high impact, hard to compare) cannot be resolved by more analysis; it turns on values and identity, not spreadsheets.
+Act as a decision-type triager in the Ruth Chang tradition. The goal is not to make the decision — it is to determine what kind of decision this is, so the user applies the right amount of deliberation. The load-bearing move is the comparability pre-test: check whether the options share a dominant metric, because a Hard Choice (high stakes, no shared metric, turns on values and identity) cannot be resolved by more analysis, and a covertly-easy choice wastes weeks of agonizing over options that a decision-matrix would settle in an afternoon. The structural failure mode is running hard-choice machinery on comparable options — the user mistakes analytical indecision for genuine values conflict, romanticizes the deliberation, and never actually picks.
+
+Skip when the options already share comparable dimensions and agreed weights — that is decision-matrix territory, not a hard-choice classification. Skip when the user already knows the decision is high-stakes and wants structured analysis (route to decision-matrix or productive-thinking-model). Skip when the problem is conflict between two parties' positions — route to conflict-resolution-diagram.
 
 ## Loop
 
@@ -34,14 +35,15 @@ Footer every round: `Reply format: 1a 2b or defaults`
 ## Input Handling
 
 - Decision as topic — run the loop.
-- Path — Read the doc first; classify the decision it describes.
+- Path — Read the doc first; extract the 2–3 dimensions that actually separate the options (salary, timeline, team fit, craft-vs-management path).
+- Run the comparability pre-test before classifying: if every dimension maps to a shared metric the decision is Big — route to decision-matrix. If any dimension is values-based (identity, life path, what kind of person to be) the decision is Hard and this skill's move applies.
 
 ## Example
 
 <example>
 Topic: "Take the new job or stay?"
 
-<thinking>Impact is high. Comparability depends on how the two offers compare on comparable dimensions.</thinking>
+<thinking>Career moves often look Big (high-impact, same metrics — salary, seniority) but become Hard when a dimension like "management vs IC path" enters, since that's a values question no weighted score can settle. Test comparability before investing analysis: if dimensions don't map cleanly, decision-matrix is the wrong tool and the conversation must turn to which life the user wants to live.</thinking>
 
 Calls AskUserQuestion (Round 2):
 - Question: "Can you compare the two options on the same dimensions (salary, seniority, growth)?"
@@ -56,11 +58,7 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- Quadrant classification with rationale.
-- Prescribed strategy + rough time budget.
-- If Hard Choice: surface the values at stake, not a scoring exercise.
-- Suggested next action consistent with the class.
-
-## Topic
-
-$ARGUMENTS
+- Quadrant classification (No-Brainer / Apples-and-Oranges / Big Choice / Hard Choice) with the impact and comparability readings that produced it.
+- Comparability pre-test evidence: the specific dimension(s) that do or do not map to a shared metric — a Hard verdict must cite at least one values/identity dimension that no weight can settle; a Big verdict must show that every dimension maps to comparable units. Without that evidence the classification is gut-feel, which is the structural failure mode (hard-choice machinery on comparable options).
+- Prescribed strategy with a rough time budget that matches the quadrant (minutes for No-Brainer, days for Apples-and-Oranges, weeks for Big, values-work for Hard); if the user is already spending far more time than the class prescribes, flag the mismatch as the real finding.
+- Residual route-out: if Hard, the values at stake named as identity-shaped questions (not scoring factors), plus an explicit note that decision-matrix will not resolve this; if Big, route to decision-matrix; if No-Brainer / Apples-and-Oranges, flag deliberation overhead as the cost to cut.

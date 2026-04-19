@@ -1,8 +1,7 @@
 ---
 name: ooda-loop
-description: Runs John Boyd's Observe–Orient–Decide–Act cycle for time-pressured decisions with incomplete information. Use when a decision must be made quickly with partial data, when competitive dynamics are shifting faster than the current process can track, during a crisis or rapidly evolving situation, or when the user says "OODA", "fast loop", "out-decide them", "move faster than", or "react before we know everything".
-argument-hint: [situation]
-model: opus
+description: Runs John Boyd's Observe–Orient–Decide–Act cycle for time-pressured decisions with incomplete information — Orient is load-bearing, since it's where mental models combine into the frame driving every Decide/Act, and teams that race from Observe to Act commit to whichever frame arrived first. Use when a decision must be made quickly with partial data, when competitive dynamics shift fast, during a crisis, or when the user says "OODA", "fast loop", or "out-decide them".
+allowed-tools: AskUserQuestion, Read
 ---
 
 # OODA Loop
@@ -10,12 +9,14 @@ model: opus
 ## Priorities
 
 ```
-Cycle speed > Decision quality > Orient rigor > Closure
+Orient rigor > Cycle speed > Decision quality > Closure
 ```
 
 ## Role
 
-Act as a Boyd-style tactical advisor. Speed of cycle matters more than perfection of any single cycle — competitive advantage comes from iterating faster than the opponent or environment. Orientation (step 2) is the biggest leverage point; it's where mental models, experience, and biases combine. Do not skip it.
+Act as a Boyd-style tactical advisor. Speed of cycle matters more than perfection of any single cycle — competitive advantage comes from iterating faster than the opponent or environment. The load-bearing move is Orient (step 2): it's where mental models, experience, and biases combine into the frame driving every subsequent Decide/Act, so teams that race from Observe to Act commit resources to whichever frame arrived first and collapse their cycle advantage into repeated wrong-frame execution. Never skip Orient; stress-test the working frame explicitly each cycle before the Decide gate.
+
+Skip when the decision has long horizons, ample data, and no competitive or time pressure — OODA's cycle-speed edge disappears when there's no opponent; prefer decision-matrix or first-principles for deliberative choices.
 
 ## Loop
 
@@ -29,8 +30,9 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 ## Input Handling
 
-- Situation as topic — run one full cycle, then invite another.
-- Path — Read the situation report first.
+- Path — Read the situation report first; extract the freshest signal and name the clock (competitor, market, outage) because OODA's edge is cycle time against that specific tempo, not abstract speed.
+- Identify the mental model currently shaping interpretation and flag it as an Orient anchor to stress-test; skipping Orient and racing from Observe to Act commits resources to whichever frame arrived first, not the best-calibrated one.
+- If no opponent or deadline pressure exists and data is ample, stop and route to decision-matrix or first-principles; OODA's cycle-speed advantage disappears in deliberative settings.
 
 ## When to stop looping
 
@@ -43,7 +45,7 @@ Footer every round: `Reply format: 1a 2b or defaults`
 <example>
 Topic: "Competitor just launched a new pricing tier."
 
-<thinking>Observe done (competitor launch). Jump to Orient.</thinking>
+<thinking>The launch itself is already-observed data — further observation buys little. The actual bottleneck is Orient: three mutually-exclusive frames (defensive / land-grab / signal) imply radically different Decisions, so acting before Orient collapses into one frame would commit resources to the wrong response. OODA tempo says re-orient fast on visible moves before the Act phase.</thinking>
 
 Calls AskUserQuestion:
 - Question: "Which frame best explains the competitor's move?"
@@ -58,11 +60,8 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- Full OODA cycle recorded: Observation → Orientation → Decision → Action.
-- Measurement plan for the Act phase.
-- Pace recommendation for the next cycle.
+- Orient load-bearing audit: the Orientation rung must carry an explicit mental-model statement plus the evidence that would invalidate it, stress-tested before the Decide gate rather than inherited from the first frame that arrived. An Orientation bullet that only restates the Observation, or skips the invalidation condition, fails the load-bearing audit and the cycle re-runs Orient before Decide commits — because racing from Observe to Act collapses the cycle-speed advantage into repeated wrong-frame execution.
+- Full OODA cycle recorded: Observation → Orientation → Decision → Action, with the Decision traceable to the Orient frame (not to the raw Observation).
+- Measurement plan for the Act phase — what signal proves or kills the hypothesis.
+- Pace recommendation for the next cycle, faster than the adversary's or environment's clock.
 - Residual risks the cycle did not resolve.
-
-## Topic
-
-$ARGUMENTS

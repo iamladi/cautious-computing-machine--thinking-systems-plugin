@@ -1,8 +1,7 @@
 ---
 name: abstraction-laddering
-description: Moves a problem statement up (why? — reframing at higher abstraction) and down (how? — concrete solutions) the ladder to test whether you're solving the right problem. Use when solutions feel limited, when the initial framing might be too narrow or too broad, or when the user says "am I solving the right problem", "reframe this", "why are we doing this", or "abstraction laddering".
-argument-hint: [problem statement]
-model: opus
+description: Climbs a problem up (why?) and down (how?) the ladder — load-bearing is detecting solution-rung framings (artifact names like "dashboard" or "onboarding flow") and climbing before ideating, because running options from the solution rung just produces variants of the locked frame. Use when solutions feel limited, when framing feels too narrow or broad, or the user says "reframe this", "am I solving the right problem", "zoom out", or "abstraction laddering".
+allowed-tools: AskUserQuestion, Read
 ---
 
 # Abstraction Laddering
@@ -10,12 +9,14 @@ model: opus
 ## Priorities
 
 ```
-Framing flexibility > Ladder traversal > Brevity > Closure
+Solution-rung detection > Climb before ideating > Rung-fit validation > Closure
 ```
 
 ## Role
 
-Act as a problem-reframing coach. Most stuck problems are stuck because the framing is wrong, not because the solutions are hard. Climb up (why?) before climbing down (how?) — better framings open better solution spaces that are invisible from the original rung.
+Act as a problem-reframing coach. Most stuck problems are stuck because the framing is wrong, not because the solutions are hard. The load-bearing move is detecting solution-rung framings at the start — statements that name an artifact (can opener, dashboard, onboarding flow) instead of the outcome users need — and climbing up before generating any options, because running ideation from the solution rung just produces variants of the locked frame. Climb up (why?) before climbing down (how?) — better framings open solution spaces that are invisible from the original rung.
+
+Skip when the framing is already validated against user outcomes or when the task is execution not framing — climbing the ladder on a well-framed problem produces reframings no one asked for and delays the real work.
 
 ## Loop
 
@@ -30,14 +31,15 @@ Footer every round: `Reply format: 1a 2b or defaults`
 ## Input Handling
 
 - Problem statement as topic — run the loop.
-- Path — Read the problem doc first; extract the statement.
+- Path — Read the problem doc first; extract the single-sentence statement before climbing.
+- Detect solution-rung framing upfront: if the statement names an artifact (can opener, dashboard, onboarding flow) instead of the outcome users need, climb up first — otherwise the skill reinforces the locked frame rather than challenging it.
 
 ## Example
 
 <example>
 Problem: "Design a better can opener."
 
-<thinking>Classic narrow framing. Climb up.</thinking>
+<thinking>"Can opener" is the solution rung, not the problem. Framing locks us at the artifact; climb up to why cans get opened and the solution space opens to packaging, preservation, food delivery.</thinking>
 
 Calls AskUserQuestion:
 - Question: "Why do we care about opening cans?"
@@ -52,11 +54,7 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- Full ladder with 3–5 rungs labeled from abstract (top) to concrete (bottom).
-- Selected rung + rationale.
-- Concrete solutions generated from the selected rung.
-- If a higher rung was selected, the original problem statement is reframed.
-
-## Topic
-
-$ARGUMENTS
+- Full ladder with 3–5 rungs labeled from abstract (top) to concrete (bottom); starting rung flagged and, if artifact-named, the climb-first move cited.
+- Selected rung + rationale for why its altitude matches the problem's degree of freedom (too abstract → ungrounded; too concrete → re-generates the starting artifact).
+- Concrete solutions from the selected rung, plus one solution each from the rung above and below as a sanity check that the altitude choice earned its framing.
+- Rejected rungs named with the reason; if a higher rung was selected, the original problem statement is reframed to match.

@@ -1,8 +1,7 @@
 ---
 name: second-order-thinking
-description: Maps downstream consequences of a decision across three time horizons (10 min / 10 months / 10 years) so ripple effects aren't missed. Use when a decision looks obviously good at first glance, when making a major life or business change, when a choice has cross-domain ripple effects, or when the user says "what happens next", "then what", "long-term consequences", "downstream effects", or "second order".
-argument-hint: [decision or topic]
-model: opus
+description: Maps downstream consequences across three horizons (10 min / 10 months / 10 years) and weights cross-domain ripples higher than same-domain ones — same-domain effects are already priced into intuition, so the leverage is surfacing ripples that bleed sideways (work decision → relationships, health move → finances). Use when a decision looks obviously good at first glance, when making a major life or business change, or when the user says "then what", "long-term consequences", or "second order".
+allowed-tools: AskUserQuestion, Read
 ---
 
 # Second-Order Thinking
@@ -10,12 +9,14 @@ model: opus
 ## Priorities
 
 ```
-Horizon coverage > Cross-domain ripple > Brevity > Closure
+Cross-domain ripple > Horizon coverage > Same-domain redundancy guard > Closure
 ```
 
 ## Role
 
-Act as a consequences mapper. For every intended first-order effect, force the question "and then what?". Push into second and third order before letting the user commit. Cover multiple domains (work, relationships, health, finances, team dynamics) — first-order effects often bleed sideways.
+Act as a consequences mapper. For every intended first-order effect, force the question "and then what?". Most second-order effects in the same domain as the first-order effect are already priced into the user's intuition — the value is finding the ones that bleed sideways into other domains (work decision → relationships, health move → finances, team change → personal identity). Push into second and third order before letting the user commit, and weight cross-domain effects higher than same-domain ones since they're the ones the user hasn't already considered.
+
+Skip when the decision is reversible and low-stakes — analysis overhead costs more than the missed downstream effect.
 
 ## Loop
 
@@ -34,13 +35,14 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 - Decision as topic — run the loop directly.
 - Path — Read the document describing the decision first.
+- Enumerate 2–4 candidate first-order effects and tag whether each is already priced into the proposal's pros/cons. Target the effect whose downstream chain bleeds into a different domain than the first-order effect (work decision → relationships, health → finances, team change → identity) — cross-domain ripples are what the existing frame can't already see; a chain that compounds within the same domain means the skill is adding no leverage and the chain should be re-rolled pressing for sideways effects. Skip effects already named in the existing frame.
 
 ## Example
 
 <example>
 Topic: "Should I take the senior role in another city?"
 
-<thinking>First-order effects: (a) higher salary, (b) relocation, (c) new team. Pick (b) — highest hidden cost.</thinking>
+<thinking>Salary compounds visibly (savings, lifestyle) so its second-order chain already gets weighed in the first-order decision. New team risk is in the job-acceptance frame itself. Relocation is the effect whose downstream costs — partner's career disruption, social network rebuild, housing-market lock-in — compound over years and stay invisible at decision time. Picking (b) targets the effect where second-order weight most exceeds first-order framing, which is exactly what the skill is engineered to surface.</thinking>
 
 Calls AskUserQuestion:
 - Question: "Second-order effect of relocating?"
@@ -55,11 +57,7 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- Full ripple map: first-order → second-order → third-order per branch.
-- 10-10-10 summary table.
-- Which downstream effects would change the decision if weighted honestly?
-- Revised recommendation or confirmed commitment.
-
-## Topic
-
-$ARGUMENTS
+- Ripple map: first-order → second-order → third-order per branch, with each second/third-order node tagged same-domain vs cross-domain (work↔relationships, health↔finances, team↔identity).
+- Cross-domain weighting: the load-bearing move is surfacing the ripples the first-order frame already prices in vs the ones that bleed sideways — the finding is the highest-weight cross-domain effect that was invisible in the original pros/cons, not the longest chain; a ripple map full of same-domain effects means the skill added no leverage and the chain should be re-rolled pressing for cross-domain shifts.
+- 10-10-10 validation: check which node's weight changes across horizons (10 min / 10 months / 10 years) — if the same effect dominates all three windows the horizon lens is dead weight; if weight flips between windows (sunk cost visible at 10 months, identity cost at 10 years) those flip-points are the real decision inputs.
+- Residual: effects that would change the decision if weighted honestly (named separately from the ones that don't), plus chains stopped at second-order because third-order is speculative (flagged rather than padded) — feeds a revised recommendation or confirmed commitment.

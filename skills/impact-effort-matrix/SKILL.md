@@ -1,8 +1,7 @@
 ---
 name: impact-effort-matrix
-description: Sorts tasks across Impact × Effort into Quick Wins / Major Projects / Fill-ins / Thankless Tasks. Use when the user has a long backlog and limited time, when a team is debating what to work on next, when you want to surface quick wins alongside strategic bets, or when they say "quick wins", "impact vs effort", "what do we ship next", or "prioritize the backlog".
-argument-hint: [task list or backlog]
-model: opus
+description: Sorts tasks across Impact × Effort into Quick Wins / Major Projects / Fill-ins / Thankless Tasks — load-bearing is anchoring both axes in comparable data (prior tasks, velocity, user research); unanchored estimates let feature-name heuristics place dark-mode-style fake Quick Wins that displace higher-yield work. Use when debating backlog priority, when scope must be cut without losing value, or when they say "quick wins", "low-hanging fruit", "impact vs effort", "prioritize the backlog".
+allowed-tools: AskUserQuestion, Read
 ---
 
 # Impact-Effort Matrix
@@ -10,12 +9,14 @@ model: opus
 ## Priorities
 
 ```
-Honest estimation > Quadrant placement > Brevity > Closure
+Data-anchored estimation > Feature-name heuristic guard > Quadrant placement > Closure
 ```
 
 ## Role
 
-Act as a pragmatic backlog triager. Fight wishful thinking: teams inflate impact and underestimate effort. Where possible, anchor estimates in data (prior similar tasks, team velocity, user research). Surface Quick Wins aggressively — they build momentum.
+Act as a pragmatic backlog triager. Fight wishful thinking: teams inflate impact and underestimate effort. The load-bearing move is anchoring both axes in comparable data (prior similar tasks, team velocity, user-research evidence) before ranking — unanchored estimates let feature-name heuristics drive placement, which is how dark-mode-style "Quick Wins" displace higher-yield work. Surface Quick Wins aggressively once anchored — they build momentum, but only when the effort number is real.
+
+Skip when the task is personal-overload triage and real near-term deadlines are the pressure — use eisenhower-matrix instead; impact-effort assumes team/backlog context with comparable work items, not a schedule-driven to-do list.
 
 ## Loop
 
@@ -34,16 +35,16 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 ## Input Handling
 
-- Backlog in `$ARGUMENTS` — iterate.
-- Path to a backlog file — Read first.
-- Vague topic — elicit 5–10 candidate tasks in round 1.
+- Path — Read the backlog file first; extract 5–10 candidate tasks (or elicit them if only a topic is given) and pick first the task with the most hidden asymmetry between feature name and real cost, so the estimation discipline is set by the hardest case.
+- Anchor impact and effort estimates in data (prior similar tasks, team velocity, user-research evidence) and name the comparable explicitly; unanchored guesses inflate impact and underprice effort, which is how dark-mode-style "Quick Wins" displace higher-yield work.
+- If the list is personal triage with real near-term deadlines rather than team-backlog comparison, stop and route to eisenhower-matrix; impact-effort assumes comparable work items under capacity pressure, not a schedule-driven to-do.
 
 ## Example
 
 <example>
 Task: "Add dark mode"
 
-<thinking>Classic wishful-thinking trap. Feels like Quick Win; actually Major Project once you hit component theming.</thinking>
+<thinking>"Dark mode" reads as a UI toggle, so the default classification is Quick Win. The structural reason that's wrong: theming cost scales with component count, not with the toggle — every existing component, every image asset, and settings persistence each add hidden surface area invisible at the feature name. Price effort against the long tail (components × states × assets) before ranking, or dark mode lands in Quick Win and displaces higher-yield work.</thinking>
 
 Calls AskUserQuestion:
 - Question: "Effort for a production-grade dark mode?"
@@ -58,10 +59,8 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- Full 2×2 with tasks per quadrant.
+- Data-anchor test on every placement: impact and effort rationales must each cite a specific comparable (prior similar task, team velocity number, user-research signal), not a feature-name intuition — ratings backed only by "feels like a Quick Win" or "should be easy" fail the load-bearing audit and the task returns for re-estimation, because unanchored estimates are exactly how dark-mode-style fake Quick Wins displace higher-yield work.
+- Full 2×2 with tasks per quadrant, each with one-line impact and effort rationale tied to the cited comparable.
 - Execution order: Quick Wins now, Major Projects scheduled, Fill-ins on slack time, Thankless Tasks defer or drop.
-- Tasks where impact or effort estimates need data — flag for validation before committing.
-
-## Topic
-
-$ARGUMENTS
+- Tasks where impact or effort estimates need data — flag for validation before committing, naming the specific comparable or measurement still missing.
+- Borderline placements called out: what was almost reclassified and why it stayed, with the data point that settled the call.

@@ -1,8 +1,7 @@
 ---
 name: concept-map
-description: Builds a hierarchical visual map of a domain's 15–25 entities connected by labeled linking phrases (so each connection reads as a sentence) to surface knowledge gaps and align mental models. Use when the user wants to develop or communicate deep understanding of a complex domain, when a team has different mental models of the same system, when designing or auditing a system's relationships, or when they say "concept map", "relationship map", or "how does this domain fit together".
-argument-hint: [domain or focus question]
-model: opus
+description: Builds a hierarchical map of 15–25 entities connected by labeled linking phrases (each link reads as a sentence) — load-bearing is picking a sharp focus question before drawing nodes, or the map drifts to a taxonomy that encodes no testable claims. Surfaces knowledge gaps and aligns mental models. Use when developing or communicating deep domain understanding, when a team has different mental models, or when they say "concept map", "relationship map", "domain model".
+allowed-tools: AskUserQuestion, Read
 ---
 
 # Concept Map
@@ -15,7 +14,9 @@ Focus-question precision > Label explicitness > Cross-link completeness > Closur
 
 ## Role
 
-Act as a Novak-style concept mapper. The difference between a useful concept map and a useless one is labeled links — unlabeled arrows convey almost nothing. Every connection should read as a complete proposition: "Designer → creates → concept map". Cross-links between branches are where the real insight lives.
+Act as a Novak-style concept mapper. The load-bearing move is picking a sharp focus question before drawing any nodes — without it the map becomes a taxonomy of loosely related ideas rather than an argument about a specific question. The difference between a useful concept map and a useless one is labeled links: unlabeled arrows convey almost nothing, so every connection must read as a complete proposition ("Designer → creates → concept map"), and cross-links between branches are where the real insight lives. A map full of vague linking phrases like "relates to" or "connects with" is the failure mode — it looks structured but encodes no testable claims about the domain, which is the reason concept-mapping a settled domain surfaces nothing useful.
+
+Skip when the domain has under 10 entities (use connection-circles for 5–10 interacting variables with causal arrows, or first-principles when the problem narrows to a single thread) or when the team already shares the mental model — concept-mapping a settled domain is busywork that surfaces no gaps.
 
 ## Loop
 
@@ -30,15 +31,16 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 ## Input Handling
 
-- Domain or focus question as topic — run the loop.
-- Path — Read the domain documentation first.
+- Domain or focus question as topic or Path to domain documentation — extract the one specific *focus question* before listing entities (not "map our system" but "how do permissions flow in our B2B SaaS"); if Path provided, Read the documentation and enumerate 15–25 candidate nouns grounded in the source.
+- Each proposed link must read as a sentence with an explicit verb or preposition — reject "relates to" / "is associated with" / bare arrows. Unlabeled links convey nothing and hide the unstated override rules where real confusion lives.
+- Skip and route when fewer than 10 entities exist (→ connection-circles for 5–10 causal variables, → first-principles when the problem narrows to a single thread), or when the team already shares the mental model — concept-mapping a settled domain surfaces no gaps.
 
 ## Example
 
 <example>
 Focus question: "How do permissions flow in our B2B SaaS?"
 
-<thinking>Entities: Users, Roles, Permissions, Resources, Organizations, Inheritance, Workspaces. Hierarchy: Organizations → Workspaces → Users → Roles → Permissions → Resources.</thinking>
+<thinking>The Round 1 focus question — "how permissions *flow*" — is what makes this Round 5 cross-link testable: a looser focus like "our security architecture" would have accepted "Inheritance → affects → everything" as a valid cross-link, since nothing would contradict it. Focus-question precision pays out rounds later by discriminating between "inherit from" (flow-directional, testable) and "affects" (undirected, vacuous). Authorization resolves top-down from tenant boundary to resource, so rooting at Organizations keeps permission inheritance traceable and makes cross-tenant leakage impossible-by-structure. Rooting at Users or Roles would force every permission check to re-verify tenancy, inverting the invariant. Inheritance must be an explicit edge (not implied by nesting) because the real confusions in permission systems come from unstated override rules, and a sharp focus question is what lets us reject the unstated-override phrasings.</thinking>
 
 Calls AskUserQuestion (Round 5 — cross-link):
 - Question: "How does Inheritance cross-link into this hierarchy?"
@@ -53,11 +55,7 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- Hierarchical map: 15–25 entities, general-to-specific.
-- All links labeled with explicit verbs or prepositions.
-- Cross-links between branches identified.
-- At least 2 knowledge gaps flagged for further investigation.
-
-## Topic
-
-$ARGUMENTS
+- Focus question restated at the map apex; any entity that doesn't help answer it is dropped from the map.
+- Hierarchical map: 15–25 entities arranged general-to-specific, with every link labeled by an explicit verb or preposition (generic "relates to" / "affects" rejected).
+- Cross-links between branches identified — these are the discoveries a single-branch layout would miss.
+- At least 2 knowledge gaps flagged, scoped to what would make the focus question answerable.

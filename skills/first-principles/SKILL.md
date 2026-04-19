@@ -1,8 +1,7 @@
 ---
 name: first-principles
-description: Breaks a problem down to irreducible truths (stripping away assumptions and analogies), then rebuilds a solution from the ground up. Uses Five Whys and Socratic questioning as descent tools. Use when conventional solutions feel inadequate, when copying competitors isn't working, when a problem is genuinely novel, or when the user says "first principles", "from scratch", "what's actually true here", or "ignore how it's normally done".
-argument-hint: [problem]
-model: opus
+description: Breaks a problem down to irreducible truths, then rebuilds from the ground up — load-bearing is the bedrock test: an assumption is irreducible only when restating it adds no new claim, so a half-stripped descent rebuilds on inherited framing. Uses Five Whys and Socratic questioning as descent tools. Use when conventional solutions feel inadequate, when a problem is genuinely novel, or when the user says "first principles", "from scratch", or "ignore how it's normally done".
+allowed-tools: AskUserQuestion, Read
 ---
 
 # First Principles
@@ -10,12 +9,14 @@ model: opus
 ## Priorities
 
 ```
-Assumption-stripping depth > Irreducibility > Rebuild soundness > Closure
+Bedrock test > Assumption-stripping depth > Rebuild soundness > Closure
 ```
 
 ## Role
 
-Act as a first-principles interrogator in the style of Aristotle, Descartes, or modern technologists who've used the method. Analogical thinking is cognitively easier and will pull the user back up; the discipline is to interrupt it. Keep asking "is this actually true?" until you reach bedrock. Avoid using for simple problems where established practice works fine.
+Act as a first-principles interrogator in the style of Aristotle, Descartes, or modern technologists who've used the method. Analogical thinking is cognitively easier and will pull the user back up to "how it's normally done"; the discipline is to interrupt that pull every round. The load-bearing move is the bedrock test — an assumption is irreducible only when restating it adds no new claim. Stop the descent there, not earlier; rebuilding on a half-stripped assumption inherits the original framing's blind spots.
+
+Skip when the problem is simple and established practice works fine.
 
 ## Loop
 
@@ -33,15 +34,16 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 ## Input Handling
 
-- Problem as topic — run the loop.
-- Path — Read the source doc first.
+- Problem as topic — list the 2–4 load-bearing assumptions before challenging, then apply the bedrock test to each: restating the assumption must add no new claim. Assumptions that still carry inherited framing ("faster onboarding" presumes the onboarding flow itself) are half-stripped, so the descent must continue until every item restates cleanly.
+- Path — Read the source doc first; extract the stated problem plus any inherited constraints (deadlines, stack choices, prior solutions) that count as assumptions.
+- Solution-shaped framing ('how do we make X faster') — restate as problem-shaped ('what outcome does X serve') in Round 1 before descending.
 
 ## Example
 
 <example>
 Problem: "Our mobile onboarding takes 4 minutes and we need to cut it."
 
-<thinking>Assumption: "onboarding" as a concept. Challenge that.</thinking>
+<thinking>A 4-minute target accepts the "onboarding exists as a gated flow" assumption and only negotiates its length. Bedrock question: does any signup-time gate serve the user's first-value goal? Challenging the frame unlocks deferred onboarding and progressive profiling — options that 4-minute-cutting never surfaces.</thinking>
 
 Calls AskUserQuestion:
 - Question: "Which assumption is most worth challenging?"
@@ -56,12 +58,7 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- Challenged assumptions listed.
-- Irreducible truths confirmed.
-- Rebuilt solution from those truths.
-- Validation that the rebuild solves the original problem.
-- Acknowledgment of constraints that were actually fundamental vs habitual.
-
-## Topic
-
-$ARGUMENTS
+- Assumption stack (2–4 load-bearing ones) with each descent chain explicit down to a claimed irreducible truth.
+- Bedrock test on each claimed irreducible: restating it in different words must add no new claim — if it does, the descent stopped early and the round is not complete.
+- Rebuilt solution traces each element to one of the confirmed irreducibles, not to the pre-descent framing; if any element silently reinherits a stripped assumption, the rebuild is invalid.
+- Validation that the rebuild solves the original problem, plus constraints split into fundamental (keep) vs habitual (drop) and any descent chain that stopped short of bedrock due to missing evidence (flagged for follow-up).

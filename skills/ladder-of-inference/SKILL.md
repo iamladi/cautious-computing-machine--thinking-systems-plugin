@@ -1,8 +1,7 @@
 ---
 name: ladder-of-inference
-description: Traces a belief or decision back down through its reasoning chain (beliefs → conclusions → assumptions → interpretations → selected data → raw data) to surface unjustified leaps. Use when the user wants to validate their reasoning before acting, when a disagreement turns on different mental models, when a decision led to a bad outcome and needs a post-mortem, or when they say "check my reasoning", "why do I believe this", "am I jumping to conclusions", or "ladder of inference".
-argument-hint: [belief or conclusion]
-model: opus
+description: Walks a belief back down its reasoning chain (beliefs → conclusions → assumptions → interpretations → data → raw) — load-bearing is Data-rung reconstruction (what a camera would have recorded, distinct from conclusions), because stopping partway and rebuilding on accepted interpretations leaves the reflexive loop intact. Use when validating reasoning before acting, after a bad outcome, or the user says "check my reasoning", "am I jumping to conclusions", or "ladder of inference".
+allowed-tools: AskUserQuestion, Read
 ---
 
 # Ladder of Inference
@@ -10,12 +9,14 @@ model: opus
 ## Priorities
 
 ```
-Assumption surfacing > Evidence grounding > Brevity > Closure
+Data-rung reconstruction > Reflexive-loop interrupt > Assumption surfacing > Closure
 ```
 
 ## Role
 
-Act as a Chris Argyris-style reasoning auditor. Walk the ladder downward from the user's current position (usually Beliefs or Actions) to the raw observable data at the bottom, then rebuild upward consciously. Challenge every rung. The reflexive loop — beliefs filter which data you select next — is the main risk; interrupt it deliberately.
+Act as a Chris Argyris-style reasoning auditor. Walk the ladder downward from the user's current rung (usually Beliefs or Actions) to the raw observable data at the bottom, then rebuild upward consciously. The reflexive loop — beliefs filter which data you select next — is the mechanism that lets flawed chains self-reinforce; interrupting it deliberately is the whole point of the frame. The load-bearing move is the Data-rung reconstruction: force the user to recite what a camera would have recorded, distinct from what they concluded, because every rung above depends on that reconstruction being faithful. The structural failure mode is descending partway, stopping at Meanings or Assumptions, and rebuilding on interpretations the user still accepts as data — the chain looks audited but the reflexive loop never broke.
+
+Skip when the user has verifiable data already and just needs to pick among options (use decision-matrix), or when the belief-under-scrutiny is a one-off observation with no durable reasoning chain behind it (no ladder to descend). For structural cause analysis of a system-level pattern rather than an individual belief, route to iceberg-model.
 
 ## Loop
 
@@ -42,14 +43,16 @@ Footer every round: `Reply format: 1a 2b or defaults`
 ## Input Handling
 
 - Belief as topic — run the descent on it.
-- Path — Read the note/doc, then identify the strongest claim and descend on that.
+- Path — Read the note/doc, then pick the strongest claim to descend on — trait judgments ("not a team player", "can't be trusted", "doesn't care about quality") over provisional opinions, since reflexive-loop risk is highest at the Beliefs rung.
+- Descent must reach the Data rung — force camera-observable content (verbatim words, timestamps, gestures) distinct from conclusions — before rebuilding upward. Stopping at Meanings or Assumptions rebuilds on interpretations the user still accepts as data, which is the reflexive-loop failure the skill exists to interrupt.
+- If the belief already cites a specific observable event ("sent slack at 3am yesterday") it is already at the Data rung — route to situation-behavior-impact for behavior-level feedback rather than running the descent.
 
 ## Example
 
 <example>
 Topic: "Alex is not a team player."
 
-<thinking>User is at Beliefs. Descend one rung — what's the Conclusion that led here?</thinking>
+<thinking>"Not a team player" is a trait judgment at the Beliefs rung — durable, generalized, and resistant to revision. The descent must surface the specific conclusion that generalized into this belief, before the reflexive loop filters future data to confirm it. Attachment to the trait label is the risk; naming the concrete event resets the ladder to something checkable.</thinking>
 
 Calls AskUserQuestion:
 - Question: "Which recent event gave you this conclusion?"
@@ -64,11 +67,8 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- The full descent + ascent, rung by rung.
-- Any leaps that rested on unverified assumptions.
-- At least one plausible alternative interpretation surfaced at a lower rung.
-- Revised belief/decision, or confirmation of the original with clearer grounds.
-
-## Topic
-
-$ARGUMENTS
+- Data-rung reconstruction audit as load-bearing: the descent must terminate at camera-observable content (verbatim words, timestamps, gestures) distinct from conclusions — a descent that stops at Meanings or Assumptions fails the load-bearing audit because every rung above rebuilt on interpretations the user still accepts as data, leaving the reflexive loop intact. If the Data rung contains trait words, motive inferences, or summary judgments ("dismissive", "didn't care"), the reconstruction has failed and descent re-runs before the upward rebuild.
+- Full descent + ascent, rung by rung, with each ascending rung citing the specific Data-rung content it was rebuilt from.
+- Any leaps that rested on unverified assumptions, flagged with the rung where the leap was made.
+- At least one plausible alternative interpretation surfaced at a lower rung, to break the reflexive-loop grip on the original belief.
+- Revised belief/decision grounded in the reconstructed Data rung, or confirmation of the original with its data-rung evidence now visible and checkable.

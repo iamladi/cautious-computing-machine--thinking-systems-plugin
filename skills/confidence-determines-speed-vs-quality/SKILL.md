@@ -1,8 +1,7 @@
 ---
 name: confidence-determines-speed-vs-quality
-description: Decides whether to prioritize speed or quality based on confidence in the problem and in the solution. Low problem confidence → speed (validate fast); high problem, low solution → balance; high on both → quality. Use when the team is debating ship-fast vs do-it-right, when you're uncertain whether you're solving the right problem, or when the user says "MVP vs polished", "ship fast or ship right", or "how much do we invest in quality".
-argument-hint: [project or feature]
-model: opus
+description: Decides speed vs quality by splitting confidence into two independent axes (problem-confidence, solution-confidence) — load-bearing is the split; collapsing axes polishes solutions to unvalidated problems. Low problem → speed; high problem, low solution → balance; high on both → quality. Use when debating ship-fast vs do-it-right, uncertain whether solving the right problem, or when they say "MVP vs polished", "ship fast or ship right", "good enough vs done right".
+allowed-tools: AskUserQuestion, Read
 ---
 
 # Confidence-Determines-Speed-vs-Quality
@@ -10,12 +9,14 @@ model: opus
 ## Priorities
 
 ```
-Evidence-based confidence > Strategy match > Brevity > Closure
+Two-axis split > Evidence-based confidence > Strategy match > Closure
 ```
 
 ## Role
 
-Act as a build-strategy advisor. Confidence must be data-driven, not intuitive. "We've thought about it a lot" is not confidence — user research, prototypes, analogous successes, live metrics are. Force the distinction.
+Act as a build-strategy advisor. Confidence must be data-driven, not intuitive. "We've thought about it a lot" is not confidence — user research, prototypes, analogous successes, live metrics are. The load-bearing move is splitting confidence into two independent axes (problem-confidence and solution-confidence) before recommending speed vs quality; collapsing them produces the classic failure of polishing a solution to a problem that hasn't been validated. High-quality build at low problem-confidence is sunk cost waiting to happen; ship rough to learn instead.
+
+Skip when both confidences are already explicit and the team just needs to execute (no strategy question remains). Skip when the problem is in a chaotic or unknown domain and the question isn't speed-vs-quality but what-kind-of-problem — route to cynefin-framework first. Skip when the task is pure prioritization among already-scoped items (use eisenhower-matrix or impact-effort-matrix).
 
 ## Loop
 
@@ -32,15 +33,16 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 ## Input Handling
 
-- Project/feature as topic — run the loop.
-- Path — Read the spec or RFC first.
+- Project/feature as topic or Path to spec/RFC — extract the claim about *what problem is being solved* separately from *what solution is proposed*; if Path provided, Read the document and split these into two axes before the loop. Collapsing the two is the framework's signature failure.
+- Demand concrete evidence for each axis (user interviews, prototypes, analog wins, live metrics) — "we've discussed it a lot" and "the team feels strongly" are not evidence. Flag any confidence claim that lacks observable grounding as low-confidence regardless of stated strength.
+- Skip and route when both confidences are already explicit and only execution remains, when the domain is chaotic/unknown and the real question is what-kind-of-problem (→ cynefin-framework), or when the work is pure prioritization among already-scoped items (→ eisenhower-matrix / impact-effort-matrix).
 
 ## Example
 
 <example>
 Topic: "New AI-powered search feature."
 
-<thinking>No user research yet. Problem confidence is low. Don't polish.</thinking>
+<thinking>The two-axis split is load-bearing here: problem confidence (zero direct evidence users want AI search over existing search) reads independently from solution confidence (implementation cost is known-high, and the team can describe the build concretely). Collapsing the axes produces the default reflex "we've discussed it a lot, let's polish", which treats team conviction as evidence on both axes and commits sunk cost to a solution shape before the demand signal exists. Splitting first reveals low-problem / high-solution-cost — the combination where rough-but-real shipped prototype produces the behavior data the polish conversation keeps substituting internal debate for. If problem confidence had been high (e.g., active users asking for AI search), the same solution-cost would flip the recommendation toward Quality; the split is what keeps the recommendation honest.</thinking>
 
 Calls AskUserQuestion (Round 3):
 - Question: "Given low problem confidence, what's the right first move?"
@@ -55,11 +57,7 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- Problem-confidence assessment with supporting evidence.
-- Solution-confidence assessment with supporting evidence.
-- Strategy (speed/balance/quality) with rationale.
-- Concrete scope decisions: what gets cut or added given the strategy.
-
-## Topic
-
-$ARGUMENTS
+- Two-axis read kept explicitly separate: problem-confidence (is this the right problem?) and solution-confidence (is this the right approach?), each rated with the concrete evidence that backed the rating (user interviews, prototypes, analogue wins, live metrics).
+- Evidence-grounding test on each axis: any rating backed only by "we've discussed it a lot" or "the team feels strongly" downgrades to low-confidence regardless of stated strength — the load-bearing move is the two-axis split, and collapsing the axes or treating intuition as evidence reintroduces the polish-before-validation failure.
+- Strategy validated against the axis combination: low problem → Speed (ship rough), high problem / low solution → Balance, high both → Quality; if the recommendation disagrees with the axes (e.g., polished build at low problem-confidence) the strategy is wrong, not the axes, because the combination determines the move.
+- Residual scope decisions: concrete items cut or added under the strategy, items kept pending evidence arrival (with the specific evidence that would flip the rating), and route-outs when both axes are already explicit (execution-only), chaotic domain (→ cynefin-framework), or pure prioritization (→ eisenhower-matrix / impact-effort-matrix).

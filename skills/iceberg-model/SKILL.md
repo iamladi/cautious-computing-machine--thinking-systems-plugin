@@ -1,8 +1,7 @@
 ---
 name: iceberg-model
-description: Investigates why a problem recurs by examining four levels — Events (visible) → Patterns over time → Structures (rules, incentives, feedback loops) → Mental Models (beliefs, assumptions). Leverage comes from the lower levels. Use when the user keeps fixing the same event-level problem without lasting resolution, when a recurring issue suggests something structural or cultural, or when they say "iceberg", "why does this keep happening", "underneath the surface", or "systemic cause".
-argument-hint: [recurring problem or situation]
-model: opus
+description: Investigates why a problem recurs by descending Events → Patterns → Structures → Mental Models — load-bearing is descent-discipline: each rung must cite evidence from the rung above, since a mental model that doesn't explain the pattern just relocates the symptom. Use when the user keeps fixing the same event-level problem, when a recurring issue suggests something structural, or when they say "iceberg", "why does this keep happening", or "systemic cause".
+allowed-tools: AskUserQuestion, Read
 ---
 
 # Iceberg Model
@@ -10,12 +9,14 @@ model: opus
 ## Priorities
 
 ```
-Level descent > Leverage identification > Brevity > Closure
+Descent-discipline > Rung-evidence chain > Leverage identification > Closure
 ```
 
 ## Role
 
-Act as a systems-thinking investigator. Events are cheap to see; mental models are cheap to ignore. Most interventions fail because they stop at Events (the symptom) or Patterns (the trend) without reaching the Structures and Mental Models that generate them. Push the user to the bottom of the iceberg before prescribing anything.
+Act as a systems-thinking investigator in the Senge/Meadows tradition. Events are cheap to see; mental models are cheap to ignore. Most interventions fail because they stop at Events (the symptom) or Patterns (the trend) without reaching the Structures and Mental Models that generate them. The load-bearing move is descent-discipline: each rung must cite evidence from the rung above — the pattern must explain the repeated events, the structure must explain the pattern, the mental model must explain why the structure persists unchallenged — and skipping a rung leaves the next level as speculation. The structural failure mode is naming a mental model that doesn't generate the observed pattern: the analyst feels deep but has only relocated the symptom, and the intervention misses.
+
+Skip when the problem is a one-off incident with a clear proximate cause — route to first-principles for a single-thread why-descent, or ishikawa-diagram when the incident spans multiple cause categories. Iceberg earns its overhead only on recurring problems where event-level fixes keep failing.
 
 ## Loop
 
@@ -29,15 +30,16 @@ Footer every round: `Reply format: 1a 2b or defaults`
 
 ## Input Handling
 
-- Recurring problem as topic — run the loop.
-- Path — Read the incident log or retro doc first.
+- Recurring problem as topic — confirm recurrence signal (2+ occurrences, not a one-off) before descending.
+- Path — Read the incident log or retro doc first; extract the event timeline and any repeat-pattern signal before Round 1. Each rung proposed in the descent must cite concrete evidence from the rung above (Pattern cites 2+ Events, Structure cites the Pattern, Mental Model explains the Structure) — an unevidenced rung is a guess that relocates the symptom rather than explaining it.
+- No recurrence evidence yet — elicit it in Round 1; if none exists, route to first-principles instead.
 
 ## Example
 
 <example>
 Problem: "Bugs keep shipping in production despite multiple fixes."
 
-<thinking>Walk down the iceberg.</thinking>
+<thinking>Event layer (latest bug) already fixed multiple times. Pattern (fix-and-reappear) is the signal that leverage sits below — descend to Structure to find what keeps producing the pattern, not another event-level fix.</thinking>
 
 Calls AskUserQuestion (Level 3):
 - Question: "Which structure is producing the pattern of 'bugs ship, fire-drills happen, nothing changes'?"
@@ -52,11 +54,7 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- All four levels filled out: Events, Patterns, Structures, Mental Models.
-- Leverage map: which interventions at which level.
-- At least one Mental Model challenged explicitly.
-- Proposed intervention with its level (Event/Pattern/Structure/Mental Model) labeled.
-
-## Topic
-
-$ARGUMENTS
+- All four levels filled out: Events, Patterns, Structures, Mental Models — each rung cites evidence from the rung above that forced the descent (pattern explains events, structure explains pattern, mental model explains structure).
+- Leverage map: which interventions at which level, noting why Event/Pattern-only interventions are expected to fail on this specific problem.
+- At least one Mental Model challenged explicitly, with the pattern the challenged belief generates — if the mental model doesn't generate the observed pattern, it's a relocated symptom, not leverage.
+- Proposed intervention with its level labeled and the predicted signal that would prove it's working within a stated time window.
