@@ -1,6 +1,6 @@
 ---
 name: connection-circles
-description: Maps a system's 5–10 key elements around a circle and draws labeled causal arrows (+/–) between them to surface feedback loops. Use when a problem keeps cycling back and simple fixes don't hold, when you need to map causal relationships across a complex system, when you want to surface hidden feedback loops before intervening, or when the user says "connection circles", "feedback loops", "causal map", or "how does X cause Y".
+description: Maps a system's 5–10 elements around a circle with labeled causal arrows (+/–) — load-bearing is tracing closed loops back to their origin, because individual arrows only describe correlations and a diagram without a closed loop is a mislabeled org chart, not a systems map. Use when a problem keeps cycling back and simple fixes don't hold, when surfacing hidden feedback loops before intervening, or the user says "connection circles", "feedback loops", "causal map", or "how does X cause Y".
 allowed-tools: AskUserQuestion, Read
 ---
 

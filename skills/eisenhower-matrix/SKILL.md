@@ -1,6 +1,6 @@
 ---
 name: eisenhower-matrix
-description: Sorts tasks across the Urgent × Important 2×2 matrix into Do / Schedule / Delegate / Eliminate. Use when the user feels perpetually busy without progress, when competing work and personal demands all feel equally urgent, when time is scarce and priorities are unclear, when auditing a task list against long-term goals, or when they say "urgent vs important", "time management", "prioritize my list", "what do I work on today", or "Eisenhower".
+description: Sorts tasks across the Urgent × Important 2×2 matrix into Do / Schedule / Delegate / Eliminate — load-bearing is anchoring classification in a named long-term goal before sorting, because without that anchor importance collapses into urgency and every task drifts into Q1. Use when perpetually busy without progress, when auditing a task list against goals, or the user says "urgent vs important", "prioritize my list", "what do I work on today", or "Eisenhower".
 allowed-tools: AskUserQuestion, Read
 ---
 

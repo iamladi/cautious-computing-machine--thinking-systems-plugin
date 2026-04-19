@@ -1,6 +1,6 @@
 ---
 name: ladder-of-inference
-description: Traces a belief or decision back down through its reasoning chain (beliefs → conclusions → assumptions → interpretations → selected data → raw data) to surface unjustified leaps. Use when the user wants to validate their reasoning before acting, when a disagreement turns on different mental models, when a decision led to a bad outcome and needs a post-mortem, or when they say "check my reasoning", "why do I believe this", "am I jumping to conclusions", or "ladder of inference".
+description: Walks a belief back down its reasoning chain (beliefs → conclusions → assumptions → interpretations → data → raw) — load-bearing is Data-rung reconstruction (what a camera would have recorded, distinct from conclusions), because stopping partway and rebuilding on accepted interpretations leaves the reflexive loop intact. Use when validating reasoning before acting, after a bad outcome, or the user says "check my reasoning", "am I jumping to conclusions", or "ladder of inference".
 allowed-tools: AskUserQuestion, Read
 ---
 

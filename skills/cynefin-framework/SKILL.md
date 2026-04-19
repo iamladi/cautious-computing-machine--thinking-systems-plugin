@@ -1,6 +1,6 @@
 ---
 name: cynefin-framework
-description: Classifies a situation into Clear, Complicated, Complex, Chaotic, or Disorder and prescribes the matching response (sense-categorize-respond, sense-analyze-respond, probe-sense-respond, act-sense-respond). Use when the user is unsure whether to apply best practices, call in experts, experiment, or act decisively, when a team is debating "more analysis vs act now", or when they say "Cynefin", "complex vs complicated", "Snowden framework", or "what kind of problem is this".
+description: Classifies a situation into Clear, Complicated, Complex, Chaotic, or Disorder and prescribes the matching response — load-bearing is probing cause-and-effect knowability (could an expert reliably predict the outcome of an action?), because misclassifying Complex as Complicated drives over-analysis instead of safe-to-fail probes. Use when debating "more analysis vs act now", or the user says "Cynefin", "complex vs complicated", "Snowden", or "what kind of problem is this".
 allowed-tools: AskUserQuestion, Read
 ---
 

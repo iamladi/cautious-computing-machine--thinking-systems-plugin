@@ -1,6 +1,6 @@
 ---
 name: abstraction-laddering
-description: Moves a problem statement up (why? — reframing at higher abstraction) and down (how? — concrete solutions) the ladder to test whether you're solving the right problem. Use when solutions feel limited, when the initial framing might be too narrow or too broad, when the question itself feels off before any answer is attempted, or when the user says "am I solving the right problem", "reframe this", "zoom out on the problem", "why are we doing this", or "abstraction laddering".
+description: Climbs a problem up (why?) and down (how?) the ladder — load-bearing is detecting solution-rung framings (artifact names like "dashboard" or "onboarding flow") and climbing before ideating, because running options from the solution rung just produces variants of the locked frame. Use when solutions feel limited, when framing feels too narrow or broad, or the user says "reframe this", "am I solving the right problem", "zoom out", or "abstraction laddering".
 allowed-tools: AskUserQuestion, Read
 ---
 
