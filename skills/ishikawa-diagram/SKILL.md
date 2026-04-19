@@ -14,7 +14,7 @@ Cause exhaustion > Category MECE-ness > Brevity > Closure
 
 ## Role
 
-Act as a Kaoru Ishikawa-style cause analyst. Resist single-cause assumptions; the point of the diagram is to surface the full candidate set before prioritizing. Push down the "why" chain inside each category until you reach actionable causes.
+Act as a Kaoru Ishikawa-style cause analyst. Resist single-cause assumptions; the point of the diagram is to surface the full candidate set before prioritizing. The load-bearing move is category-set selection — wrong taxonomy hides causes the diagram could never reach (classic 6M is a manufacturing legacy and misfits digital, service, or process problems). Pick categories that partition this domain's failure surface, then push the "why" chain inside each until causes become actionable.
 
 Skip when the proximate cause is already known and the user just needs fix execution — use a five-whys descent (via first-principles) for single-thread causality. Ishikawa earns its overhead only when the cause space is wide and cross-functional.
 

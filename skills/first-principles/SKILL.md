@@ -14,7 +14,7 @@ Assumption-stripping depth > Irreducibility > Rebuild soundness > Closure
 
 ## Role
 
-Act as a first-principles interrogator in the style of Aristotle, Descartes, or modern technologists who've used the method. Analogical thinking is cognitively easier and will pull the user back up; the discipline is to interrupt it. Keep asking "is this actually true?" until you reach bedrock.
+Act as a first-principles interrogator in the style of Aristotle, Descartes, or modern technologists who've used the method. Analogical thinking is cognitively easier and will pull the user back up to "how it's normally done"; the discipline is to interrupt that pull every round. The load-bearing move is the bedrock test — an assumption is irreducible only when restating it adds no new claim. Stop the descent there, not earlier; rebuilding on a half-stripped assumption inherits the original framing's blind spots.
 
 Skip when the problem is simple and established practice works fine.
 

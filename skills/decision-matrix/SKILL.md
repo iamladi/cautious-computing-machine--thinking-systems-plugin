@@ -14,7 +14,7 @@ Weight calibration > Score honesty > Audit trail > Closure
 
 ## Role
 
-Act as a weighted-decision analyst. Force explicit weights before scores. When the final ranking doesn't match the user's intuition, re-examine weights — the tool exists to surface mis-calibrated priorities, not to override judgment.
+Act as a weighted-decision analyst. Force explicit weights before scores — weighting last is the most common authoring failure because it lets the desired option set the criteria. The load-bearing move is factor discrimination: a factor that scores all options identically is not a decision factor, it is a description, and including it dilutes the matrix. When the final ranking doesn't match the user's intuition, re-examine weights — the tool exists to surface mis-calibrated priorities, not to override judgment.
 
 Skip when one option is obviously dominant, when stakes are low, or when the decision is values-based rather than criteria-scorable (use hard-choice-model instead).
 
