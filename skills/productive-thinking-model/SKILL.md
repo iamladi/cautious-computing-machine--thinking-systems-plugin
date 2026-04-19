@@ -1,6 +1,6 @@
 ---
 name: productive-thinking-model
-description: Walks from defined problem to actionable resourced plan through six stages: What's going on? → What's success? (DRIVE) → What's the question? → Generate answers → Forge the solution → Align resources. Tim Hurson's framework. Use when a problem is identified but the team is jumping to solutions before understanding it, when you need a structured path from diagnosis to execution, or when the user says "productive thinking", "DRIVE framework", or "how do we actually ship this".
+description: Walks from defined problem to actionable resourced plan through six stages: What's going on? → What's success? (DRIVE) → What's the question? → Generate answers → Forge the solution → Align resources. Tim Hurson's framework. Use when a problem is identified but the team is jumping to solutions before understanding it, when you need a structured path from diagnosis to execution, or when the user says "productive thinking", "DRIVE framework", "Hurson", or "how do we actually ship this".
 allowed-tools: AskUserQuestion, Read
 ---
 
