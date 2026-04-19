@@ -61,7 +61,8 @@ Footer: `Reply format: 1a 2b or defaults`
 ## Completion
 
 - Each of the six Hurson steps recorded with its key finding (What's going on? / What's success? / What's the question? / Generate answers / Forge solution / Align resources).
-- Selected solution with decision rationale tied to the Step 2 success criteria.
+- Step 3 catalytic question captured verbatim and audited as load-bearing: it must be specific enough that a generic "how might we close more deals / ship faster / improve UX" fails the audit, and Step 4 answers must be traceable back to this question rather than to Step 1's problem frame — if Step 4 options read as generic plays that any similar problem would generate, the catalytic question was too vague and Step 3 re-runs before Step 5 proceeds.
+- Selected solution with decision rationale tied to the Step 3 catalytic question (it opens the named solution space) and honoring the DRIVE success criteria from Step 2; a rationale that cites only Step 2 and skips Step 3 is the Step-1-to-4-jump failure surfacing at evaluation time.
 - Resource plan with owners, timelines, and dependencies.
 - Explicit accountability for each step — who owns follow-through past the workshop.
-- Assumptions flagged at Steps 1–3 that would invalidate the chosen path if wrong.
+- Assumptions flagged at Steps 1–3 that would invalidate the chosen path if wrong, with the Step 3 question specifically marked for re-framing if its presupposition breaks.

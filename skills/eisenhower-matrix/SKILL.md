@@ -64,7 +64,8 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- Full 2×2 matrix with tasks per quadrant, each with a one-line urgency+importance rationale.
+- Named long-term goal recorded at the top of the matrix and cited in every importance rating; if the goal is missing or the ratings don't reference it, the load-bearing anchor has failed and importance has collapsed into urgency — re-run classification after naming the goal.
+- Full 2×2 matrix with tasks per quadrant, each with a one-line urgency+importance rationale that ties importance to the stated goal (not to felt pressure or stakeholder volume).
 - Execution order (Q1 → Q2 → Q3 → Q4) with a rough time budget per quadrant.
 - "Q3 eating Q2" pattern flagged if present, naming the Q2 work being displaced and its cost.
 - Tasks whose importance is unclear — flag for goal clarification before execution commits.

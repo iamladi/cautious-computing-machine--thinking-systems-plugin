@@ -59,7 +59,8 @@ Footer: `Reply format: 1a 2b or defaults`
 
 ## Completion
 
-- Full 2×2 with tasks per quadrant, each with one-line impact and effort rationale.
+- Data-anchor test on every placement: impact and effort rationales must each cite a specific comparable (prior similar task, team velocity number, user-research signal), not a feature-name intuition — ratings backed only by "feels like a Quick Win" or "should be easy" fail the load-bearing audit and the task returns for re-estimation, because unanchored estimates are exactly how dark-mode-style fake Quick Wins displace higher-yield work.
+- Full 2×2 with tasks per quadrant, each with one-line impact and effort rationale tied to the cited comparable.
 - Execution order: Quick Wins now, Major Projects scheduled, Fill-ins on slack time, Thankless Tasks defer or drop.
-- Tasks where impact or effort estimates need data — flag for validation before committing.
-- Borderline placements called out: what was almost reclassified and why it stayed.
+- Tasks where impact or effort estimates need data — flag for validation before committing, naming the specific comparable or measurement still missing.
+- Borderline placements called out: what was almost reclassified and why it stayed, with the data point that settled the call.
