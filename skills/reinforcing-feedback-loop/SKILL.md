@@ -1,6 +1,6 @@
 ---
 name: reinforcing-feedback-loop
-description: Maps a self-amplifying loop where two+ variables cause each other to grow (or decline), producing exponential change. Flywheel / vicious cycle / network effect / compounding. Use when growth or decline is accelerating and you want to understand the mechanism, when designing a system with an intentional flywheel, when distinguishing growth drivers from stability constraints, or when the user says "flywheel", "reinforcing loop", "why is this accelerating", or "compounding effect".
+description: Maps a self-amplifying loop where two+ variables cause each other to grow or decline, then names the ceiling that will constrain it — every real reinforcing loop breaks against a balancing constraint, and picking the wrong ceiling lets teams plan against the comfortable one while the hard one hits first. Flywheel / vicious cycle / network effect. Use when growth or decline is accelerating, when designing a flywheel, or when the user says "flywheel", "reinforcing loop", or "compounding effect".
 allowed-tools: AskUserQuestion, Read
 ---
 

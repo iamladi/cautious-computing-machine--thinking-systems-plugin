@@ -1,6 +1,6 @@
 ---
 name: ooda-loop
-description: Runs John Boyd's Observe–Orient–Decide–Act cycle for time-pressured decisions with incomplete information. Use when a decision must be made quickly with partial data, when competitive dynamics are shifting faster than the current process can track, during a crisis or rapidly evolving situation, or when the user says "OODA", "fast loop", "out-decide them", "move faster than", or "react before we know everything".
+description: Runs John Boyd's Observe–Orient–Decide–Act cycle for time-pressured decisions with incomplete information — Orient is load-bearing, since it's where mental models combine into the frame driving every Decide/Act, and teams that race from Observe to Act commit to whichever frame arrived first. Use when a decision must be made quickly with partial data, when competitive dynamics shift fast, during a crisis, or when the user says "OODA", "fast loop", or "out-decide them".
 allowed-tools: AskUserQuestion, Read
 ---
 

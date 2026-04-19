@@ -1,6 +1,6 @@
 ---
 name: six-thinking-hats
-description: Walks a decision through six explicit perspectives (White/facts, Yellow/benefits, Black/risks, Red/gut, Green/creative, Blue/process) so one viewpoint doesn't dominate. Use when a group discussion is monopolized by one lens, when you need to stress-test a significant commitment from multiple angles, when a risk-averse team is suppressing creative or emotional input, or when the user says "six hats", "all angles", "perspectives on this decision", "de Bono", or "look at it from every side".
+description: Walks a decision through six perspectives (White/facts, Yellow/benefits, Black/risks, Red/gut, Green/creative, Blue/process) starting with a Blue-hat scope-lock — a vague focus question collapses every later hat into generic talking points, while a tight scope produces hat-specific signal. Use when a discussion is monopolized by one lens, when stress-testing a commitment from multiple angles, or when the user says "six hats", "de Bono", or "all angles".
 allowed-tools: AskUserQuestion, Read
 ---
 

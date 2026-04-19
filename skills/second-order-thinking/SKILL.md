@@ -1,6 +1,6 @@
 ---
 name: second-order-thinking
-description: Maps downstream consequences of a decision across three time horizons (10 min / 10 months / 10 years) so ripple effects aren't missed. Use when a decision looks obviously good at first glance, when making a major life or business change, when a choice has cross-domain ripple effects, or when the user says "what happens next", "then what", "long-term consequences", "downstream effects", or "second order".
+description: Maps downstream consequences across three horizons (10 min / 10 months / 10 years) and weights cross-domain ripples higher than same-domain ones — same-domain effects are already priced into intuition, so the leverage is surfacing ripples that bleed sideways (work decision → relationships, health move → finances). Use when a decision looks obviously good at first glance, when making a major life or business change, or when the user says "then what", "long-term consequences", or "second order".
 allowed-tools: AskUserQuestion, Read
 ---
 
