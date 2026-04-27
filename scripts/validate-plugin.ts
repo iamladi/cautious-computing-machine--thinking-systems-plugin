@@ -13,6 +13,7 @@ const FrontmatterSchema = z
     "allowed-tools": z.string().min(1),
     version: z.string().optional(),
     audit: z.enum(["load-bearing-5-slot"]).optional(),
+    "audit-refusal-gate": z.literal("required").optional(),
   })
   .strict();
 
@@ -126,6 +127,69 @@ function validateLoadBearing(dir: string, body: string, fm: Record<string, strin
       });
     }
   }
+  return issues;
+}
+
+function extractRoundBlock(loopText: string, headerRe: RegExp): string | null {
+  const lines = loopText.split("\n");
+  let startIdx = -1;
+  for (let i = 0; i < lines.length; i++) {
+    if (headerRe.test(lines[i])) { startIdx = i; break; }
+  }
+  if (startIdx === -1) return null;
+  let endIdx = lines.length;
+  for (let i = startIdx + 1; i < lines.length; i++) {
+    if (/^\d+\.\s+\*\*Round\b/.test(lines[i])) { endIdx = i; break; }
+  }
+  return lines.slice(startIdx, endIdx).join("\n");
+}
+
+function validateRefusalGate(dir: string, body: string, fm: Record<string, string>): Issue[] {
+  if (fm?.["audit-refusal-gate"] !== "required") return [];
+  const issues: Issue[] = [];
+
+  const loopMatch = body.match(/## Loop\n([\s\S]*?)(?=\n## )/);
+  if (!loopMatch) {
+    return [{ skill: dir, level: "error", message: "audit-refusal-gate: ## Loop section missing" }];
+  }
+  const loop = loopMatch[1];
+
+  const gateBlock = extractRoundBlock(loop, /\*\*Round\s+\d+\s+—\s+Counterpart status gate\s+\(refusal-first\)\*\*/);
+  if (!gateBlock) {
+    return [{ skill: dir, level: "error", message: 'audit-refusal-gate: Loop missing "**Round N — Counterpart status gate (refusal-first)**" header' }];
+  }
+
+  const requiredClasses = ["subordinate", "vulnerable", "unaware", "unclear"];
+  const lower = gateBlock.toLowerCase();
+  const missingClasses = requiredClasses.filter((c) => !lower.includes(c));
+  if (missingClasses.length > 0) {
+    issues.push({ skill: dir, level: "error", message: `audit-refusal-gate: gate round missing refusal class(es) [${missingClasses.join(", ")}]` });
+  }
+
+  const refusalPhrases = [/end the loop immediately/i, /do not draft/i, /loop ends/i];
+  if (!refusalPhrases.some((re) => re.test(gateBlock))) {
+    issues.push({ skill: dir, level: "error", message: 'audit-refusal-gate: gate round missing explicit refusal language ("end the loop immediately" / "do not draft" / "loop ends")' });
+  }
+
+  const orderingPhrases = [/fires?\s+\*?before\*?/i, /before any (?:offensive|concession|redeploy)/i, /cannot be bypassed/i];
+  if (!orderingPhrases.some((re) => re.test(gateBlock))) {
+    issues.push({ skill: dir, level: "error", message: 'audit-refusal-gate: gate round missing ordering invariant ("fires before ..." / "cannot be bypassed")' });
+  }
+
+  const completionMatch = body.match(/## Completion\n([\s\S]*?)(?=\n## |\n*$)/);
+  if (!completionMatch) {
+    issues.push({ skill: dir, level: "error", message: "audit-refusal-gate: ## Completion section missing" });
+  } else {
+    const comp = completionMatch[1];
+    const bypassClause = /(?:if the gate was bypassed|gate.*bypass|bypassed.*gate)/i;
+    if (!bypassClause.test(comp)) {
+      issues.push({ skill: dir, level: "error", message: 'audit-refusal-gate: Completion missing gate-bypass failure clause ("If the gate was bypassed ...")' });
+    }
+    if (!/counterpart[- ]status gate/i.test(comp)) {
+      issues.push({ skill: dir, level: "error", message: 'audit-refusal-gate: Completion missing "Counterpart-status gate" deliverable bullet' });
+    }
+  }
+
   return issues;
 }
 
@@ -382,6 +446,7 @@ function validateSkill(dir: string, knownSkills: Set<string>): Issue[] {
   }
 
   issues.push(...validateLoadBearing(dir, body, fm));
+  issues.push(...validateRefusalGate(dir, body, fm));
 
   return issues;
 }

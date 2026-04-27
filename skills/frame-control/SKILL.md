@@ -3,6 +3,7 @@ name: frame-control
 description: Plans the statement+question pair that installs a chosen frame — load-bearing is reading the frame already running in the room before speaking, because a pair deployed into an unread room is a naked move operating inside whichever frame was already there (usually the higher-status party's). Use before a hard 1:1, negotiation, or escalation; or when the user says "install a frame", "I keep losing this conversation", "I always end up agreeing", or "I need to set the tone".
 allowed-tools: AskUserQuestion, Read
 audit: load-bearing-5-slot
+audit-refusal-gate: required
 ---
 
 # Frame Control (Statement + Question Architecture)
