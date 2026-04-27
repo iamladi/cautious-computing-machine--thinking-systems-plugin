@@ -15,6 +15,7 @@ const FrontmatterSchema = z
     audit: z.enum(["load-bearing-5-slot"]).optional(),
     "audit-refusal-gate": z.literal("required").optional(),
     "audit-lineage-attribution": z.literal("required").optional(),
+    "audit-failure-mode-named": z.literal("required").optional(),
   })
   .strict();
 
@@ -478,6 +479,59 @@ function validateSkill(dir: string, knownSkills: Set<string>): Issue[] {
   issues.push(...validateLoadBearing(dir, body, fm));
   issues.push(...validateRefusalGate(dir, body, fm));
   issues.push(...validateLineageAttribution(dir, body, fm));
+  issues.push(...validateFailureModeNamed(dir, body, fm));
+
+  return issues;
+}
+
+function validateFailureModeNamed(dir: string, body: string, fm: Record<string, string>): Issue[] {
+  if (fm?.["audit-failure-mode-named"] !== "required") return [];
+  const issues: Issue[] = [];
+
+  const roleMatch = body.match(/## Role\n([\s\S]*?)(?=\n## )/);
+  if (!roleMatch) {
+    return [{ skill: dir, level: "error", message: "audit-failure-mode-named: ## Role section missing" }];
+  }
+  const personaPara = roleMatch[1].trim().split(/\n\s*\n/).find((p) => !/^Skip when/.test(p.trim()));
+  if (!personaPara) {
+    return [{ skill: dir, level: "error", message: "audit-failure-mode-named: Role persona paragraph missing" }];
+  }
+  if (!/structural failure mode is\b/i.test(personaPara)) {
+    issues.push({
+      skill: dir,
+      level: "error",
+      message: 'audit-failure-mode-named: Role persona missing canonical "The structural failure mode is X" self-locating clause — protects against drift from load-bearing-aware skill to doctrinal claim',
+    });
+  }
+
+  const completionMatch = body.match(/## Completion\n([\s\S]*?)(?=\n## |\n*$)/);
+  if (!completionMatch) {
+    issues.push({ skill: dir, level: "error", message: "audit-failure-mode-named: ## Completion section missing" });
+    return issues;
+  }
+  const comp = completionMatch[1];
+
+  if (!/load-bearing move has failed/i.test(comp)) {
+    issues.push({
+      skill: dir,
+      level: "error",
+      message: 'audit-failure-mode-named: Completion missing canonical "the load-bearing move has failed" clause — closure check that detects fingerprint bypass before declaring success',
+    });
+  }
+
+  const rerunPatterns = [
+    /loop re-runs/i,
+    /re-runs from/i,
+    /pass re-runs/i,
+    /surfacing.*re-runs/i,
+  ];
+  if (!rerunPatterns.some((re) => re.test(comp))) {
+    issues.push({
+      skill: dir,
+      level: "error",
+      message: 'audit-failure-mode-named: Completion missing explicit loop-rerun instruction ("loop re-runs from Round N" / "pass re-runs") — without rerun, failure detection has no remediation and skill can declare success on a bypassed fingerprint',
+    });
+  }
 
   return issues;
 }

@@ -5,6 +5,7 @@ allowed-tools: AskUserQuestion, Read
 audit: load-bearing-5-slot
 audit-refusal-gate: required
 audit-lineage-attribution: required
+audit-failure-mode-named: required
 ---
 
 # Frame Control (Statement + Question Architecture)
