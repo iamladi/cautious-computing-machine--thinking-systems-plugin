@@ -190,6 +190,35 @@ function validateRefusalGate(dir: string, body: string, fm: Record<string, strin
     }
   }
 
+  const roleMatch = body.match(/## Role\n([\s\S]*?)(?=\n## )/);
+  if (roleMatch) {
+    const skipPara = roleMatch[1].split(/\n\s*\n/).find((p) => /Skip when/.test(p));
+    if (skipPara) {
+      const skipLower = skipPara.toLowerCase();
+      const missing = requiredClasses.filter((c) => !skipLower.includes(c));
+      if (missing.length > 0) {
+        issues.push({
+          skill: dir,
+          level: "error",
+          message: `audit-refusal-gate: Role 'Skip when' paragraph missing refusal class(es) [${missing.join(", ")}] — drift from gate's enforced classes`,
+        });
+      }
+    }
+  }
+
+  const inputMatch = body.match(/## Input Handling\n([\s\S]*?)(?=\n## )/);
+  if (inputMatch) {
+    const inputLower = inputMatch[1].toLowerCase();
+    const missing = requiredClasses.filter((c) => !inputLower.includes(c));
+    if (missing.length > 0) {
+      issues.push({
+        skill: dir,
+        level: "error",
+        message: `audit-refusal-gate: Input Handling missing refusal class(es) [${missing.join(", ")}] — drift from gate's enforced classes`,
+      });
+    }
+  }
+
   return issues;
 }
 
