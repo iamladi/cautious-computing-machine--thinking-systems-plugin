@@ -12,6 +12,15 @@ const FrontmatterSchema = z
     description: z.string().min(50).max(500),
     "allowed-tools": z.string().min(1),
     version: z.string().optional(),
+    audit: z.enum(["load-bearing-5-slot"]).optional(),
+    "audit-refusal-gate": z.literal("required").optional(),
+    "audit-lineage-attribution": z.literal("required").optional(),
+    "audit-failure-mode-named": z.literal("required").optional(),
+    "audit-residual-handoff": z.literal("required").optional(),
+    "audit-reply-format-footer": z.literal("required").optional(),
+    "audit-example-loop-anchor": z.literal("required").optional(),
+    "audit-thinking-load-bearing-restatement": z.literal("required").optional(),
+    "audit-recommended-default-options": z.literal("required").optional(),
   })
   .strict();
 
@@ -46,6 +55,178 @@ function extractSkillReferences(roleText: string): string[] {
     if (match[1]?.includes("-")) refs.add(match[1]);
   }
   return [...refs];
+}
+
+const STOPWORDS = new Set([
+  "a","an","the","of","in","to","on","and","or","that","which","who","what",
+  "before","after","when","with","by","for","is","was","be","been","being",
+  "has","have","had","this","those","these","its","their","our","your",
+  "some","any","but","then","than","into","onto","from","as","at","still",
+  "not","only","also","both","either","neither","because","since","just",
+  "very","more","most","they","them","you","one","two","each","every",
+  "across","via","yet","over","about","between","among",
+]);
+
+function tokenizeFingerprint(text: string): string[] {
+  return text
+    .toLowerCase()
+    .replace(/[-/]/g, " ")
+    .replace(/[^a-z0-9\s]/g, " ")
+    .split(/\s+/)
+    .filter((t) => t.length >= 4 && !STOPWORDS.has(t));
+}
+
+function extractLoadBearingPhrase(description: string): string | null {
+  const m1 = description.match(/[Ll]oad-bearing(?:\s+move)?\s+is\s+([^.,;—:]+)/);
+  if (m1) return m1[1];
+  const m2 = description.match(/—\s*([^.,;—:]+?)\s+is\s+load-bearing/i);
+  if (m2) return m2[1];
+  const m3 = description.match(/([^.,;—:]{1,120}?)\s+is\s+load-bearing/i);
+  if (m3) return m3[1];
+  return null;
+}
+
+function pickFingerprintTokens(phrase: string): string[] {
+  const toks = Array.from(new Set(tokenizeFingerprint(phrase)));
+  toks.sort((a, b) => b.length - a.length || a.localeCompare(b));
+  return toks.slice(0, 3);
+}
+
+function slotHasToken(slotText: string, token: string): boolean {
+  const prefix = token.slice(0, Math.min(4, token.length));
+  const norm = ` ${slotText.toLowerCase().replace(/[-/]/g, " ").replace(/[^a-z0-9\s]/g, " ")} `;
+  return new RegExp(`\\s${prefix.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`).test(norm);
+}
+
+function validateLoadBearing(dir: string, body: string, fm: Record<string, string>): Issue[] {
+  const issues: Issue[] = [];
+  if (fm?.audit !== "load-bearing-5-slot") return issues;
+  const description = fm?.description;
+  if (!description) return issues;
+  const phrase = extractLoadBearingPhrase(description);
+  if (!phrase) {
+    return [{ skill: dir, level: "error", message: `audit: load-bearing-5-slot opted in but description has no "[Ll]oad-bearing is X" phrase` }];
+  }
+  const tokens = pickFingerprintTokens(phrase);
+  if (tokens.length === 0) return issues;
+
+  const slots: Array<{ name: string; text: string }> = [];
+  for (const sec of ["Priorities", "Role", "Input Handling", "Example", "Completion"]) {
+    const re = new RegExp(`## ${sec}\\n([\\s\\S]*?)(?=\\n## |\\n*$)`);
+    const m = body.match(re);
+    slots.push({ name: sec, text: m ? m[1] : "" });
+  }
+  const exampleSlot = slots.find((s) => s.name === "Example");
+  if (exampleSlot) {
+    const tm = exampleSlot.text.match(/<thinking>([\s\S]*?)<\/thinking>/);
+    if (tm) exampleSlot.text = tm[1];
+  }
+
+  const required = tokens.length >= 3 ? 2 : tokens.length;
+  for (const slot of slots) {
+    const hits = tokens.filter((t) => slotHasToken(slot.text, t));
+    if (hits.length < required) {
+      const missing = tokens.filter((t) => !hits.includes(t));
+      issues.push({
+        skill: dir,
+        level: "error",
+        message: `load-bearing audit: slot "${slot.name}" missing [${missing.join(", ")}]; need ≥${required} of [${tokens.join(", ")}]`,
+      });
+    }
+  }
+  return issues;
+}
+
+function extractRoundBlock(loopText: string, headerRe: RegExp): string | null {
+  const lines = loopText.split("\n");
+  let startIdx = -1;
+  for (let i = 0; i < lines.length; i++) {
+    if (headerRe.test(lines[i])) { startIdx = i; break; }
+  }
+  if (startIdx === -1) return null;
+  let endIdx = lines.length;
+  for (let i = startIdx + 1; i < lines.length; i++) {
+    if (/^\d+\.\s+\*\*Round\b/.test(lines[i])) { endIdx = i; break; }
+  }
+  return lines.slice(startIdx, endIdx).join("\n");
+}
+
+function validateRefusalGate(dir: string, body: string, fm: Record<string, string>): Issue[] {
+  if (fm?.["audit-refusal-gate"] !== "required") return [];
+  const issues: Issue[] = [];
+
+  const loopMatch = body.match(/## Loop\n([\s\S]*?)(?=\n## )/);
+  if (!loopMatch) {
+    return [{ skill: dir, level: "error", message: "audit-refusal-gate: ## Loop section missing" }];
+  }
+  const loop = loopMatch[1];
+
+  const gateBlock = extractRoundBlock(loop, /\*\*Round\s+\d+\s+—\s+Counterpart status gate\s+\(refusal-first\)\*\*/);
+  if (!gateBlock) {
+    return [{ skill: dir, level: "error", message: 'audit-refusal-gate: Loop missing "**Round N — Counterpart status gate (refusal-first)**" header' }];
+  }
+
+  const requiredClasses = ["subordinate", "vulnerable", "unaware", "unclear"];
+  const lower = gateBlock.toLowerCase();
+  const missingClasses = requiredClasses.filter((c) => !lower.includes(c));
+  if (missingClasses.length > 0) {
+    issues.push({ skill: dir, level: "error", message: `audit-refusal-gate: gate round missing refusal class(es) [${missingClasses.join(", ")}]` });
+  }
+
+  const refusalPhrases = [/end the loop immediately/i, /do not draft/i, /loop ends/i];
+  if (!refusalPhrases.some((re) => re.test(gateBlock))) {
+    issues.push({ skill: dir, level: "error", message: 'audit-refusal-gate: gate round missing explicit refusal language ("end the loop immediately" / "do not draft" / "loop ends")' });
+  }
+
+  const orderingPhrases = [/fires?\s+\*?before\*?/i, /before any (?:offensive|concession|redeploy)/i, /cannot be bypassed/i];
+  if (!orderingPhrases.some((re) => re.test(gateBlock))) {
+    issues.push({ skill: dir, level: "error", message: 'audit-refusal-gate: gate round missing ordering invariant ("fires before ..." / "cannot be bypassed")' });
+  }
+
+  const completionMatch = body.match(/## Completion\n([\s\S]*?)(?=\n## |\n*$)/);
+  if (!completionMatch) {
+    issues.push({ skill: dir, level: "error", message: "audit-refusal-gate: ## Completion section missing" });
+  } else {
+    const comp = completionMatch[1];
+    const bypassClause = /(?:if the gate was bypassed|gate.*bypass|bypassed.*gate)/i;
+    if (!bypassClause.test(comp)) {
+      issues.push({ skill: dir, level: "error", message: 'audit-refusal-gate: Completion missing gate-bypass failure clause ("If the gate was bypassed ...")' });
+    }
+    if (!/counterpart[- ]status gate/i.test(comp)) {
+      issues.push({ skill: dir, level: "error", message: 'audit-refusal-gate: Completion missing "Counterpart-status gate" deliverable bullet' });
+    }
+  }
+
+  const roleMatch = body.match(/## Role\n([\s\S]*?)(?=\n## )/);
+  if (roleMatch) {
+    const skipPara = roleMatch[1].split(/\n\s*\n/).find((p) => /Skip when/.test(p));
+    if (skipPara) {
+      const skipLower = skipPara.toLowerCase();
+      const missing = requiredClasses.filter((c) => !skipLower.includes(c));
+      if (missing.length > 0) {
+        issues.push({
+          skill: dir,
+          level: "error",
+          message: `audit-refusal-gate: Role 'Skip when' paragraph missing refusal class(es) [${missing.join(", ")}] — drift from gate's enforced classes`,
+        });
+      }
+    }
+  }
+
+  const inputMatch = body.match(/## Input Handling\n([\s\S]*?)(?=\n## )/);
+  if (inputMatch) {
+    const inputLower = inputMatch[1].toLowerCase();
+    const missing = requiredClasses.filter((c) => !inputLower.includes(c));
+    if (missing.length > 0) {
+      issues.push({
+        skill: dir,
+        level: "error",
+        message: `audit-refusal-gate: Input Handling missing refusal class(es) [${missing.join(", ")}] — drift from gate's enforced classes`,
+      });
+    }
+  }
+
+  return issues;
 }
 
 function validateSkill(dir: string, knownSkills: Set<string>): Issue[] {
@@ -298,6 +479,372 @@ function validateSkill(dir: string, knownSkills: Set<string>): Issue[] {
 
   if (/\$ARGUMENTS/.test(body)) {
     issues.push({ skill: dir, level: "warn", message: "contains literal $ARGUMENTS (skills do not substitute)" });
+  }
+
+  issues.push(...validateLoadBearing(dir, body, fm));
+  issues.push(...validateRefusalGate(dir, body, fm));
+  issues.push(...validateLineageAttribution(dir, body, fm));
+  issues.push(...validateFailureModeNamed(dir, body, fm));
+  issues.push(...validateResidualHandoff(dir, body, fm, knownSkills));
+  issues.push(...validateReplyFormatFooter(dir, body, fm));
+  issues.push(...validateExampleLoopAnchor(dir, body, fm));
+  issues.push(...validateThinkingLoadBearingRestatement(dir, body, fm));
+  issues.push(...validateRecommendedDefaultOptions(dir, body, fm));
+
+  return issues;
+}
+
+function validateRecommendedDefaultOptions(dir: string, body: string, fm: Record<string, string>): Issue[] {
+  if (fm?.["audit-recommended-default-options"] !== "required") return [];
+  const issues: Issue[] = [];
+
+  const exampleMatch = body.match(/## Example\n([\s\S]*?)(?=\n## )/);
+  if (!exampleMatch) {
+    return [{ skill: dir, level: "error", message: "audit-recommended-default-options: ## Example section missing" }];
+  }
+  const example = exampleMatch[1];
+
+  const recommendedLineRe = /^  - `\(Recommended\)[^`]*`.*$/gm;
+  const recommendedLines = example.match(recommendedLineRe) ?? [];
+  if (recommendedLines.length === 0) {
+    issues.push({
+      skill: dir,
+      level: "error",
+      message: 'audit-recommended-default-options: Example missing canonical "  - `(Recommended) ...`" option line — without it the AskUserQuestion demonstration provides no guided default and the Loop\'s "1a" reply convention has nothing to point at',
+    });
+  } else if (recommendedLines.length > 1) {
+    issues.push({
+      skill: dir,
+      level: "error",
+      message: `audit-recommended-default-options: Example has ${recommendedLines.length} "(Recommended)" option lines; canonical contract is exactly one — multiple recommendations dilute the guided-default signal and the user cannot tell which is the actual default`,
+    });
+  } else {
+    const trailing = recommendedLines[0].match(/^  - `\(Recommended\)[^`]*`(.*)$/);
+    if (trailing && !/^\s+—\s+\S/.test(trailing[1])) {
+      issues.push({
+        skill: dir,
+        level: "error",
+        message: 'audit-recommended-default-options: "(Recommended)" option line missing " — <rationale>" em-dash trailer after closing backtick — rationale is what justifies the recommendation; without it, "(Recommended)" becomes a bare label without warrant',
+      });
+    }
+  }
+
+  const notSureRe = /^  - `Not sure - you decide`/m;
+  if (!notSureRe.test(example)) {
+    issues.push({
+      skill: dir,
+      level: "error",
+      message: 'audit-recommended-default-options: Example missing canonical "  - `Not sure - you decide`" fallback option line — without it the Loop\'s "or defaults" reply convention has no concrete option to dispatch to and "defaults" becomes a dangling reference',
+    });
+  }
+
+  const recIdx = example.search(/^  - `\(Recommended\)/m);
+  const notSureIdx = example.search(/^  - `Not sure - you decide`/m);
+  if (recIdx !== -1 && notSureIdx !== -1 && recIdx > notSureIdx) {
+    issues.push({
+      skill: dir,
+      level: "error",
+      message: 'audit-recommended-default-options: "(Recommended)" option appears AFTER "Not sure - you decide" fallback — UX contract is recommendation first (top of list), fallback last; reversed order misleads readers about which is the default vs the escape hatch',
+    });
+  }
+
+  return issues;
+}
+
+function validateThinkingLoadBearingRestatement(dir: string, body: string, fm: Record<string, string>): Issue[] {
+  if (fm?.["audit-thinking-load-bearing-restatement"] !== "required") return [];
+  const issues: Issue[] = [];
+
+  const description = fm?.description;
+  if (!description) {
+    return [{ skill: dir, level: "error", message: "audit-thinking-load-bearing-restatement: description missing" }];
+  }
+  const phrase = extractLoadBearingPhrase(description);
+  if (!phrase) {
+    return [{ skill: dir, level: "error", message: 'audit-thinking-load-bearing-restatement: description has no "[Ll]oad-bearing is X" phrase' }];
+  }
+  const tokens = pickFingerprintTokens(phrase);
+  if (tokens.length === 0) return issues;
+
+  const exampleMatch = body.match(/## Example\n([\s\S]*?)(?=\n## )/);
+  if (!exampleMatch) {
+    return [{ skill: dir, level: "error", message: "audit-thinking-load-bearing-restatement: ## Example section missing" }];
+  }
+  const thinkingMatch = exampleMatch[1].match(/<thinking>([\s\S]*?)<\/thinking>/);
+  if (!thinkingMatch) {
+    return [{
+      skill: dir,
+      level: "error",
+      message: "audit-thinking-load-bearing-restatement: Example missing <thinking>...</thinking> reasoning block — without it the load-bearing demonstration has no place to live",
+    }];
+  }
+  const thinking = thinkingMatch[1];
+
+  if (!/load-bearing/i.test(thinking)) {
+    issues.push({
+      skill: dir,
+      level: "error",
+      message: 'audit-thinking-load-bearing-restatement: <thinking> block does not contain literal "load-bearing" — example reasoning has drifted to generic explanation that no longer demonstrates which move is load-bearing for this scenario',
+    });
+    return issues;
+  }
+
+  const sentences = thinking.split(/(?<=[.!?])\s+/);
+  const tieSentences = sentences.filter((s) => /load-bearing/i.test(s));
+  const tied = tieSentences.some((s) => tokens.some((t) => slotHasToken(s, t)));
+  if (!tied) {
+    issues.push({
+      skill: dir,
+      level: "error",
+      message: `audit-thinking-load-bearing-restatement: <thinking> contains "load-bearing" but no sentence ties it to the move-fingerprint [${tokens.join(", ")}] from the description — drift where "load-bearing" appears as a sprinkled keyword disconnected from the actual move it names`,
+    });
+  }
+
+  return issues;
+}
+
+function validateExampleLoopAnchor(dir: string, body: string, fm: Record<string, string>): Issue[] {
+  if (fm?.["audit-example-loop-anchor"] !== "required") return [];
+  const issues: Issue[] = [];
+
+  const exampleMatch = body.match(/## Example\n([\s\S]*?)(?=\n## )/);
+  if (!exampleMatch) {
+    return [{ skill: dir, level: "error", message: "audit-example-loop-anchor: ## Example section missing" }];
+  }
+  const example = exampleMatch[1];
+
+  const anchorRe = /Calls AskUserQuestion \(Round\s+\d+(?:\s*—\s*[^)]+)?\)/;
+  const anchorMatch = example.match(anchorRe);
+  if (!anchorMatch) {
+    issues.push({
+      skill: dir,
+      level: "error",
+      message: 'audit-example-loop-anchor: Example missing "Calls AskUserQuestion (Round N — <descriptor>)" round-anchor — without it, Example drifts from mid-loop interaction snapshot to static narrative summary that no longer demonstrates the Loop discipline',
+    });
+    return issues;
+  }
+  const anchor = anchorMatch[0];
+
+  if (fm?.["audit-refusal-gate"] === "required") {
+    const isGateRound = /status gate/i.test(anchor);
+    const hasGatePassageClause = /after the Round \d+ status gate passed/i.test(example);
+    if (!isGateRound && !hasGatePassageClause) {
+      issues.push({
+        skill: dir,
+        level: "error",
+        message: 'audit-example-loop-anchor: Example anchor demonstrates a non-gate round but lacks "fired only after the Round N status gate passed" clause — coherence break between gate-enforcing Loop and gate-unaware Example demonstration; reader cannot tell whether the gate ran',
+      });
+    }
+  }
+
+  return issues;
+}
+
+function validateReplyFormatFooter(dir: string, body: string, fm: Record<string, string>): Issue[] {
+  if (fm?.["audit-reply-format-footer"] !== "required") return [];
+  const issues: Issue[] = [];
+
+  const CANONICAL = "`Reply format: 1a 2b or defaults`";
+  const LOOP_LINE = "Footer every round: `Reply format: 1a 2b or defaults`";
+  const EXAMPLE_LINE = "Footer: `Reply format: 1a 2b or defaults`";
+
+  const loopMatch = body.match(/## Loop\n([\s\S]*?)(?=\n## )/);
+  if (!loopMatch) {
+    issues.push({ skill: dir, level: "error", message: "audit-reply-format-footer: ## Loop section missing" });
+  } else if (!loopMatch[1].includes(LOOP_LINE)) {
+    const hasNakedFooter = /Footer.*Reply format/.test(loopMatch[1]);
+    issues.push({
+      skill: dir,
+      level: "error",
+      message: hasNakedFooter
+        ? `audit-reply-format-footer: Loop has Footer line but does not match canonical "${LOOP_LINE}" — drift in wording, backticks, or reply-format string breaks the AskUserQuestion response convention silently`
+        : `audit-reply-format-footer: Loop missing canonical "${LOOP_LINE}" footer line — without it, AskUserQuestion calls do not surface the response convention to users`,
+    });
+  }
+
+  const exampleMatch = body.match(/## Example\n([\s\S]*?)(?=\n## )/);
+  if (!exampleMatch) {
+    issues.push({ skill: dir, level: "error", message: "audit-reply-format-footer: ## Example section missing" });
+  } else if (!exampleMatch[1].includes(EXAMPLE_LINE)) {
+    const hasNakedFooter = /Footer:.*Reply format/.test(exampleMatch[1]);
+    issues.push({
+      skill: dir,
+      level: "error",
+      message: hasNakedFooter
+        ? `audit-reply-format-footer: Example has Footer line but does not match canonical "${EXAMPLE_LINE}" — drift between Loop's instruction and Example's demonstration produces inconsistent UX contract`
+        : `audit-reply-format-footer: Example missing canonical "${EXAMPLE_LINE}" footer line — Example must demonstrate the same reply-format convention the Loop instructs`,
+    });
+  }
+
+  if (loopMatch && exampleMatch) {
+    const loopFooters = [...loopMatch[1].matchAll(/`Reply format: [^`]+`/g)].map((m) => m[0]);
+    const exampleFooters = [...exampleMatch[1].matchAll(/`Reply format: [^`]+`/g)].map((m) => m[0]);
+    const all = [...loopFooters, ...exampleFooters];
+    const drifted = all.filter((f) => f !== CANONICAL);
+    if (drifted.length > 0) {
+      issues.push({
+        skill: dir,
+        level: "error",
+        message: `audit-reply-format-footer: reply-format string drift detected — found [${drifted.join(", ")}], canonical is ${CANONICAL}`,
+      });
+    }
+  }
+
+  return issues;
+}
+
+function validateResidualHandoff(dir: string, body: string, fm: Record<string, string>, knownSkills: Set<string>): Issue[] {
+  if (fm?.["audit-residual-handoff"] !== "required") return [];
+  const issues: Issue[] = [];
+
+  const completionMatch = body.match(/## Completion\n([\s\S]*?)(?=\n## |\n*$)/);
+  if (!completionMatch) {
+    return [{ skill: dir, level: "error", message: "audit-residual-handoff: ## Completion section missing" }];
+  }
+  const comp = completionMatch[1];
+
+  const residualMatch = comp.match(/^-\s*Residual:\s*([\s\S]*?)(?=\n-\s|\n*$)/m);
+  if (!residualMatch) {
+    return [{
+      skill: dir,
+      level: "error",
+      message: 'audit-residual-handoff: Completion missing "- Residual:" closing bullet — without explicit spillover handoff, foreign artefacts the user brought in get silently absorbed and skill drifts from a routed step into a closed-system absorber',
+    }];
+  }
+  const residual = residualMatch[1];
+
+  if (!/\bflag(?:ged|s)?\b/i.test(residual)) {
+    issues.push({
+      skill: dir,
+      level: "error",
+      message: 'audit-residual-handoff: Residual bullet missing "flag/flagged" spillover-discipline language — discipline is to flag foreign artefacts, not silently swallow them',
+    });
+  }
+
+  const backtickSkillMatches = [...residual.matchAll(/`([a-z][a-z0-9-]+[a-z0-9])`/g)];
+  const routedSkills: string[] = [];
+  const unknownSkills: string[] = [];
+  for (const match of backtickSkillMatches) {
+    const name = match[1];
+    if (name === dir) continue;
+    if (knownSkills.has(name)) {
+      routedSkills.push(name);
+    } else if (name.includes("-")) {
+      unknownSkills.push(name);
+    }
+  }
+  if (routedSkills.length === 0) {
+    issues.push({
+      skill: dir,
+      level: "error",
+      message: `audit-residual-handoff: Residual bullet routes to 0 known sibling skills via backticks; need ≥1 valid \`skill-name\` handoff target so spillover artefacts have a real next step rather than dead-ending in this skill${unknownSkills.length > 0 ? ` (found unknown: [${unknownSkills.join(", ")}])` : ""}`,
+    });
+  }
+  if (unknownSkills.length > 0) {
+    issues.push({
+      skill: dir,
+      level: "error",
+      message: `audit-residual-handoff: Residual bullet routes to non-existent skill(s) [${unknownSkills.join(", ")}] — dead route, drift from rename/delete in skills/`,
+    });
+  }
+
+  return issues;
+}
+
+function validateFailureModeNamed(dir: string, body: string, fm: Record<string, string>): Issue[] {
+  if (fm?.["audit-failure-mode-named"] !== "required") return [];
+  const issues: Issue[] = [];
+
+  const roleMatch = body.match(/## Role\n([\s\S]*?)(?=\n## )/);
+  if (!roleMatch) {
+    return [{ skill: dir, level: "error", message: "audit-failure-mode-named: ## Role section missing" }];
+  }
+  const personaPara = roleMatch[1].trim().split(/\n\s*\n/).find((p) => !/^Skip when/.test(p.trim()));
+  if (!personaPara) {
+    return [{ skill: dir, level: "error", message: "audit-failure-mode-named: Role persona paragraph missing" }];
+  }
+  if (!/structural failure mode is\b/i.test(personaPara)) {
+    issues.push({
+      skill: dir,
+      level: "error",
+      message: 'audit-failure-mode-named: Role persona missing canonical "The structural failure mode is X" self-locating clause — protects against drift from load-bearing-aware skill to doctrinal claim',
+    });
+  }
+
+  const completionMatch = body.match(/## Completion\n([\s\S]*?)(?=\n## |\n*$)/);
+  if (!completionMatch) {
+    issues.push({ skill: dir, level: "error", message: "audit-failure-mode-named: ## Completion section missing" });
+    return issues;
+  }
+  const comp = completionMatch[1];
+
+  if (!/load-bearing move has failed/i.test(comp)) {
+    issues.push({
+      skill: dir,
+      level: "error",
+      message: 'audit-failure-mode-named: Completion missing canonical "the load-bearing move has failed" clause — closure check that detects fingerprint bypass before declaring success',
+    });
+  }
+
+  const rerunPatterns = [
+    /loop re-runs/i,
+    /re-runs from/i,
+    /pass re-runs/i,
+    /surfacing.*re-runs/i,
+  ];
+  if (!rerunPatterns.some((re) => re.test(comp))) {
+    issues.push({
+      skill: dir,
+      level: "error",
+      message: 'audit-failure-mode-named: Completion missing explicit loop-rerun instruction ("loop re-runs from Round N" / "pass re-runs") — without rerun, failure detection has no remediation and skill can declare success on a bypassed fingerprint',
+    });
+  }
+
+  return issues;
+}
+
+const HISTORICAL_AUTHORITIES = [
+  "voss", "cialdini", "goffman", "heritage", "argyris", "lakoff",
+  "pillet-shore", "watzlawick", "schein", "oyserman", "fisher",
+  "ury", "ackerman",
+];
+
+function validateLineageAttribution(dir: string, body: string, fm: Record<string, string>): Issue[] {
+  if (fm?.["audit-lineage-attribution"] !== "required") return [];
+  const issues: Issue[] = [];
+
+  const roleMatch = body.match(/## Role\n([\s\S]*?)(?=\n## )/);
+  if (!roleMatch) {
+    return [{ skill: dir, level: "error", message: "audit-lineage-attribution: ## Role section missing" }];
+  }
+  const personaPara = roleMatch[1].trim().split(/\n\s*\n/).find((p) => !/^Skip when/.test(p.trim()));
+  if (!personaPara) {
+    return [{ skill: dir, level: "error", message: "audit-lineage-attribution: Role persona paragraph missing" }];
+  }
+
+  const cited: string[] = [];
+  for (const name of HISTORICAL_AUTHORITIES) {
+    const re = new RegExp(`\\b${name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "i");
+    if (re.test(personaPara)) cited.push(name);
+  }
+  if (cited.length < 3) {
+    issues.push({
+      skill: dir,
+      level: "error",
+      message: `audit-lineage-attribution: Role persona cites ${cited.length} historical authorities [${cited.join(", ") || "none"}]; need ≥3 from {${HISTORICAL_AUTHORITIES.join(", ")}} to anchor the lineage cross-check`,
+    });
+  }
+
+  const restaterPatterns = [
+    /Hughes credited as one recent restater/i,
+    /cross-checked against those older traditions/i,
+  ];
+  if (!restaterPatterns.some((re) => re.test(personaPara))) {
+    issues.push({
+      skill: dir,
+      level: "error",
+      message: 'audit-lineage-attribution: Role persona missing canonical restater clause ("Hughes credited as one recent restater" / "cross-checked against those older traditions") — protects against collapse to single-source doctrinal claim',
+    });
   }
 
   return issues;

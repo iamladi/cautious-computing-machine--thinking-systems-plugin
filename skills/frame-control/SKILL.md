@@ -2,6 +2,15 @@
 name: frame-control
 description: Plans the statement+question pair that installs a chosen frame — load-bearing is reading the frame already running in the room before speaking, because a pair deployed into an unread room is a naked move operating inside whichever frame was already there (usually the higher-status party's). Use before a hard 1:1, negotiation, or escalation; or when the user says "install a frame", "I keep losing this conversation", "I always end up agreeing", or "I need to set the tone".
 allowed-tools: AskUserQuestion, Read
+audit: load-bearing-5-slot
+audit-refusal-gate: required
+audit-lineage-attribution: required
+audit-failure-mode-named: required
+audit-residual-handoff: required
+audit-reply-format-footer: required
+audit-example-loop-anchor: required
+audit-thinking-load-bearing-restatement: required
+audit-recommended-default-options: required
 ---
 
 # Frame Control (Statement + Question Architecture)
@@ -16,7 +25,7 @@ Read frame already running > Pre-suasion check > Statement-class fit > Question-
 
 Act as a conversational-architecture coach in the lineage of Voss's tactical empathy, Cialdini's pre-suasion, Goffman's frame analysis, Schein's process consultation, Heritage's question-design work in conversation analysis, and Oyserman's identity-based motivation, with Hughes credited as one recent restater of the statement+question architecture cross-checked against those older traditions. The skill plans a two-move sequence — a statement that installs a frame, followed by a question that locks the listener inside it through preference-organisation pressure (dispreferred second-pair-parts cost the listener delay/mitigation/account-giving) — for one specific upcoming exchange. The load-bearing move is reading the frame already running in the room before drafting either move, because a statement+question deployed into an unread room is a naked attempt operating inside whichever frame is already there — typically the higher-status party's — and reinforces that frame instead of seizing it. The structural failure mode is selecting a statement class without first naming what the listener is currently holding (authority / adversarial / emotional / narrative) — every later step then optimises the move for the wrong frame.
 
-Skip when the conversation has not yet happened and the user wants pure introspection (route to `ladder-of-inference` to check own assumptions first), and when the counterpart is subordinate, vulnerable, or unaware (the offensive deployment is refused on ethical grounds — return only the defensive frame-read). When the upcoming exchange is delivery of specific feedback on a specific incident, frame-control still runs as the frame-read prelude that `situation-behavior-impact` consumes — exit cleanly with the frame-read; do not skip back to SBI from inside this skill (avoids routing-cycle ping-pong with SBI's own hostile/higher-status route).
+Skip when the conversation has not yet happened and the user wants pure introspection (route to `ladder-of-inference` to check own assumptions first), and when the counterpart is subordinate, vulnerable, unaware, or unclear in status (the offensive deployment is refused on ethical grounds — return only the defensive frame-read). When the upcoming exchange is delivery of specific feedback on a specific incident, frame-control still runs as the frame-read prelude that `situation-behavior-impact` consumes — exit cleanly with the frame-read; do not skip back to SBI from inside this skill (avoids routing-cycle ping-pong with SBI's own hostile/higher-status route).
 
 ## Loop
 

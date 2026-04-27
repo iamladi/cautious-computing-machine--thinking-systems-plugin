@@ -2,6 +2,15 @@
 name: concession-then-ask
 description: Pairs a concession (acknowledging a cost the counterpart paid) with the hard question it earned the right to ask. Load-bearing is the pre-emptive disclosure that makes the hard question askable, because asking cold reads as arrogant and triggers the counterattack the concession was meant to disarm. Use before a sensitive negotiation, before asking for budget/time after a missed commitment, or when the user says "hard question", "concession", "accusation audit", or "Ackerman".
 allowed-tools: AskUserQuestion, Read
+audit: load-bearing-5-slot
+audit-refusal-gate: required
+audit-lineage-attribution: required
+audit-failure-mode-named: required
+audit-residual-handoff: required
+audit-reply-format-footer: required
+audit-example-loop-anchor: required
+audit-thinking-load-bearing-restatement: required
+audit-recommended-default-options: required
 ---
 
 # Concession-Then-Ask
