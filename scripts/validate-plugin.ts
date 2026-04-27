@@ -12,6 +12,7 @@ const FrontmatterSchema = z
     description: z.string().min(50).max(500),
     "allowed-tools": z.string().min(1),
     version: z.string().optional(),
+    audit: z.enum(["load-bearing-5-slot"]).optional(),
   })
   .strict();
 
@@ -46,6 +47,86 @@ function extractSkillReferences(roleText: string): string[] {
     if (match[1]?.includes("-")) refs.add(match[1]);
   }
   return [...refs];
+}
+
+const STOPWORDS = new Set([
+  "a","an","the","of","in","to","on","and","or","that","which","who","what",
+  "before","after","when","with","by","for","is","was","be","been","being",
+  "has","have","had","this","those","these","its","their","our","your",
+  "some","any","but","then","than","into","onto","from","as","at","still",
+  "not","only","also","both","either","neither","because","since","just",
+  "very","more","most","they","them","you","one","two","each","every",
+  "across","via","yet","over","about","between","among",
+]);
+
+function tokenizeFingerprint(text: string): string[] {
+  return text
+    .toLowerCase()
+    .replace(/[-/]/g, " ")
+    .replace(/[^a-z0-9\s]/g, " ")
+    .split(/\s+/)
+    .filter((t) => t.length >= 4 && !STOPWORDS.has(t));
+}
+
+function extractLoadBearingPhrase(description: string): string | null {
+  const m1 = description.match(/[Ll]oad-bearing(?:\s+move)?\s+is\s+([^.,;—:]+)/);
+  if (m1) return m1[1];
+  const m2 = description.match(/—\s*([^.,;—:]+?)\s+is\s+load-bearing/i);
+  if (m2) return m2[1];
+  const m3 = description.match(/([^.,;—:]{1,120}?)\s+is\s+load-bearing/i);
+  if (m3) return m3[1];
+  return null;
+}
+
+function pickFingerprintTokens(phrase: string): string[] {
+  const toks = Array.from(new Set(tokenizeFingerprint(phrase)));
+  toks.sort((a, b) => b.length - a.length || a.localeCompare(b));
+  return toks.slice(0, 3);
+}
+
+function slotHasToken(slotText: string, token: string): boolean {
+  const prefix = token.slice(0, Math.min(4, token.length));
+  const norm = ` ${slotText.toLowerCase().replace(/[-/]/g, " ").replace(/[^a-z0-9\s]/g, " ")} `;
+  return new RegExp(`\\s${prefix.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`).test(norm);
+}
+
+function validateLoadBearing(dir: string, body: string, fm: Record<string, string>): Issue[] {
+  const issues: Issue[] = [];
+  if (fm?.audit !== "load-bearing-5-slot") return issues;
+  const description = fm?.description;
+  if (!description) return issues;
+  const phrase = extractLoadBearingPhrase(description);
+  if (!phrase) {
+    return [{ skill: dir, level: "error", message: `audit: load-bearing-5-slot opted in but description has no "[Ll]oad-bearing is X" phrase` }];
+  }
+  const tokens = pickFingerprintTokens(phrase);
+  if (tokens.length === 0) return issues;
+
+  const slots: Array<{ name: string; text: string }> = [];
+  for (const sec of ["Priorities", "Role", "Input Handling", "Example", "Completion"]) {
+    const re = new RegExp(`## ${sec}\\n([\\s\\S]*?)(?=\\n## |\\n*$)`);
+    const m = body.match(re);
+    slots.push({ name: sec, text: m ? m[1] : "" });
+  }
+  const exampleSlot = slots.find((s) => s.name === "Example");
+  if (exampleSlot) {
+    const tm = exampleSlot.text.match(/<thinking>([\s\S]*?)<\/thinking>/);
+    if (tm) exampleSlot.text = tm[1];
+  }
+
+  const required = tokens.length >= 3 ? 2 : tokens.length;
+  for (const slot of slots) {
+    const hits = tokens.filter((t) => slotHasToken(slot.text, t));
+    if (hits.length < required) {
+      const missing = tokens.filter((t) => !hits.includes(t));
+      issues.push({
+        skill: dir,
+        level: "error",
+        message: `load-bearing audit: slot "${slot.name}" missing [${missing.join(", ")}]; need ≥${required} of [${tokens.join(", ")}]`,
+      });
+    }
+  }
+  return issues;
 }
 
 function validateSkill(dir: string, knownSkills: Set<string>): Issue[] {
@@ -299,6 +380,8 @@ function validateSkill(dir: string, knownSkills: Set<string>): Issue[] {
   if (/\$ARGUMENTS/.test(body)) {
     issues.push({ skill: dir, level: "warn", message: "contains literal $ARGUMENTS (skills do not substitute)" });
   }
+
+  issues.push(...validateLoadBearing(dir, body, fm));
 
   return issues;
 }

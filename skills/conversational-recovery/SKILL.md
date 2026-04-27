@@ -2,6 +2,7 @@
 name: conversational-recovery
 description: Repairs a conversation after a framing move missed — load-bearing is class-shift after the miss, because repeating the same statement class harder ("pace harder") compounds the visible-effort tell that "trying is the opposite of having" and turns recovery into evidence of weakness. Use after a 1:1 / negotiation went sideways, when an opener landed flat, or when the user says "that landed badly", "I lost the room", or "how do I recover".
 allowed-tools: AskUserQuestion, Read
+audit: load-bearing-5-slot
 ---
 
 # Conversational Recovery
