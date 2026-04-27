@@ -6,6 +6,7 @@ audit: load-bearing-5-slot
 audit-lineage-attribution: required
 audit-failure-mode-named: required
 audit-residual-handoff: required
+audit-reply-format-footer: required
 ---
 
 # Presupposition Detector

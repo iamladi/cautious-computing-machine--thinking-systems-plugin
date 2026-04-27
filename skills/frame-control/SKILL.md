@@ -7,6 +7,7 @@ audit-refusal-gate: required
 audit-lineage-attribution: required
 audit-failure-mode-named: required
 audit-residual-handoff: required
+audit-reply-format-footer: required
 ---
 
 # Frame Control (Statement + Question Architecture)

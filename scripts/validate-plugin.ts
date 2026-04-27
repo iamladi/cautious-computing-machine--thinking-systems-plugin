@@ -17,6 +17,7 @@ const FrontmatterSchema = z
     "audit-lineage-attribution": z.literal("required").optional(),
     "audit-failure-mode-named": z.literal("required").optional(),
     "audit-residual-handoff": z.literal("required").optional(),
+    "audit-reply-format-footer": z.literal("required").optional(),
   })
   .strict();
 
@@ -482,6 +483,60 @@ function validateSkill(dir: string, knownSkills: Set<string>): Issue[] {
   issues.push(...validateLineageAttribution(dir, body, fm));
   issues.push(...validateFailureModeNamed(dir, body, fm));
   issues.push(...validateResidualHandoff(dir, body, fm, knownSkills));
+  issues.push(...validateReplyFormatFooter(dir, body, fm));
+
+  return issues;
+}
+
+function validateReplyFormatFooter(dir: string, body: string, fm: Record<string, string>): Issue[] {
+  if (fm?.["audit-reply-format-footer"] !== "required") return [];
+  const issues: Issue[] = [];
+
+  const CANONICAL = "`Reply format: 1a 2b or defaults`";
+  const LOOP_LINE = "Footer every round: `Reply format: 1a 2b or defaults`";
+  const EXAMPLE_LINE = "Footer: `Reply format: 1a 2b or defaults`";
+
+  const loopMatch = body.match(/## Loop\n([\s\S]*?)(?=\n## )/);
+  if (!loopMatch) {
+    issues.push({ skill: dir, level: "error", message: "audit-reply-format-footer: ## Loop section missing" });
+  } else if (!loopMatch[1].includes(LOOP_LINE)) {
+    const hasNakedFooter = /Footer.*Reply format/.test(loopMatch[1]);
+    issues.push({
+      skill: dir,
+      level: "error",
+      message: hasNakedFooter
+        ? `audit-reply-format-footer: Loop has Footer line but does not match canonical "${LOOP_LINE}" — drift in wording, backticks, or reply-format string breaks the AskUserQuestion response convention silently`
+        : `audit-reply-format-footer: Loop missing canonical "${LOOP_LINE}" footer line — without it, AskUserQuestion calls do not surface the response convention to users`,
+    });
+  }
+
+  const exampleMatch = body.match(/## Example\n([\s\S]*?)(?=\n## )/);
+  if (!exampleMatch) {
+    issues.push({ skill: dir, level: "error", message: "audit-reply-format-footer: ## Example section missing" });
+  } else if (!exampleMatch[1].includes(EXAMPLE_LINE)) {
+    const hasNakedFooter = /Footer:.*Reply format/.test(exampleMatch[1]);
+    issues.push({
+      skill: dir,
+      level: "error",
+      message: hasNakedFooter
+        ? `audit-reply-format-footer: Example has Footer line but does not match canonical "${EXAMPLE_LINE}" — drift between Loop's instruction and Example's demonstration produces inconsistent UX contract`
+        : `audit-reply-format-footer: Example missing canonical "${EXAMPLE_LINE}" footer line — Example must demonstrate the same reply-format convention the Loop instructs`,
+    });
+  }
+
+  if (loopMatch && exampleMatch) {
+    const loopFooters = [...loopMatch[1].matchAll(/`Reply format: [^`]+`/g)].map((m) => m[0]);
+    const exampleFooters = [...exampleMatch[1].matchAll(/`Reply format: [^`]+`/g)].map((m) => m[0]);
+    const all = [...loopFooters, ...exampleFooters];
+    const drifted = all.filter((f) => f !== CANONICAL);
+    if (drifted.length > 0) {
+      issues.push({
+        skill: dir,
+        level: "error",
+        message: `audit-reply-format-footer: reply-format string drift detected — found [${drifted.join(", ")}], canonical is ${CANONICAL}`,
+      });
+    }
+  }
 
   return issues;
 }
