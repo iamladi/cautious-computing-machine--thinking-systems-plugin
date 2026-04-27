@@ -20,6 +20,7 @@ const FrontmatterSchema = z
     "audit-reply-format-footer": z.literal("required").optional(),
     "audit-example-loop-anchor": z.literal("required").optional(),
     "audit-thinking-load-bearing-restatement": z.literal("required").optional(),
+    "audit-recommended-default-options": z.literal("required").optional(),
   })
   .strict();
 
@@ -488,6 +489,64 @@ function validateSkill(dir: string, knownSkills: Set<string>): Issue[] {
   issues.push(...validateReplyFormatFooter(dir, body, fm));
   issues.push(...validateExampleLoopAnchor(dir, body, fm));
   issues.push(...validateThinkingLoadBearingRestatement(dir, body, fm));
+  issues.push(...validateRecommendedDefaultOptions(dir, body, fm));
+
+  return issues;
+}
+
+function validateRecommendedDefaultOptions(dir: string, body: string, fm: Record<string, string>): Issue[] {
+  if (fm?.["audit-recommended-default-options"] !== "required") return [];
+  const issues: Issue[] = [];
+
+  const exampleMatch = body.match(/## Example\n([\s\S]*?)(?=\n## )/);
+  if (!exampleMatch) {
+    return [{ skill: dir, level: "error", message: "audit-recommended-default-options: ## Example section missing" }];
+  }
+  const example = exampleMatch[1];
+
+  const recommendedLineRe = /^  - `\(Recommended\)[^`]*`.*$/gm;
+  const recommendedLines = example.match(recommendedLineRe) ?? [];
+  if (recommendedLines.length === 0) {
+    issues.push({
+      skill: dir,
+      level: "error",
+      message: 'audit-recommended-default-options: Example missing canonical "  - `(Recommended) ...`" option line — without it the AskUserQuestion demonstration provides no guided default and the Loop\'s "1a" reply convention has nothing to point at',
+    });
+  } else if (recommendedLines.length > 1) {
+    issues.push({
+      skill: dir,
+      level: "error",
+      message: `audit-recommended-default-options: Example has ${recommendedLines.length} "(Recommended)" option lines; canonical contract is exactly one — multiple recommendations dilute the guided-default signal and the user cannot tell which is the actual default`,
+    });
+  } else {
+    const trailing = recommendedLines[0].match(/^  - `\(Recommended\)[^`]*`(.*)$/);
+    if (trailing && !/^\s+—\s+\S/.test(trailing[1])) {
+      issues.push({
+        skill: dir,
+        level: "error",
+        message: 'audit-recommended-default-options: "(Recommended)" option line missing " — <rationale>" em-dash trailer after closing backtick — rationale is what justifies the recommendation; without it, "(Recommended)" becomes a bare label without warrant',
+      });
+    }
+  }
+
+  const notSureRe = /^  - `Not sure - you decide`/m;
+  if (!notSureRe.test(example)) {
+    issues.push({
+      skill: dir,
+      level: "error",
+      message: 'audit-recommended-default-options: Example missing canonical "  - `Not sure - you decide`" fallback option line — without it the Loop\'s "or defaults" reply convention has no concrete option to dispatch to and "defaults" becomes a dangling reference',
+    });
+  }
+
+  const recIdx = example.search(/^  - `\(Recommended\)/m);
+  const notSureIdx = example.search(/^  - `Not sure - you decide`/m);
+  if (recIdx !== -1 && notSureIdx !== -1 && recIdx > notSureIdx) {
+    issues.push({
+      skill: dir,
+      level: "error",
+      message: 'audit-recommended-default-options: "(Recommended)" option appears AFTER "Not sure - you decide" fallback — UX contract is recommendation first (top of list), fallback last; reversed order misleads readers about which is the default vs the escape hatch',
+    });
+  }
 
   return issues;
 }
