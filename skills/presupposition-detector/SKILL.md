@@ -8,6 +8,7 @@ audit-failure-mode-named: required
 audit-residual-handoff: required
 audit-reply-format-footer: required
 audit-example-loop-anchor: required
+audit-thinking-load-bearing-restatement: required
 ---
 
 # Presupposition Detector

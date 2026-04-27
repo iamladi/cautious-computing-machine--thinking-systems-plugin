@@ -19,6 +19,7 @@ const FrontmatterSchema = z
     "audit-residual-handoff": z.literal("required").optional(),
     "audit-reply-format-footer": z.literal("required").optional(),
     "audit-example-loop-anchor": z.literal("required").optional(),
+    "audit-thinking-load-bearing-restatement": z.literal("required").optional(),
   })
   .strict();
 
@@ -486,6 +487,59 @@ function validateSkill(dir: string, knownSkills: Set<string>): Issue[] {
   issues.push(...validateResidualHandoff(dir, body, fm, knownSkills));
   issues.push(...validateReplyFormatFooter(dir, body, fm));
   issues.push(...validateExampleLoopAnchor(dir, body, fm));
+  issues.push(...validateThinkingLoadBearingRestatement(dir, body, fm));
+
+  return issues;
+}
+
+function validateThinkingLoadBearingRestatement(dir: string, body: string, fm: Record<string, string>): Issue[] {
+  if (fm?.["audit-thinking-load-bearing-restatement"] !== "required") return [];
+  const issues: Issue[] = [];
+
+  const description = fm?.description;
+  if (!description) {
+    return [{ skill: dir, level: "error", message: "audit-thinking-load-bearing-restatement: description missing" }];
+  }
+  const phrase = extractLoadBearingPhrase(description);
+  if (!phrase) {
+    return [{ skill: dir, level: "error", message: 'audit-thinking-load-bearing-restatement: description has no "[Ll]oad-bearing is X" phrase' }];
+  }
+  const tokens = pickFingerprintTokens(phrase);
+  if (tokens.length === 0) return issues;
+
+  const exampleMatch = body.match(/## Example\n([\s\S]*?)(?=\n## )/);
+  if (!exampleMatch) {
+    return [{ skill: dir, level: "error", message: "audit-thinking-load-bearing-restatement: ## Example section missing" }];
+  }
+  const thinkingMatch = exampleMatch[1].match(/<thinking>([\s\S]*?)<\/thinking>/);
+  if (!thinkingMatch) {
+    return [{
+      skill: dir,
+      level: "error",
+      message: "audit-thinking-load-bearing-restatement: Example missing <thinking>...</thinking> reasoning block — without it the load-bearing demonstration has no place to live",
+    }];
+  }
+  const thinking = thinkingMatch[1];
+
+  if (!/load-bearing/i.test(thinking)) {
+    issues.push({
+      skill: dir,
+      level: "error",
+      message: 'audit-thinking-load-bearing-restatement: <thinking> block does not contain literal "load-bearing" — example reasoning has drifted to generic explanation that no longer demonstrates which move is load-bearing for this scenario',
+    });
+    return issues;
+  }
+
+  const sentences = thinking.split(/(?<=[.!?])\s+/);
+  const tieSentences = sentences.filter((s) => /load-bearing/i.test(s));
+  const tied = tieSentences.some((s) => tokens.some((t) => slotHasToken(s, t)));
+  if (!tied) {
+    issues.push({
+      skill: dir,
+      level: "error",
+      message: `audit-thinking-load-bearing-restatement: <thinking> contains "load-bearing" but no sentence ties it to the move-fingerprint [${tokens.join(", ")}] from the description — drift where "load-bearing" appears as a sprinkled keyword disconnected from the actual move it names`,
+    });
+  }
 
   return issues;
 }
