@@ -1,6 +1,13 @@
 node_modules/
 .DS_Store
 *.log
+*.err
 bun.lock
 .env
 .env.local
+
+# Local Claude Code runtime
+.claude/
+
+# Raw deep-research artefacts (synthesis stays committed; raw VTT and transient logs are ephemeral)
+research/.deep-research-*/yt_*.vtt

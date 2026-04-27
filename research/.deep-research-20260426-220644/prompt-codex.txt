@@ -1,0 +1,71 @@
+# Phase 2 — Independent Analysis Prompt
+
+You are one of three independent LLMs (Claude, Gemini, Codex) producing a deep-research analysis on **framing tactics** and how to extend the `thinking-systems-plugin` Claude Code plugin to incorporate them.
+
+## Inputs (read both fully before writing)
+
+1. `/Users/iamladi/Projects/claude-code-plugins/thinking-systems-plugin/research/.deep-research-20260426-220644/context.md` — full discovery brief (transcript-grounded summary of the Chase Hughes "5 Sentences" video, the plugin's existing structure, the canonical SKILL.md/command shape, and a design surface with open questions).
+2. `/Users/iamladi/Projects/claude-code-plugins/thinking-systems-plugin/research/.deep-research-20260426-220644/transcript.txt` — full cleaned transcript (29.6 KB) of the source video.
+
+Also read at least these existing skills to verify the house style before proposing new ones:
+- `/Users/iamladi/Projects/claude-code-plugins/thinking-systems-plugin/skills/six-thinking-hats/SKILL.md`
+- `/Users/iamladi/Projects/claude-code-plugins/thinking-systems-plugin/skills/situation-behavior-impact/SKILL.md`
+- `/Users/iamladi/Projects/claude-code-plugins/thinking-systems-plugin/skills/minto-pyramid/SKILL.md`
+- `/Users/iamladi/Projects/claude-code-plugins/thinking-systems-plugin/skills/ladder-of-inference/SKILL.md`
+- `/Users/iamladi/Projects/claude-code-plugins/thinking-systems-plugin/skills/abstraction-laddering/SKILL.md`
+- `/Users/iamladi/Projects/claude-code-plugins/thinking-systems-plugin/commands/six-thinking-hats.md`
+
+## What to deliver
+
+A single markdown analysis file. **Breadth before depth**: enumerate every subtopic before deep-diving any one of them. Use web search extensively — do not rely solely on training data. Cite sources with URLs.
+
+Your analysis must cover:
+
+### A. Framing tactics — corroborate, extend, or challenge Hughes's framework
+
+A1. Cross-validate the **5 statement classes** (Pacing, Alignment, Resonance, Concession, Presupposition) and **5 question classes** (Directional, Assumptive, Elicitation, Reframe, Diagnostic) against the broader literature: Goffman, Lakoff, Tversky-Kahneman, Cialdini (especially *Pre-Suasion*), Voss (*Never Split the Difference*), Bandler-Grinder NLP work, Fisher-Ury (*Getting to Yes*), Schein (humble inquiry), Boyd (OODA Orient stage), academic conversation analysis. Where do other traditions corroborate the move? Where do they name a *different* primitive Hughes is missing?
+
+A2. Identify framing tactics in the literature that **Hughes does not cover** but are well-attested. Candidates to evaluate (not exhaustive): anchoring, contrast principle, accusation audit (Voss), labeling vs. mirroring split, "no-oriented" questions, scarcity / loss-frame, identity-stake framing, temporal framing (10-year-from-now lens), priming/pre-suasion, Socratic elenchus, narrative reframing.
+
+A3. The **recovery loop** ("read the miss → release → shift class → redeploy"). How well-supported is this in the literature? Are there better-developed recovery models (e.g., Voss's "tactical empathy" recovery, Argyris's double-loop, Schein's Process Consultation)?
+
+A4. **Defensive read.** How does someone *detect* frames being installed on them in real time? Tools: Goffman's "frame breaks", Schein's left-hand column, ladder-of-inference (already in plugin). Phase 2 must take a clear position on whether defensive framing belongs in the same skill as offensive framing or in separate skills.
+
+A5. **Ethics.** Where is the line between honest frame-setting and manipulation? Hughes's claim that the doctor/boss/parent are not consciously manipulating is empirically defensible but risks moral cover. Take a position the plugin can adopt without becoming a manipulation-coaching tool.
+
+### B. Plugin extension proposals
+
+B1. **Skill inventory.** Propose the exact set of new skills you would add. For each, give: name, one-paragraph description (in the load-bearing-move style the plugin uses), category placement (Communication / a new "Conversation" category / cross-category), routing relationships to existing skills (when does X route to Y; what does X subsume).
+
+B2. **Mega-skill vs. micro-skills.** Take a definitive position on the open question in context.md §5.3.1. If you propose multiple skills, justify the granularity against the plugin's existing per-skill granularity (compare to e.g. `balancing-feedback-loop` and `reinforcing-feedback-loop` being split rather than fused).
+
+B3. **Full SKILL.md drafts.** Write *complete*, *audit-clean* drafts of your top **2–3** proposed skills, each with the canonical structure (frontmatter + Priorities + Role + Loop + Input Handling + Example with `<thinking>` block + Completion with audit clauses tied to the load-bearing move). The plugin's `.gnhf` audit checks that the load-bearing move named in the description appears verbatim or near-verbatim in Priorities, Role, Input Handling, Example `<thinking>`, and Completion — your drafts must pass that audit.
+
+B4. **Command-wrapper drafts** for each full skill in B3.
+
+B5. **Cross-skill modifications.** Propose specific edits to existing skills (named by file path) that would integrate the new framing primitives. Be concrete: which lines change to what.
+
+B6. **README.md and CHANGELOG.md updates** consistent with adding the proposed skills.
+
+### C. Stress-test of open design questions
+
+Address every open question in context.md §5.3 with a definitive recommendation and the tradeoff. Do not fence-sit; if you genuinely cannot decide, say which experiment would resolve it.
+
+### D. Risks and disclaimers
+
+D1. Anything in Hughes's framework that does *not* survive cross-validation against the broader literature.
+D2. Adoption risks for a developer-focused plugin (Hughes's framework is conversational; many plugin users will be mid-engineering-task and not in a conversation — when does the plugin recommend *not* invoking these skills?).
+D3. Citation hygiene — how to credit Hughes/NCI without endorsing the paid courses; how to credit the broader tradition.
+
+## Process rules
+
+- **Breadth first, depth second.** Before deep-diving any one section, list every subtopic you will cover.
+- **Use web search aggressively.** Verify every literature claim against a current source. Cite URLs.
+- **Iterate until genuinely done.** When you've completed your analysis to a high standard, append on its own line:
+
+  `<!-- RESEARCH_COMPLETE -->`
+
+- **On each continuation pass**, name the specific gap you are closing before adding content. Do not pad.
+- The plugin already has 25 skills. New skills should earn their slot — be willing to consolidate or recommend not adding a skill if the literature does not support it.
+
+Write the analysis to: `/Users/iamladi/Projects/claude-code-plugins/thinking-systems-plugin/research/.deep-research-20260426-220644/codex-analysis.md`

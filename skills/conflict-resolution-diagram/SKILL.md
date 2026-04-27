@@ -20,6 +20,7 @@ Skip when one side is plainly correct or when the conflict is values-based with 
 
 ## Loop
 
+0. **Round 0 — Presupposition pre-pass**: before extracting positions, run a presupposition pass on each party's stated demand. If the demand is grammatically-embedded ("since we already agreed X, you must Y") rather than a clean interest claim, surface the embedded assumption first via `presupposition-detector` — otherwise the diagram resolves a conflict between two presuppositions, not two interests, and the resolution will not hold.
 1. **Round 1 — Demands**: `AskUserQuestion`: "What is each side asking for?" — capture both demands verbatim.
 2. **Round 2 — Need behind Demand A**: ask "Why do they want that?" — surface the underlying need, not the position.
 3. **Round 3 — Need behind Demand B**: same for the other side.

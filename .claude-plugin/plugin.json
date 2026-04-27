@@ -1,7 +1,7 @@
 {
   "name": "thinking-systems",
-  "description": "25 classical thinking tools as skills + slash commands — systems thinking, decision making, problem solving, communication",
-  "version": "0.1.0",
+  "description": "29 classical thinking tools as skills + slash commands — systems thinking, decision making, problem solving, communication",
+  "version": "0.2.0",
   "author": {
     "name": "Ladislav Martincik",
     "url": "https://github.com/iamladi"
