@@ -1,0 +1,42 @@
+# Phase 3 — Cross-Pollination Refinement Prompt
+
+You produced an independent Phase-2 analysis on framing tactics for the `thinking-systems-plugin`. Now refine it.
+
+## Inputs
+
+1. Your Phase-2 analysis (your own previous output) — at the path supplied below.
+2. The peer LLM's Phase-2 analysis — at the path supplied below.
+3. The original brief: `/Users/iamladi/Projects/claude-code-plugins/thinking-systems-plugin/research/.deep-research-20260426-220644/context.md` and the source `transcript.txt`.
+
+(The third LLM, Gemini, failed at Phase 2 due to API quota exhaustion. Only two surviving analyses to cross-pollinate.)
+
+## Process
+
+1. **Re-read your own analysis end-to-end.** Note its strongest sections and its weakest claims (places where you over-asserted, hand-waved, or under-cited).
+2. **Read the peer analysis with healthy skepticism.** Specifically look for:
+   - Angles you missed entirely
+   - Citations / sources you did not use
+   - Claims that contradict yours — adjudicate which is correct via fresh research, do not simply average
+   - Better-phrased load-bearing moves, audit clauses, or skill names
+   - SKILL.md drafts where the peer's structure or example is sharper than yours
+   - Misses by the peer that strengthen your version by contrast
+3. **Conduct new research** on:
+   - Avenues the peer raised that you had not investigated
+   - Contradictions between the two analyses (decide via primary sources)
+   - Topics neither of you adequately covered (the brief is the ground truth for what was supposed to be covered)
+4. **Produce a refined version** that is strictly better than your original on every dimension:
+   - Same coverage areas (A. framing tactics literature; B. plugin extension proposals with full SKILL.md drafts; C. open-question resolutions; D. risks and disclaimers)
+   - Stronger citations, more specific load-bearing moves, sharper SKILL.md drafts
+   - Distinct from the peer — do not homogenize. Where you have a different (and defensible) position, sharpen it; do not move toward the peer just to converge.
+   - Where you and the peer agree, mark it explicitly so the synthesizer can credit consensus.
+
+## Hard rules
+
+- Do NOT copy text from the peer. Refine your own.
+- Do NOT accept peer claims at face value — verify via web search.
+- Do NOT homogenize. The point of three independent passes is preserved disagreement where it is real.
+- The refined output must contain *complete* SKILL.md drafts (frontmatter + Priorities + Role + Loop + Input Handling + Example with `<thinking>` block + Completion with audit clauses) for at least 2–3 proposed skills. The plugin's `.gnhf` audit cross-checks that the load-bearing move named in the description appears verbatim or near-verbatim in Priorities, Role, Input Handling, Example `<thinking>`, and Completion. Your drafts must pass that audit.
+- Iterate until genuinely done; on the final pass append `<!-- RESEARCH_COMPLETE -->` on its own line.
+- On each continuation, name the gap you are closing.
+
+Write the refined analysis to: `__OUTPUT_PATH__`
