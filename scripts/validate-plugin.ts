@@ -14,6 +14,7 @@ const FrontmatterSchema = z
     version: z.string().optional(),
     audit: z.enum(["load-bearing-5-slot"]).optional(),
     "audit-refusal-gate": z.literal("required").optional(),
+    "audit-lineage-attribution": z.literal("required").optional(),
   })
   .strict();
 
@@ -476,6 +477,54 @@ function validateSkill(dir: string, knownSkills: Set<string>): Issue[] {
 
   issues.push(...validateLoadBearing(dir, body, fm));
   issues.push(...validateRefusalGate(dir, body, fm));
+  issues.push(...validateLineageAttribution(dir, body, fm));
+
+  return issues;
+}
+
+const HISTORICAL_AUTHORITIES = [
+  "voss", "cialdini", "goffman", "heritage", "argyris", "lakoff",
+  "pillet-shore", "watzlawick", "schein", "oyserman", "fisher",
+  "ury", "ackerman",
+];
+
+function validateLineageAttribution(dir: string, body: string, fm: Record<string, string>): Issue[] {
+  if (fm?.["audit-lineage-attribution"] !== "required") return [];
+  const issues: Issue[] = [];
+
+  const roleMatch = body.match(/## Role\n([\s\S]*?)(?=\n## )/);
+  if (!roleMatch) {
+    return [{ skill: dir, level: "error", message: "audit-lineage-attribution: ## Role section missing" }];
+  }
+  const personaPara = roleMatch[1].trim().split(/\n\s*\n/).find((p) => !/^Skip when/.test(p.trim()));
+  if (!personaPara) {
+    return [{ skill: dir, level: "error", message: "audit-lineage-attribution: Role persona paragraph missing" }];
+  }
+
+  const cited: string[] = [];
+  for (const name of HISTORICAL_AUTHORITIES) {
+    const re = new RegExp(`\\b${name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "i");
+    if (re.test(personaPara)) cited.push(name);
+  }
+  if (cited.length < 3) {
+    issues.push({
+      skill: dir,
+      level: "error",
+      message: `audit-lineage-attribution: Role persona cites ${cited.length} historical authorities [${cited.join(", ") || "none"}]; need ≥3 from {${HISTORICAL_AUTHORITIES.join(", ")}} to anchor the lineage cross-check`,
+    });
+  }
+
+  const restaterPatterns = [
+    /Hughes credited as one recent restater/i,
+    /cross-checked against those older traditions/i,
+  ];
+  if (!restaterPatterns.some((re) => re.test(personaPara))) {
+    issues.push({
+      skill: dir,
+      level: "error",
+      message: 'audit-lineage-attribution: Role persona missing canonical restater clause ("Hughes credited as one recent restater" / "cross-checked against those older traditions") — protects against collapse to single-source doctrinal claim',
+    });
+  }
 
   return issues;
 }

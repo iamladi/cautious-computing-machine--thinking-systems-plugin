@@ -3,6 +3,7 @@ name: presupposition-detector
 description: Scans an inbound message, agenda, or doc for presuppositions — assumptions embedded as fact in the grammar — and surfaces them as explicit claims. Load-bearing is surfacing the unstated assumption embedded as fact, because letting it pass uncontested ratifies the frame and makes future challenge structurally costly. Use before responding to a hostile email, reviewing a redline, or when the user says "scan this for assumptions", "this feels loaded", or "presupposition".
 allowed-tools: AskUserQuestion, Read
 audit: load-bearing-5-slot
+audit-lineage-attribution: required
 ---
 
 # Presupposition Detector

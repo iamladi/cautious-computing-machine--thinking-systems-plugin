@@ -4,6 +4,7 @@ description: Repairs a conversation after a framing move missed — load-bearing
 allowed-tools: AskUserQuestion, Read
 audit: load-bearing-5-slot
 audit-refusal-gate: required
+audit-lineage-attribution: required
 ---
 
 # Conversational Recovery

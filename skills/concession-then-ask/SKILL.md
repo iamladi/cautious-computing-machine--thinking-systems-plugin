@@ -4,6 +4,7 @@ description: Pairs a concession (acknowledging a cost the counterpart paid) with
 allowed-tools: AskUserQuestion, Read
 audit: load-bearing-5-slot
 audit-refusal-gate: required
+audit-lineage-attribution: required
 ---
 
 # Concession-Then-Ask

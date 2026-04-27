@@ -4,6 +4,7 @@ description: Plans the statement+question pair that installs a chosen frame — 
 allowed-tools: AskUserQuestion, Read
 audit: load-bearing-5-slot
 audit-refusal-gate: required
+audit-lineage-attribution: required
 ---
 
 # Frame Control (Statement + Question Architecture)
