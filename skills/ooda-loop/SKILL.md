@@ -21,7 +21,7 @@ Skip when the decision has long horizons, ample data, and no competitive or time
 ## Loop
 
 1. **Observe**: `AskUserQuestion`: "What's the freshest signal you have right now?" — recommend the most decision-relevant data source.
-2. **Orient**: `AskUserQuestion`: "What does this signal mean given your context and prior experience?" — surface how previous cycles, analogies, and team capabilities color the interpretation.
+2. **Orient**: `AskUserQuestion`: "What does this signal mean given your context and prior experience?" — surface how previous cycles, analogies, and team capabilities color the interpretation. Frame-reading — naming which frame is already running in the room (authority / adversarial / emotional / narrative) — is an Orient act; for explicit frame-control planning of a statement+question pair, route to `frame-control` and let it consume the Orient output as its Round 1 input.
 3. **Decide**: `AskUserQuestion`: "Given that orientation, what's the next action?" — present options with tradeoffs; recommend the action that tests the riskiest assumption.
 4. **Act**: confirm the chosen action + how you'll measure its outcome.
 5. Loop: feed the outcome back into the next Observe phase. Explicitly flag whether the next cycle should be faster, slower, or same pace.

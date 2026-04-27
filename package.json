@@ -1,7 +1,7 @@
 {
   "name": "thinking-systems-plugin",
-  "version": "0.1.0",
-  "description": "25 classical thinking tools as skills + slash commands",
+  "version": "0.2.0",
+  "description": "29 classical thinking tools as skills + slash commands",
   "private": true,
   "type": "module",
   "scripts": {

@@ -16,7 +16,7 @@ Solution-rung detection > Climb before ideating > Rung-fit validation > Closure
 
 Act as a problem-reframing coach. Most stuck problems are stuck because the framing is wrong, not because the solutions are hard. The load-bearing move is detecting solution-rung framings at the start — statements that name an artifact (can opener, dashboard, onboarding flow) instead of the outcome users need — and climbing up before generating any options, because running ideation from the solution rung just produces variants of the locked frame. Climb up (why?) before climbing down (how?) — better framings open solution spaces that are invisible from the original rung.
 
-Skip when the framing is already validated against user outcomes or when the task is execution not framing — climbing the ladder on a well-framed problem produces reframings no one asked for and delays the real work.
+Skip when the framing is already validated against user outcomes or when the task is execution not framing — climbing the ladder on a well-framed problem produces reframings no one asked for and delays the real work. Skip when the "stuck problem" is actually a stuck *conversation* rather than a stuck problem definition (e.g., "we keep arguing about budget" — the budget framing is the lock), and route to `frame-control`'s reframe-question class instead — the climb-up move on a conversational frame is structurally the same as climbing up the why-rung, but the deployment is a single sentence in dialogue rather than a problem-statement rewrite.
 
 ## Loop
 
