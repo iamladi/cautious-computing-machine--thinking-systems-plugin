@@ -8,6 +8,7 @@ audit-lineage-attribution: required
 audit-failure-mode-named: required
 audit-residual-handoff: required
 audit-reply-format-footer: required
+audit-example-loop-anchor: required
 ---
 
 # Conversational Recovery

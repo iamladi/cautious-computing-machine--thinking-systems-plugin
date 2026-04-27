@@ -18,6 +18,7 @@ const FrontmatterSchema = z
     "audit-failure-mode-named": z.literal("required").optional(),
     "audit-residual-handoff": z.literal("required").optional(),
     "audit-reply-format-footer": z.literal("required").optional(),
+    "audit-example-loop-anchor": z.literal("required").optional(),
   })
   .strict();
 
@@ -484,6 +485,44 @@ function validateSkill(dir: string, knownSkills: Set<string>): Issue[] {
   issues.push(...validateFailureModeNamed(dir, body, fm));
   issues.push(...validateResidualHandoff(dir, body, fm, knownSkills));
   issues.push(...validateReplyFormatFooter(dir, body, fm));
+  issues.push(...validateExampleLoopAnchor(dir, body, fm));
+
+  return issues;
+}
+
+function validateExampleLoopAnchor(dir: string, body: string, fm: Record<string, string>): Issue[] {
+  if (fm?.["audit-example-loop-anchor"] !== "required") return [];
+  const issues: Issue[] = [];
+
+  const exampleMatch = body.match(/## Example\n([\s\S]*?)(?=\n## )/);
+  if (!exampleMatch) {
+    return [{ skill: dir, level: "error", message: "audit-example-loop-anchor: ## Example section missing" }];
+  }
+  const example = exampleMatch[1];
+
+  const anchorRe = /Calls AskUserQuestion \(Round\s+\d+(?:\s*—\s*[^)]+)?\)/;
+  const anchorMatch = example.match(anchorRe);
+  if (!anchorMatch) {
+    issues.push({
+      skill: dir,
+      level: "error",
+      message: 'audit-example-loop-anchor: Example missing "Calls AskUserQuestion (Round N — <descriptor>)" round-anchor — without it, Example drifts from mid-loop interaction snapshot to static narrative summary that no longer demonstrates the Loop discipline',
+    });
+    return issues;
+  }
+  const anchor = anchorMatch[0];
+
+  if (fm?.["audit-refusal-gate"] === "required") {
+    const isGateRound = /status gate/i.test(anchor);
+    const hasGatePassageClause = /after the Round \d+ status gate passed/i.test(example);
+    if (!isGateRound && !hasGatePassageClause) {
+      issues.push({
+        skill: dir,
+        level: "error",
+        message: 'audit-example-loop-anchor: Example anchor demonstrates a non-gate round but lacks "fired only after the Round N status gate passed" clause — coherence break between gate-enforcing Loop and gate-unaware Example demonstration; reader cannot tell whether the gate ran',
+      });
+    }
+  }
 
   return issues;
 }
