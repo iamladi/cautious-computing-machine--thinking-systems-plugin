@@ -5,6 +5,7 @@ allowed-tools: AskUserQuestion, Read
 audit: load-bearing-5-slot
 audit-lineage-attribution: required
 audit-failure-mode-named: required
+audit-residual-handoff: required
 ---
 
 # Presupposition Detector

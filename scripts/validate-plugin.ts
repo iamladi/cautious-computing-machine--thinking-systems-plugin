@@ -16,6 +16,7 @@ const FrontmatterSchema = z
     "audit-refusal-gate": z.literal("required").optional(),
     "audit-lineage-attribution": z.literal("required").optional(),
     "audit-failure-mode-named": z.literal("required").optional(),
+    "audit-residual-handoff": z.literal("required").optional(),
   })
   .strict();
 
@@ -480,6 +481,65 @@ function validateSkill(dir: string, knownSkills: Set<string>): Issue[] {
   issues.push(...validateRefusalGate(dir, body, fm));
   issues.push(...validateLineageAttribution(dir, body, fm));
   issues.push(...validateFailureModeNamed(dir, body, fm));
+  issues.push(...validateResidualHandoff(dir, body, fm, knownSkills));
+
+  return issues;
+}
+
+function validateResidualHandoff(dir: string, body: string, fm: Record<string, string>, knownSkills: Set<string>): Issue[] {
+  if (fm?.["audit-residual-handoff"] !== "required") return [];
+  const issues: Issue[] = [];
+
+  const completionMatch = body.match(/## Completion\n([\s\S]*?)(?=\n## |\n*$)/);
+  if (!completionMatch) {
+    return [{ skill: dir, level: "error", message: "audit-residual-handoff: ## Completion section missing" }];
+  }
+  const comp = completionMatch[1];
+
+  const residualMatch = comp.match(/^-\s*Residual:\s*([\s\S]*?)(?=\n-\s|\n*$)/m);
+  if (!residualMatch) {
+    return [{
+      skill: dir,
+      level: "error",
+      message: 'audit-residual-handoff: Completion missing "- Residual:" closing bullet — without explicit spillover handoff, foreign artefacts the user brought in get silently absorbed and skill drifts from a routed step into a closed-system absorber',
+    }];
+  }
+  const residual = residualMatch[1];
+
+  if (!/\bflag(?:ged|s)?\b/i.test(residual)) {
+    issues.push({
+      skill: dir,
+      level: "error",
+      message: 'audit-residual-handoff: Residual bullet missing "flag/flagged" spillover-discipline language — discipline is to flag foreign artefacts, not silently swallow them',
+    });
+  }
+
+  const backtickSkillMatches = [...residual.matchAll(/`([a-z][a-z0-9-]+[a-z0-9])`/g)];
+  const routedSkills: string[] = [];
+  const unknownSkills: string[] = [];
+  for (const match of backtickSkillMatches) {
+    const name = match[1];
+    if (name === dir) continue;
+    if (knownSkills.has(name)) {
+      routedSkills.push(name);
+    } else if (name.includes("-")) {
+      unknownSkills.push(name);
+    }
+  }
+  if (routedSkills.length === 0) {
+    issues.push({
+      skill: dir,
+      level: "error",
+      message: `audit-residual-handoff: Residual bullet routes to 0 known sibling skills via backticks; need ≥1 valid \`skill-name\` handoff target so spillover artefacts have a real next step rather than dead-ending in this skill${unknownSkills.length > 0 ? ` (found unknown: [${unknownSkills.join(", ")}])` : ""}`,
+    });
+  }
+  if (unknownSkills.length > 0) {
+    issues.push({
+      skill: dir,
+      level: "error",
+      message: `audit-residual-handoff: Residual bullet routes to non-existent skill(s) [${unknownSkills.join(", ")}] — dead route, drift from rename/delete in skills/`,
+    });
+  }
 
   return issues;
 }
